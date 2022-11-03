@@ -8086,10 +8086,10 @@ react-hok@^0.0.2:
   resolved "https://registry.npmjs.org/react-hok/-/react-hok-0.0.2.tgz"
   integrity sha512-o4al/rl+k8nt37Xq84KxNiyuBERFk5P8cUNn7OjD3eN/z0M0HRlj5cFSpc42ZQsWr1PQKwDbgzjtJBta1oP95g==
 
-react-hook-form@^7.36.1:
-  version "7.38.0"
-  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.38.0.tgz"
-  integrity sha512-gxWW1kMeru9xR1GoR+Iw4hA+JBOM3SHfr4DWCUKY0xc7Vv1MLsF109oHtBeWl9shcyPFx67KHru44DheN0XY5A==
+react-hook-form@^7.39.1:
+  version "7.39.1"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.39.1.tgz#ded87d4b3f6692d1f9219515f78ca282b6e1ebf7"
+  integrity sha512-MiF9PCILN5KulhSGbnjohMiTOrB47GerDTichMNP0y2cPUu1GTRFqbunOxCE9N1499YTLMV/ne4gFzqCp1rxrQ==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
@@ -8111,9 +8111,9 @@ react-refresh@^0.11.0:
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
 
-react-router-dom@^6.4.1:
+react-router-dom@^6.4.3:
   version "6.4.3"
-  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.4.3.tgz"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.4.3.tgz#70093b5f65f85f1df9e5d4182eb7ff3a08299275"
   integrity sha512-MiaYQU8CwVCaOfJdYvt84KQNjT78VF0TJrA17SIQgNHRvLnXDJO6qsFqq8F/zzB1BWZjCFIrQpu4QxcshitziQ==
   dependencies:
     "@remix-run/router" "1.0.3"
