@@ -7,16 +7,15 @@ import light from "./styles/themes/light";
 import usePersistedState from "./utils/usePersistedState";
 
 const App = () => {
-  
-  const [ themes, setThemes ] = usePersistedState<DefaultTheme>('theme', dark)
+  const [themes, setThemes] = usePersistedState<DefaultTheme>("theme", dark);
 
   const toggleTheme = () => {
-    setThemes(themes.title === "dark" ? light : dark)
-  }
+    setThemes(themes.title === "dark" ? light : dark);
+  };
 
   return (
     <>
-      <ThemeProvider theme={themes} >
+      <ThemeProvider theme={themes}>
         <GlobalStyles />
         <Dashboard />
         <Header toggleTheme={toggleTheme} />

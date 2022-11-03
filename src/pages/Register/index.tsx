@@ -12,6 +12,8 @@ import waste from "../../images/waste-management.svg";
 import { schema } from "../../validations/registerUser";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Api from "../../services/Api";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface iUserRegister {
   name: string;
@@ -35,12 +37,35 @@ const Register = () => {
     delete data.checkPassword;
 
     Api.post("/register", data)
-      .then(() => console.log("tudo ok"))
-      .catch((error) => console.error(error));
+      .then(() => {
+        return toast.success("Cadastrado com sucesso !", {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      })
+      .catch(() => {
+        return toast.error("Cadastro inválido", {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      });
   }
 
   return (
     <Main>
+      <ToastContainer />
       <img className="elipse" src={elipse} alt="" />
 
       <div className="logo">
