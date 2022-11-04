@@ -6,8 +6,19 @@ export const StyledUserDataModal = styled(Modal)`
     width: 90%;
     height: 80%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+
+    button {
+      width: 33px;
+      position: absolute;
+      top: -30px;
+      right: 20px;
+      font-size: 33px;
+      color: var(--grey-1);
+    }
   }
   .content {
     color: var(--white);

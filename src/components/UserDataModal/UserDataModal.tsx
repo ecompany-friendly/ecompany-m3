@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyledUserDataModal } from "./style";
+import { IoIosCloseCircle } from "react-icons/io";
 
 const customStyles = {
   content: {},
@@ -51,6 +52,9 @@ export const UserDataModal = () => {
       }}
     >
       <div className="container">
+        <button>
+          <IoIosCloseCircle className="closeIcon" onClick={closeModal} />
+        </button>
         <div className="content">
           <div className="headerModal">
             <h2>Dados do usuário</h2>
