@@ -7,7 +7,7 @@ const RoutesMain = () => {
     <Routes>
       <Route path="/" element={<Login />} />
       {/* <Route element={<ProtectedRoutes />}> */}
-      <Route path="/home" element={<Dashboard />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       {/* </Route> */}
     </Routes>
   );
