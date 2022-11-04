@@ -10,9 +10,28 @@ export const StyledDashboard = styled.section`
   text-align: center;
   z-index: 1;
 
-  main {
+  .container {
     display: flex;
-    z-index: 3;
+    width: 90vw;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    margin: 0 auto;
+    left: 5%;
+    margin-top: 30px;
+    border-radius: 10px;
+  }
+
+  .modals {
+    position: relative;
+  }
+
+  main {
+    width: 100%;
+    height: 80%;
   }
 
   h2 {
@@ -28,9 +47,10 @@ export const StyledDashboard = styled.section`
     gap: 5px;
     align-items: center;
     box-shadow: 0px 1px 0px 0px var(--white);
-    position: absolute;
-    z-index: 2;
-    top: 30px;
+    /* position: absolute; */
+    /* z-index: 2; */
+    /* top: 30px; */
+    margin-top: 30px;
     left: 10%;
     /* margin-top: 35px; */
   }
@@ -80,12 +100,6 @@ export const StyledDashboard = styled.section`
     justify-content: space-between;
   }
 
-  .container {
-    height: 75vh;
-    width: 100%;
-    /* background-color: palevioletred; */
-  }
-
   @media (min-width: 600px) {
     .dash-nav {
       flex-direction: row;
@@ -116,7 +130,7 @@ export const StyledDashboard = styled.section`
 `;
 
 export const Profile = styled.img`
-  width: 40px; 
+  width: 40px;
   height: 40px;
   border-radius: 15px;
 `;
@@ -124,17 +138,17 @@ export const Elipse = styled.img`
   width: 100%;
   height: 70%;
 `;
-export const Background = styled.img`
-  display: flex;
-  width: 90vw;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-  background-color: #000000;
-  opacity: 0.45;
-  position: absolute;
-  margin: 0 auto;
-  left: 5%;
-  margin-top: 30px;
-  border-radius: 10px;
-`;
+// export const Background = styled.img`
+//   display: flex;
+//   width: 90vw;
+//   justify-content: center;
+//   align-items: center;
+//   height: 90vh;
+//   background-color: #000000;
+//   opacity: 0.45;
+//   position: absolute;
+//   margin: 0 auto;
+//   left: 5%;
+//   margin-top: 30px;
+//   border-radius: 10px;
+// `;
