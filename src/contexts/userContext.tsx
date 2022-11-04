@@ -26,10 +26,23 @@ interface iUserContext {
   register: (data: iRegister) => void;
 }
 
+export interface iUser {
+  email: string;
+  name: string;
+  image: string;
+  tellphone: string;
+  id: number;
+}
+
+export interface iResponse {
+  accessToken: string;
+  user: iUser;
+}
+
 export const UserProvider = ({ children }: iUserProvider) => {
   const login = async (data: iLogin) => {
     try {
-      const res = await Api.post("login", data);
+      const res = await Api.post<iResponse>("login", data);
       console.log(await res);
     } catch (error) {
       toast.error("Algo deu errado!");
@@ -38,7 +51,7 @@ export const UserProvider = ({ children }: iUserProvider) => {
 
   const register = async (data: iRegister) => {
     try {
-      const res = await Api.post("/register", data);
+      const res = await Api.post<iResponse>("/register", data);
       console.log(await res);
     } catch (error) {
       toast.error("Algo deu errado");
