@@ -19,6 +19,10 @@ export const StyledUserDataModal = styled(Modal)`
       font-size: 33px;
       color: var(--grey-1);
     }
+
+    button:hover {
+      transform: scale(1.02);
+    }
   }
   .content {
     color: var(--white);
@@ -31,6 +35,7 @@ export const StyledUserDataModal = styled(Modal)`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-shadow: 0px 5px 20px 7px rgba(0, 0, 0, 0.25);
 
     .userName {
       display: flex;
