@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+<h1 align="center">
+   ♻️ eCOMPANY Friendly - Project ♻️
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="justify">Um grupo que é amigo das empresas que querem ajudar o planeta e investir em um desenvolvimento sustentável, utilizando materiais que não seriam reciclados, através de doações.
 
-## Available Scripts
+<p align="center">
+  “Reduza, reuse e recicle.”</h4>
+</p>
+<h2 align="center"><a href="https://project-jamstack-blog.vercel.app/">Clique aqui para ver o projeto final!</a></h2>
 
-In the project directory, you can run:
 
-### `yarn start`
+## 📺 Imagem
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<details>
+  
+<summary>Clique para ver imagens do projeto</summary>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Captura de Tela 2022-11-01 às 18 54 01](https://user-images.githubusercontent.com/57195630/199349312-c336b603-47ac-4a70-99f0-8744b363b49b.png)
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+</details> 
 
-### `yarn build`
+## 💻 Linguagens e tecnologias utilizadas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p align="left"> 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<a href="https://www.w3.org/html/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> 
+<a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a>
+<a href="" target="_blank"><img src="https://styled-components.com/logo.png" alt="styled-components" width="50" height="40"/></a>
+<a href="https://reactjs.org/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="60" height="40"/> </a> 
+<a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> 
+<a href="https://yarnpkg.com/" target="_blank"> <img src="https://classic.yarnpkg.com/assets/og_image.png" alt="nodejs" width="70" height="40"/> </a> 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Funcionalidades da pagina
+  - Página Login;
+  - Página Cadastro; 
+  - Página Dashboard;  
+  - Intregração feita por api;
+  - Rotas com permissões de recurso;
+  - Usuário pode buscar, cadastrar, editar e deletar;
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Instalação
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    - Repositorio
+    $ git clone https://github.com/jveiiga/ecompany-friendly.git
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    - Dependencias
+    $ yarn add 
+    @ytypescript -D
+    @styled-components
+    @react-icons
+    @lord-icon-element
+    @react-modal
+    @react-hook-form
+    @yup
+    @react-router-dom
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    - Rodar aplicativo
+    $ yarn start
 
-## Learn More
+## 💚 Time
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<a href="https://github.com/NicollyAlves">Nicolly Alves</a><br>
+<a href="https://github.com/lucastlara">Lucas Lara</a><br>
+<a href="https://github.com/rezendemateus">Mateus Rezende</a><br>
+<a href="https://github.com/SegatiMatheus">Matheus Segati</a><br>
+<a href="https://github.com/GabrielBessi">Gabriel Bessi</a><br>
+<a href="https://github.com/tonhass">Antony Santos</a><br>
+<a href="https://github.com/jveiiga">Jeferson Veiga</a>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📚 Aprendizagem
 
-### Code Splitting
+  - Processos de Scrum;
+  - Conventional Commits;
+  - Material UI;
+  
+## 📚 Desafios
+    - [x] Tipagem de components;
+    - [x] Trabalhar com contexto;
+    - [x] params;
+    - [x] Diferentes tipos de estados;
+    - [x] Desenvolvimento de endpoints api fake;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📂 Referencias
+  <details>
+    <summary>Decode #011</summary>
+      - <a href="https://www.youtube.com/watch?v=ngVU74daJ8Y">Tema light/dark com React, Styled Components e TypeScript | Code/Drops #16 </a> <br>    
+  </details>
