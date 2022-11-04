@@ -23,6 +23,7 @@ interface iRegister {
 
 interface iUserContext {
   login: (data: iLogin) => void;
+  register: (data: iRegister) => void;
 }
 
 export const UserProvider = ({ children }: iUserProvider) => {
@@ -45,6 +46,8 @@ export const UserProvider = ({ children }: iUserProvider) => {
   };
 
   return (
-    <UserContext.Provider value={{ login }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ login, register }}>
+      {children}
+    </UserContext.Provider>
   );
 };
