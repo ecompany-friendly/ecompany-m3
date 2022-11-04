@@ -14,7 +14,7 @@ export const BackgroundForm = styled.main`
   .elipse {
     display: flex;
     min-width: 300px;
-    width: 70vw;
+    width: 80%;
     height: 70vh;
     position: absolute;
     z-index: 0;
@@ -31,6 +31,7 @@ export const BackgroundForm = styled.main`
 
     position: absolute;
     top: 30px;
+    left: 50px;
 
     .logo-image {
       display: flex;
@@ -47,10 +48,18 @@ export const BackgroundForm = styled.main`
     }
   }
 
-  @media (min-width: 689px) {
+  @media (max-width: 689px) {
     .logo {
-      left: 30px;
+      left: center;
     }
+    .elipse {
+      top: -200px;
+      height: 35rem;
+    }
+    .display {
+      display: none;
+    }
+    width: 100vw;
   }
 `;
 
@@ -135,6 +144,10 @@ export const FormStyle = styled.div`
 
     padding: 20px 0;
 
+    @media (max-width: 689px) {
+      margin-top: 25px;
+    }
+
     input {
       display: flex;
 
@@ -152,7 +165,7 @@ export const FormStyle = styled.div`
       border-top-right-radius: 8px;
       border-bottom-left-radius: 8px;
 
-      @media (min-width: 689px) {
+      @media (max-width: 689px) {
         height: 45px;
       }
     }
@@ -176,7 +189,7 @@ export const FormStyle = styled.div`
       background-color: #1a2e1f;
       color: white;
 
-      @media (min-width: 689px) {
+      @media (max-width: 689px) {
         height: 45px;
       }
     }
@@ -206,7 +219,7 @@ export const FormStyle = styled.div`
 
       text-decoration: none;
 
-      @media (min-width: 689px) {
+      @media (max-width: 689px) {
         height: 45px;
       }
     }

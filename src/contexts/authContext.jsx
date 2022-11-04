@@ -1,5 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Api from "../services/Api";
 
 export const AuthContext = createContext();
@@ -7,6 +9,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const navigate = useNavigate();
+  const notify = (message) => toast(message);
 
   useEffect(() => {
     async function loadingUser() {
@@ -30,18 +33,17 @@ const AuthProvider = ({ children }) => {
   async function loadUser(data) {
     try {
       const response = await Api.post("/login", data);
-      console.log(response);
+
       const { user: userResponse, accessToken } = response.data;
 
-      console.log(userResponse);
       localStorage.setItem("@eCOMPANY:token", accessToken);
       localStorage.setItem("@eCOMPANY:user_id", userResponse.id);
 
       setUser(userResponse);
-
+      notify("Acesso com sucesso");
       navigate("/homepage");
     } catch (error) {
-      console.error(error);
+      notify(error);
     }
   }
 

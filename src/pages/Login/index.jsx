@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AuthContext } from "../../contexts/authContext";
 import { schemaLogin } from "../../validations/loginUser";
-import { Main, Container, Company, FormStyle, BackgroundForm } from "./styled";
+import { Container, Company, FormStyle, BackgroundForm } from "./styled";
 import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import elipse from "../../assets/Ellipse 1.svg";
 import ecology from "../../assets/Logo.svg";
 import ecompany from "../../assets/eCOMPANY Friendly.png";
@@ -21,6 +23,7 @@ const Login = () => {
 
   return (
     <>
+      <ToastContainer />
       <BackgroundForm>
         <img className="elipse" src={elipse} alt="" />
 
@@ -32,8 +35,8 @@ const Login = () => {
           <Company src={waste} alt="" />
           <FormStyle>
             <form onSubmit={handleSubmit(loadUser)}>
-              <h2>Bem vindo de volta</h2>
-              <h2>Por favor, insira seus dados de login</h2>
+              <h2 className="display">Bem vindo de volta</h2>
+              <h2 className="display">Por favor, insira seus dados de login</h2>
 
               <input
                 type="text"
