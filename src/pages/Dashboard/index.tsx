@@ -7,11 +7,13 @@ import addmaterial from "../../assets/Group.svg";
 import lupapesquisa from "../../assets/Group(1).svg";
 import elipse from "../../assets/Ellipse 1.svg";
 import background from "../../assets/Rectangle 39.svg";
+import ModalUser from "../../components/ModalUserDescription/ModalUser";
 
 const Dashboard = () => {
   return (
     <>
       <StyledDashboard>
+        <ModalUser />
         <Background src={background} alt="fundo preto" />
         <Elipse src={elipse} alt="imagem da elipse verde do fundo" />
         <nav className="dash-nav">
