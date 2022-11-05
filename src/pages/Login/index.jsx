@@ -9,7 +9,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import elipse from "../../assets/Ellipse 1.svg";
 import ecology from "../../assets/Logo.svg";
-import ecompany from "../../assets/eCOMPANY Friendly.svg";
 import waste from "../../assets/Waste management-pana 2.svg";
 
 const Login = () => {

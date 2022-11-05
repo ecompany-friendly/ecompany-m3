@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form";
+
 import {
   BackgroundForm as Main,
   Company,
@@ -76,7 +78,9 @@ const Register = () => {
         <Company src={waste} alt="" />
         <Div>
           <div>
-            <button>Voltar</button>
+          <Link to={"/"}>
+                    Voltar    
+                </Link>
           </div>
           <form onSubmit={handleSubmit(registerUser)}>
             <input
