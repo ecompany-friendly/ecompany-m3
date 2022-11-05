@@ -6,7 +6,6 @@ export const BackgroundForm = styled.main`
 
   align-items: center;
   justify-content: center;
-  
   height: 100vh;
   width: 100vw;
   
@@ -21,6 +20,7 @@ export const BackgroundForm = styled.main`
     z-index: 0;
     top: 0;
     margin-top: -20px;
+
   }
 
   .logo {
@@ -33,7 +33,9 @@ export const BackgroundForm = styled.main`
     position: absolute;
     top: 30px;
     left: 50px;
+
   }
+
 
     .logo-image {
       display: flex;
@@ -48,7 +50,6 @@ export const BackgroundForm = styled.main`
       max-width: 450px;
       width: 25.915080527086385vw;
     }
-  
 
   @media (max-width: 689px) {
     .logo {
@@ -77,6 +78,7 @@ export const Container = styled.div`
 `;
 
 export const Company = styled.img`
+<<<<<<< Updated upstream
 
   min-height: 150px;
 
@@ -134,7 +136,8 @@ export const FormStyle = styled.div`
     margin-top: 15px;
 
     justify-content: end;
-    
+
+
     button {
       width: 78px;
       height: 25px;
@@ -194,6 +197,7 @@ export const FormStyle = styled.div`
 
       min-width: 83%;
       padding: 10px;
+
       height: 35px;
 
       margin-top: 15px;
@@ -212,6 +216,7 @@ export const FormStyle = styled.div`
 
     .account {
       color: #5effa8;
+
       font-weight: 400;
       margin-top: 5px;
       font-size: medium;

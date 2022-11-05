@@ -28,16 +28,21 @@ const Login = () => {
 
         <div className="logo">
           <img className="logo-image" src={ecology} alt="" />
+
           <Logo>eCOMPANY Friendly</Logo>
+
+
         </div>
         <Container>
           <Company src={waste} alt="" />
           <FormStyle>
             <form onSubmit={handleSubmit(loadUser)}>
+
               <DivWelcome>
                 <h2 className="display">Bem vindo(a) de volta</h2>
                 <h2 className="display">Por favor, insira seus dados de login</h2>
               </DivWelcome>
+
 
               <input
                 type="text"
