@@ -38,6 +38,7 @@ body {
 	line-height: 1;
     height: 100vh;
     width: 100%;
+
 }
 ol, ul {
 	list-style: none;

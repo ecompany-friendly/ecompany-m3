@@ -1,12 +1,13 @@
 // import MaterialList from "../../components/MaterialList";
 import { StyledDashboard, Profile, Elipse, Background } from "./styles";
-import darkicon from "../../assets/ecology-maps-and-location-svgrepo-com 1.svg";
+import darkicon from "../../assets/Logo.svg";
 import profile from "../../assets/blank-profile-picture-973460.svg";
 import logout from "../../assets/Exit_1_.svg";
 import addmaterial from "../../assets/Group.svg";
 import lupapesquisa from "../../assets/Group(1).svg";
 import elipse from "../../assets/Ellipse 1.svg";
 import background from "../../assets/Rectangle 39.svg";
+import MaterialList from "../../components/ProductList";
 import ModalUser from "../../components/ModalUserDescription/ModalUser";
 
 const Dashboard = () => {
@@ -37,7 +38,8 @@ const Dashboard = () => {
             </div>
             <div className="search">
               <input type="text" />
-              <img className="lupa"
+              <img
+                className="lupa"
                 src={lupapesquisa}
                 alt="imagem da lupa de pesquisa para filtrar material"
               />
@@ -45,7 +47,7 @@ const Dashboard = () => {
             </div>
           </div>
         </nav>
-        <main>ul</main>
+        <MaterialList />
       </StyledDashboard>
     </>
   );
