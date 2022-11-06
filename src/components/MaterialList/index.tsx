@@ -2,7 +2,7 @@
 // import { MaterialContext } from "../../contexts/MaterialContext";
 // import { StyledAddOrRemoveButton } from "../Button/styles";
 
-import { StyledUl, StyledLi } from "./styles";
+import { StyledUl, StyledLi } from "../ProductList/styles";
 
 const MaterialList = () => {
   //   const { material, deleteMaterial } = useContext(MaterialContext);

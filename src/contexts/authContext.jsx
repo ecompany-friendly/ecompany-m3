@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
         try {
           Api.defaults.headers.authorization = `Bearer ${token}`;
 
-          const { data } = await Api.get("/login");
+          const { data } = await Api.get("login");
 
           setUser(data);
         } catch (error) {
@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
 
       setUser(userResponse);
       notify("Acesso com sucesso");
-      navigate("/homepage");
+      navigate("/dashboard");
     } catch (error) {
       notify(error);
     }
@@ -54,5 +54,11 @@ const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+export function useUserLoginContext(){
+  const context = useContext(AuthContext)
+
+  return context
+}
 
 export default AuthProvider;

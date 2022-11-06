@@ -14,8 +14,7 @@ export const BackgroundForm = styled.main`
   .elipse {
     display: flex;
     min-width: 300px;
-    width: 80%;
-    height: 70vh;
+    width: 68.52708638360176vw;
     position: absolute;
     z-index: 0;
     top: 0;
@@ -31,13 +30,12 @@ export const BackgroundForm = styled.main`
 
     position: absolute;
     top: 30px;
-    left: 50px;
 
     .logo-image {
       display: flex;
       min-width: 30px;
       max-width: 80px;
-      width: 7vw;
+      width: 7.101024890190336vw;
     }
 
     .logo-text {
@@ -48,18 +46,10 @@ export const BackgroundForm = styled.main`
     }
   }
 
-  @media (max-width: 689px) {
+  @media (min-width: 689px) {
     .logo {
-      left: center;
+      left: 30px;
     }
-    .elipse {
-      top: -200px;
-      height: 35rem;
-    }
-    .display {
-      display: none;
-    }
-    width: 100vw;
   }
 `;
 
@@ -78,7 +68,7 @@ export const Company = styled.img`
   display: flex;
 
   min-height: 150px;
-  height: 28vh;
+  height: 28.38vh;
 
   max-width: 750px;
   min-width: 330px;
@@ -95,7 +85,9 @@ export const Company = styled.img`
 export const FormStyle = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: spa;
+
+  align-items: center;
+  justify-content: center;
 
   min-width: 300px;
   max-width: 350px;
@@ -106,7 +98,10 @@ export const FormStyle = styled.div`
   border-radius: 8px;
 
   @media (min-width: 689px) {
+    height: 465px;
     background-color: rgba(34, 95, 62, 0.7);
+
+    padding: 0.5rem;
   }
 
   div {
@@ -116,7 +111,7 @@ export const FormStyle = styled.div`
     width: 24vw;
     z-index: 1;
 
-    margin-top: 15px;
+    margin-bottom: 15px;
 
     justify-content: end;
 
@@ -131,6 +126,11 @@ export const FormStyle = styled.div`
 
       border: none;
     }
+
+    button:hover {
+      filter: brightness(1.2);
+      cursor: pointer;
+    }
   }
 
   form {
@@ -138,15 +138,9 @@ export const FormStyle = styled.div`
     flex-direction: column;
     z-index: 1;
 
+    gap: 5px;
+
     align-items: center;
-
-    gap: 10px;
-
-    padding: 20px 0;
-
-    @media (max-width: 689px) {
-      margin-top: 25px;
-    }
 
     input {
       display: flex;
@@ -156,8 +150,6 @@ export const FormStyle = styled.div`
       width: 24vw;
       height: 30px;
 
-      margin-top: 15px;
-
       border: none;
       background-color: #d9d9d9;
 
@@ -165,9 +157,20 @@ export const FormStyle = styled.div`
       border-top-right-radius: 8px;
       border-bottom-left-radius: 8px;
 
-      @media (max-width: 689px) {
+      @media (min-width: 689px) {
         height: 45px;
       }
+    }
+
+    span {
+      display: flex;
+      color: red;
+
+      max-width: 284px;
+      min-width: 280px;
+      width: 24vw;
+
+      font-size: 12px;
     }
 
     button {
@@ -189,39 +192,14 @@ export const FormStyle = styled.div`
       background-color: #1a2e1f;
       color: white;
 
-      @media (max-width: 689px) {
+      @media (min-width: 689px) {
         height: 45px;
       }
     }
 
-    .account {
-      color: #5effa8;
-    }
-
-    .link {
-      display: flex;
-      border: none;
-
-      align-items: center;
-      justify-content: center;
-
-      min-width: 280px;
-      height: 35px;
-
-      margin-top: 15px;
-
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-      border-bottom-left-radius: 8px;
-
-      background-color: #1a2e1f;
-      color: white;
-
-      text-decoration: none;
-
-      @media (max-width: 689px) {
-        height: 45px;
-      }
+    button:hover {
+      filter: brightness(1.2);
+      cursor: pointer;
     }
   }
 `;
