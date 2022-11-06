@@ -7,14 +7,18 @@ import addmaterial from "../../assets/Group.svg";
 import lupapesquisa from "../../assets/Group(1).svg";
 import elipse from "../../assets/Ellipse 1.svg";
 import background from "../../assets/Rectangle 39.svg";
-import MaterialList from "../../components/ProductList";
-import ModalUser from "../../components/ModalUserDescription/ModalUser";
+import ProductList from "../../components/ProductList";
+import ModalMaterial from "../../components/ModalMaterial";
+
+
+
+
 
 const Dashboard = () => {
   return (
     <>
       <StyledDashboard>
-        <ModalUser />
+        <ModalMaterial />
         <Background src={background} alt="fundo preto" />
         <Elipse src={elipse} alt="imagem da elipse verde do fundo" />
         <nav className="dash-nav">
@@ -47,7 +51,7 @@ const Dashboard = () => {
             </div>
           </div>
         </nav>
-        <MaterialList />
+        <ProductList />
       </StyledDashboard>
     </>
   );
