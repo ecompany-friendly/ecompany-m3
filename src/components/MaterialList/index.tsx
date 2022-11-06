@@ -5,24 +5,24 @@
 import { StyledUl, StyledLi } from "./styles";
 
 const MaterialList = () => {
-//   const { material, deleteMaterial } = useContext(MaterialContext);
+  //   const { material, deleteMaterial } = useContext(MaterialContext);
 
   return (
     <StyledUl>
-       {/* {material.length > 0 ? ( */}
-        <StyledLi>
-            <img src="" alt="" />
-            <h2>nome</h2>
-            <div>
-              {/* <StyledCollectButton onClick={() => deleteMaterial(el)}>
+      {/* {material.length > 0 ? ( */}
+      <StyledLi>
+        <img src="" alt="" />
+        <h2>nome</h2>
+        <div>
+          {/* <StyledCollectButton onClick={() => deleteMaterial(el)}>
                 coletar
               </StyledCollectButton> */}
-            </div>
-          </StyledLi>
-        {/* )) */}
+        </div>
+      </StyledLi>
+      {/* )) */}
       {/* ) : ( */}
-        <p>Adicione Tecnologias</p>
-       {/* )}  */}
+      <p>Adicione Tecnologias</p>
+      {/* )}  */}
     </StyledUl>
   );
 };
