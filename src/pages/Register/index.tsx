@@ -7,10 +7,10 @@ import {
   Container,
   FormStyle as Div,
 } from "./styles";
-import elipse from "../../images/Ellipse.svg";
-import ecology from "../../images/ecology-maps.svg";
-import ecompany from "../../images/ecompany-friendly.svg";
-import waste from "../../images/waste-management.svg";
+import elipse from "../../assets/Ellipse 1.svg";
+import ecology from "../../assets/Logo.svg";
+import ecompany from "../../assets/eCOMPANY Friendly.svg";
+import waste from "../../assets/Waste management-pana 2.svg";
 import { schema } from "../../validations/registerUser";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Api from "../../services/Api";
@@ -38,7 +38,7 @@ const Register = () => {
     console.log(data);
     delete data.checkPassword;
 
-    Api.post("/register", data)
+    Api.post("register", data)
       .then(() => {
         return toast.success("Cadastrado com sucesso !", {
           position: "top-right",

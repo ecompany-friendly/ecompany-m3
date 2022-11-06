@@ -1,17 +1,18 @@
-import styled from "styled-components";
+import styled, {createGlobalStyle, DefaultTheme} from "styled-components"
+
 
 export const BackgroundForm = styled.main`
   display: flex;
   flex-direction: column;
-
+  background-color: ${({ theme }) => theme.main};
+  
   align-items: center;
   justify-content: center;
   
   height: 100vh;
   width: 100vw;
-  
-  background-color: #0d0e0d;      
-    
+  z-index: 1;
+      
     .elipse {
     display: flex;
     min-width: 300px;
