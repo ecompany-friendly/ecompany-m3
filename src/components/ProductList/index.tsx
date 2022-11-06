@@ -5,8 +5,8 @@ import { ProductContext } from "../../contexts/DashContext";
 import { StyledUl, StyledLi } from "./styles";
 
 const ProductList = () => {
-  const { product } = useContext(ProductContext);
-  // console.log(product)
+  const { product, renderProduct } = useContext(ProductContext);
+  console.log(product, renderProduct);
   return (
     <StyledUl>
       {product.length > 0 ? (
@@ -18,6 +18,7 @@ const ProductList = () => {
       ) : (
         <div className="empty">
           <p>Materiais disponíveis em breve</p>
+          <button onClick={renderProduct}>chamar function</button>
         </div>
       )}
     </StyledUl>
