@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -41,15 +41,21 @@ const AuthProvider = ({ children }) => {
 
       setUser(userResponse);
       notify("Acesso com sucesso");
-      navigate("/homepage");
+      navigate("/dashboard");
     } catch (error) {
       notify(error);
     }
   }
 
   return (
-    <AuthContext.Provider value={{ loadUser }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ loadUser, user }}>{children}</AuthContext.Provider>
   );
 };
+
+export function useUserLoginContext(){
+  const context = useContext(AuthContext)
+
+  return context
+}
 
 export default AuthProvider;
