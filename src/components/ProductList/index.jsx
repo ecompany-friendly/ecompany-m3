@@ -4,7 +4,7 @@ import Api from "../../services/Api";
 import { StyledUl, StyledLi } from "./styles";
 
 const ProductList = () => {
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState([]);
   console.log(product)
 
   useEffect(() => {
