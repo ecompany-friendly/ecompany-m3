@@ -38,7 +38,7 @@ const Register = () => {
     console.log(data);
     delete data.checkPassword;
 
-    Api.post("/register", data)
+    Api.post("register", data)
       .then(() => {
         return toast.success("Cadastrado com sucesso !", {
           position: "top-right",

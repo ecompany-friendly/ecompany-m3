@@ -8,6 +8,7 @@ import lupapesquisa from "../../assets/Group(1).svg";
 import elipse from "../../assets/Ellipse 1.svg";
 import background from "../../assets/Rectangle 39.svg";
 import MaterialList from "../../components/ProductList";
+import ProductList from "../../components/ProductList";
 
 const Dashboard = () => {
   return (
@@ -45,7 +46,7 @@ const Dashboard = () => {
             </div>
           </div>
         </nav>
-        <MaterialList />
+        <ProductList />
       </StyledDashboard>
     </>
   );

@@ -1,18 +1,28 @@
-import { useContext } from "react";
-import { ProductContext } from "../../contexts/DashContext";
-// import { StyledCollectButton } from "../Button/styles";
+import { useContext, useEffect, useState } from "react";
+import Api from "../../services/Api";
 
 import { StyledUl, StyledLi } from "./styles";
 
 const ProductList = () => {
-  const { product } = useContext(ProductContext);
-  // console.log(product)
+  const [product, setProduct] = useState(null);
+  console.log(product)
+
+  useEffect(() => {
+    Api.get("products").then((response) => {
+      console.log(response);
+      setProduct(response.data);
+    });
+  }, []);
+
+
   return (
     <StyledUl>
       {product.length > 0 ? (
         product.map((el) => (
           <StyledLi>
             <img src={el.image} alt="" />
+            <h2>{el.name}</h2>
+            <h3>{el.type}</h3>
           </StyledLi>
         ))
       ) : (

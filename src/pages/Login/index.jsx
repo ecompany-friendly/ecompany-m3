@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AuthContext } from "../../contexts/authContext";
 import { schemaLogin } from "../../validations/loginUser";
-import { Container, Toggle, Company, FormStyle, BackgroundForm, DivWelcome, Logo } from "./styles";
+import { Container, Company, FormStyle, BackgroundForm, DivWelcome, Logo } from "./styles";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
