@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
         try {
           Api.defaults.headers.authorization = `Bearer ${token}`;
 
-          const { data } = await Api.get("/login");
+          const { data } = await Api.get("login");
 
           setUser(data);
         } catch (error) {
