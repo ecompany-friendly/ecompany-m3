@@ -7,72 +7,10 @@ import lupapesquisa from "../../assets/Group(1).svg";
 import elipse from "../../assets/Ellipse 1.svg";
 import background from "../../assets/Rectangle 39.svg";
 import ProductList from "../../components/ProductList";
-import { /* useEffect, */ useState } from "react";
-import Api from "../../services/Api";
 import { useUserLoginContext } from "../../contexts/authContext";
 
 const Dashboard = () => {
-  // const [users, setUsers] = useState([]); array vazio
-  // const [users, setUsers] = useState(); undefined
-  const [users, setUsers] = useState([]);
   const { user } = useUserLoginContext();
-
-  // useEffect(() => {
-  //   Api.get("users")
-  //     .then((response) => {
-  //       console.log(response);
-  //       setUsers(response.data);
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
-  console.log(users);
-
-  // useEffect(() => {
-  //   async function getUser() {
-  //     const token = localStorage.getItem("@eCOMPANY:token");
-  //     // Api.get("login").then((response) => {
-  //     //   console.log(response);
-  //     // });
-  //     if (token) {
-  //       try {
-  //         Api.defaults.headers.authorization = `Bearer ${token}`;
-
-  //         const response = await Api.get("login");
-  //         console.log(response);
-
-  //         setUsers(response.user);
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     }
-  //   }
-  //   getUser();
-  // }, []);
-
-  const getUser = async (id) => {
-    const token = localStorage.getItem("@eCOMPANY:token");
-    // Api.get("login").then((response) => {
-    //   console.log(response);
-    // });
-    // if (token) {
-    try {
-      // Api.defaults.headers.authorization = `Bearer ${token}`;
-
-      const response = await Api.get(`users/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log("users:", response);
-
-      setUsers(response.user);
-    } catch (error) {
-      console.log(error);
-    }
-    // }
-  };
-  getUser(6);
-  // const id = localStorage.getItem("@eCOMPANY:user_id");
 
   return (
     <>
@@ -94,7 +32,7 @@ const Dashboard = () => {
                   src={profile}
                   alt="imagem do perfil do usuário logado"
                 ></Profile>
-                <h2>{user.name}</h2>
+                <h2>{user?.name}</h2>
               </div>
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>

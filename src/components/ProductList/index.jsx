@@ -15,23 +15,13 @@ import {
 
 const ProductList = () => {
   const [product, setProduct] = useState([]);
-  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     Api.get("products").then((response) => {
-      // console.log("produtos", response);
+      console.log("produtos", response);
       setProduct(response.data);
     });
-
-    // Api.get("users")
-    //   .then((response) => {
-    //     console.log("user", response);
-    //     setUsers(response.data);
-    //   })
-    //   .catch((err) => console.error(err));
   }, []);
-
-  console.log(users);
 
   return (
     <StyledUl>
