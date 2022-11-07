@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const navigate = useNavigate();
   const notify = (message) => toast(message);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     async function loadingUser() {
@@ -48,7 +49,9 @@ const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ loadUser, user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ loadUser, setOpenModal, openModal }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
