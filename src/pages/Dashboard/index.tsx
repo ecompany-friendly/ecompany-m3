@@ -1,12 +1,16 @@
-// import MaterialList from "../../components/MaterialList";
 import { StyledDashboard, Profile, Elipse, Background } from "./styles";
 import darkicon from "../../assets/Logo.svg";
+
 import profile from "../../assets/blank-profile-picture-973460.svg";
 import logout from "../../assets/Exit_1_.svg";
 import addmaterial from "../../assets/Group.svg";
 import lupapesquisa from "../../assets/Group(1).svg";
 import elipse from "../../assets/Ellipse 1.svg";
 import background from "../../assets/Rectangle 39.svg";
+
+import { StyledUserDataModal } from "../../components/UserDataModal/style";
+import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
+
 import MaterialList from "../../components/ProductList";
 import ProductList from "../../components/ProductList";
 import { NewProduct } from "../../components/NewProduct";
@@ -19,7 +23,6 @@ const Dashboard = () => {
   return (
     <>
       <StyledDashboard>
-        <Background src={background} alt="fundo preto" />
         <Elipse src={elipse} alt="imagem da elipse verde do fundo" />
         <nav className="dash-nav">
           <div className="logo">
@@ -52,10 +55,14 @@ const Dashboard = () => {
                   src={addmaterial}
                   alt="imagem para publicar novo material"
                 />
+
+              </div>
               </button>
             </div>
+          </nav>
+          <div className="modals">
+            <UserDataModal />
           </div>
-        </nav>
         <NewProduct />
         <ProductList />
       </StyledDashboard>
