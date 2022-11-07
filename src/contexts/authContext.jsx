@@ -1,15 +1,54 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Api from "../services/Api";
+
+// interface IUserContext {
+//   loadUser(data: IUserLogin): void;
+//   users: IUser[];
+// }
+
+// export interface IUserLogin {
+//   email: string;
+//   password: string;
+// }
+
+// export interface IUser {
+//   email: string;
+//   password: string;
+//   name: string;
+//   tellphone: number;
+//   id: number;
+//   products: [
+//     {
+//       userId: number;
+//       name: string;
+//       type: string;
+//       weight: string;
+//       city: string;
+//       country: string;
+//       image: string;
+//       id: number;
+//     }
+//   ];
+// }
+
+// interface IUserProviderProps {
+//   children: ReactNode;
+// }
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const navigate = useNavigate();
-  const notify = (message) => toast(message);
 
   useEffect(() => {
     async function loadingUser() {
@@ -40,22 +79,42 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("@eCOMPANY:user_id", userResponse.id);
 
       setUser(userResponse);
-      notify("Acesso com sucesso");
+      toast.success("Acesso com sucesso", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
       navigate("/dashboard");
     } catch (error) {
-      notify(error);
+      toast.error("Algo deu errado", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   }
 
   return (
-    <AuthContext.Provider value={{ loadUser, user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ loadUser, user }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
-export function useUserLoginContext(){
-  const context = useContext(AuthContext)
+export function useUserLoginContext() {
+  const context = useContext(AuthContext);
 
-  return context
+  return context;
 }
 
 export default AuthProvider;
