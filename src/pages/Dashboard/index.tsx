@@ -9,8 +9,13 @@ import elipse from "../../assets/Ellipse 1.svg";
 import background from "../../assets/Rectangle 39.svg";
 import MaterialList from "../../components/ProductList";
 import ProductList from "../../components/ProductList";
+import { NewProduct } from "../../components/NewProduct";
 
 const Dashboard = () => {
+  const teste = () => {
+    alert("sfjsdfb");
+  };
+
   return (
     <>
       <StyledDashboard>
@@ -42,10 +47,16 @@ const Dashboard = () => {
                 src={lupapesquisa}
                 alt="imagem da lupa de pesquisa para filtrar material"
               />
-              <img src={addmaterial} alt="imagem para publicar novo material" />
+              <button type="button" className="newProduct" onClick={teste}>
+                <img
+                  src={addmaterial}
+                  alt="imagem para publicar novo material"
+                />
+              </button>
             </div>
           </div>
         </nav>
+        <NewProduct />
         <ProductList />
       </StyledDashboard>
     </>
