@@ -1,10 +1,20 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Api from "../services/Api";
 
 export const AuthContext = createContext();
+
+// export interface iUser {
+
+// }
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
@@ -48,14 +58,12 @@ const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ loadUser, user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ loadUser, user }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
-export function useUserLoginContext(){
-  const context = useContext(AuthContext)
-
-  return context
-}
+export const useUserLoginContext = () => useContext(AuthContext);
 
 export default AuthProvider;
