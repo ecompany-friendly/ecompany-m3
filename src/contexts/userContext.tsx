@@ -1,6 +1,8 @@
 import { createContext, ReactElement, ReactNode, useState } from "react";
 import Api from "../services/Api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { iEditMaterial } from "../modal/EditMaterial";
 
 interface iUserProvider {
   children: ReactNode;
@@ -11,16 +13,9 @@ interface iLogin {
   password: string;
 }
 
-interface iRegister {
-  name: string;
-  email: string;
-  image: string;
-  password: string;
-  tellphone: string;
-}
-
 interface iUserContext {
   login: (data: iLogin) => void;
+  formSubmit(data: iEditMaterial): Promise<void>;
   openModal(): void;
   closeModal(): void;
   modalIsOpen: boolean;
@@ -30,6 +25,9 @@ export const UserContext = createContext<iUserContext>({} as iUserContext);
 
 export const UserProvider = ({ children }: iUserProvider) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const token = localStorage.getItem("@eCOMPANY:token");
+  const id = localStorage.getItem("@eCOMPANY:user_id");
+  const navigate = useNavigate();
 
   const login = async (data: iLogin) => {
     try {
@@ -40,14 +38,17 @@ export const UserProvider = ({ children }: iUserProvider) => {
     }
   };
 
-  const register = async (data: iRegister) => {
+  async function formSubmit(data: iEditMaterial): Promise<void> {
+    console.log(data);
     try {
-      const res = await Api.post("/register", data);
-      console.log(await res);
+      Api.defaults.headers.authorization = `Bearer ${token}`;
+      await Api.patch(`/products/${id}`, data);
+
+      navigate("/dashboard");
     } catch (error) {
-      toast.error("Algo deu errado");
+      console.log(error);
     }
-  };
+  }
 
   function openModal(): void {
     setModalIsOpen(true);
@@ -57,7 +58,15 @@ export const UserProvider = ({ children }: iUserProvider) => {
   }
 
   return (
-    <UserContext.Provider value={{ login, openModal, closeModal, modalIsOpen }}>
+    <UserContext.Provider
+      value={{
+        login,
+        openModal,
+        closeModal,
+        formSubmit,
+        modalIsOpen,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

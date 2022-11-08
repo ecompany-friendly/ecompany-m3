@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import {
@@ -13,11 +13,12 @@ import ecompany from "../../assets/eCOMPANY Friendly.svg";
 import waste from "../../assets/Waste management-pana 2.svg";
 import { schema } from "../../validations/registerUser";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Api from "../../services/Api";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useContext } from "react";
+import { RegisterContext } from "../../contexts/registerContext";
 
-interface iUserRegister {
+export interface iUserRegister {
   name: string;
   email: string;
   password: string;
@@ -26,6 +27,8 @@ interface iUserRegister {
 }
 
 const Register = () => {
+  const { registerUser } = useContext(RegisterContext);
+
   const {
     register,
     handleSubmit,
@@ -34,53 +37,28 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
-  function registerUser(data: iUserRegister): void {
-    console.log(data);
-    delete data.checkPassword;
-
-    Api.post("register", data)
-      .then(() => {
-        return toast.success("Cadastrado com sucesso !", {
-          position: "top-right",
-          autoClose: 1500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      })
-      .catch(() => {
-        return toast.error("Cadastro inválido", {
-          position: "top-right",
-          autoClose: 1500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      });
-  }
-
   return (
     <Main>
       <ToastContainer />
-      <img className="elipse" src={elipse} alt="" />
+      <img
+        className="elipse"
+        src={elipse}
+        alt="Imagem de fundo meia lua verde"
+      />
 
       <div className="logo">
-        <img className="logo-image" src={ecology} alt="" />
-        <img className="logo-text" src={ecompany} alt="" />
+        <img
+          className="logo-image"
+          src={ecology}
+          alt="Logotipo da eCOMPANY friendly"
+        />
+        <img className="logo-text" src={ecompany} alt="eCOMPANY friendly" />
       </div>
       <Container>
-        <Company src={waste} alt="" />
+        <Company src={waste} alt="Personagens fazendo a reciclagem" />
         <Div>
           <div>
-          <Link to={"/"}>
-                    Voltar    
-                </Link>
+            <Link to={"/"}>Voltar</Link>
           </div>
           <form onSubmit={handleSubmit(registerUser)}>
             <input
