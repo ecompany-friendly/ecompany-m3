@@ -150,7 +150,7 @@ export const FormStyle = styled.div`
   position: relative;
   background-color: rgba(34, 95, 62, 0.4);
   left: 60%;
-  top: -200px;
+  top: -260px;
   z-index: 1;
   border-radius: 8px;
   justify-content: center;
@@ -183,7 +183,7 @@ export const FormStyle = styled.div`
     z-index: 1;
 
     margin-top: 15px;
-
+    
     justify-content: end;
     
     
@@ -193,18 +193,22 @@ export const FormStyle = styled.div`
     display: flex;
     flex-direction: column;
     z-index: 1;
-
+    
     align-items: center;
-
+    
     gap: 10px;
-
+    
     margin-top: 25px;
     max-width: 900px;
-
+    
     @media (min-width: 750px) {
       margin-top: 5px;
     }
     
+    @media screen and (min-width: 900px) {
+    h2 {
+      font-size: 16px;
+    }
 
     input {
       display: flex;
@@ -212,49 +216,52 @@ export const FormStyle = styled.div`
       max-width: 270px;
       min-width: 80%;
       height: 45px;
-
+      
       padding-left: 10px;
-
+      
       border: none;
       background-color: #d9d9d9;
-
+      
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
       border-bottom-left-radius: 8px;
-
+      
       @media screen and (min-width: 689px) {
         height: 45px;
       }
-
+      
       @media screen and (min-width: 750px) {
         min-width: 25%;
         height: 30px;
         margin-bottom: -5px;
       }
-
+      
+      @media screen and (min-width: 900px) {
+        margin-bottom: 5px;
+      }
     }
 
     button {
       display: flex;
       border: none;
-
+      
       align-items: center;
       justify-content: center;
-
+      
       min-width: 83%;
       padding: 10px;
       height: 35px;
-
+      
       margin-top: 15px;
-
+      
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
       border-bottom-left-radius: 8px;
-
+      
       background-color: #1a2e1f;
       background-color: ${({theme}) => theme.buttongreen};
       color: white;
-
+      
       @media screen and (min-width: 689px) {
         height: 45px;
       }
@@ -262,7 +269,10 @@ export const FormStyle = styled.div`
       @media screen and (min-width: 750px) {
         min-width: 26%;
       }
-    }
+
+      @media screen and (min-width: 900px) {
+      font-size: 16px;
+      }
 
     .account {
       color: #5effa8;
@@ -270,39 +280,47 @@ export const FormStyle = styled.div`
       color: ${({theme}) => theme.question};
       margin-top: 5px;
       font-size: medium;
-
+      
       @media screen and (min-width: 750px) {
         font-size: 12px;
       }
-    }
-
-    .link {
-      display: flex;
-      border: none;
-
-      align-items: center;
-      justify-content: center;
-
-      min-width: 83%;
-      height: 45px;
-
-      margin-top: 5px;
-
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-      border-bottom-left-radius: 8px;
-
-      background-color: ${({theme}) => theme.btnRegister};
-      color: white;
-
-      text-decoration: none;
-
-      @media screen and (min-width: 750px) {
-        min-width: 26%;
-        margin-bottom: 10px;
+      
+      @media screen and (min-width: 900px) {
+          font-size: 14px;
       }
+      
     }
   }
+  
+  .link {
+    display: flex;
+    border: none;
+    
+    align-items: center;
+    justify-content: center;
+    
+    min-width: 83%;
+    height: 45px;
+    
+    margin-top: 5px;
+    
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    
+    background-color: ${({theme}) => theme.btnRegister};
+    color: white;
+    
+    text-decoration: none;
+    
+    @media screen and (min-width: 750px) {
+      min-width: 26%;
+      margin-bottom: 10px;
+    }
+
+
+  }
+}}
 `;
 
 export const DivWelcome = styled.div`
@@ -327,6 +345,13 @@ export const DivWelcome = styled.div`
     font-size: 14px;
   }
   }
+
+  @media screen and (min-width: 900px) {
+    h2 {
+      font-size: 16px;
+    }
+  }
+
 `
 
 export const Logo = styled.h1`
