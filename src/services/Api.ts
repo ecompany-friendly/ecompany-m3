@@ -2,6 +2,7 @@ import axios from "axios";
 
 const Api = axios.create({
   baseURL: "https://json-server-ecompany.herokuapp.com/",
+  data: 3,
   timeout: 5000,
 });
 

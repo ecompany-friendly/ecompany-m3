@@ -6,38 +6,41 @@ import { StyledUl, StyledLi, StyledImageProduct, StyledImageUser, StyledContaine
 const ProductList = () => {
 
   const [product, setProduct] = useState([]);
-  const[users, setUsers]      = useState([]);
+  const [users, setUsers]     = useState([]);
 
   useEffect(() => {
+
+    const id = localStorage.getItem("@eCOMPANY:user_id")
+
     Api.get("products").then((response) => {
-      console.log(response);
       setProduct(response.data);
     });
-
-    Api.get("users").then((response) => {
-      console.log(response)
+    
+    Api.get(`users/?_embed=products`, id).then((response) => {
       setUsers(response.data)
     })
     .catch((err) => console.error(err))
+
   }, []);
 
-  console.log(users)
+
   return (
     <StyledUl>
       <StyledContainer>
       {product.length > 0 ? (
-        product.map((el) => (
-            <StyledLi>
+        users.map((user) => (
+            user.products.map((el) => 
+            <StyledLi key={el.id}>
               <StyledImageProduct src={el.image} alt="" />
               <StyledContainerCard>
                 <StyledContainerUser>
-                  <StyledImageUser src="" alt="" />
-                  <StyledNameUser>Lucas Lara</StyledNameUser>
+                  <StyledImageUser src={user.image} alt="" />
+                  <StyledNameUser>{user.name}</StyledNameUser>
                 </StyledContainerUser>
                 <StyledBtn>coletar</StyledBtn>
               </StyledContainerCard>
             </StyledLi>
-        ))
+        )))
       ) : (
         <div className="empty">
           <p>Materiais disponíveis em breve</p>
