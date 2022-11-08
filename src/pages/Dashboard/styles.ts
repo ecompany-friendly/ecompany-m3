@@ -47,12 +47,11 @@ export const StyledDashboard = styled.section`
     gap: 5px;
     align-items: center;
     box-shadow: 0px 1px 0px 0px var(--white);
-    /* position: absolute; */
-    /* z-index: 2; */
-    /* top: 30px; */
+    position: absolute;
+    z-index: 2;
     margin-top: 30px;
     left: 10%;
-    /* margin-top: 35px; */
+    margin-top: 35px;
   }
 
   .logo {
@@ -138,17 +137,17 @@ export const Elipse = styled.img`
   width: 100%;
   height: 70%;
 `;
-// export const Background = styled.img`
-//   display: flex;
-//   width: 90vw;
-//   justify-content: center;
-//   align-items: center;
-//   height: 90vh;
-//   background-color: #000000;
-//   opacity: 0.45;
-//   position: absolute;
-//   margin: 0 auto;
-//   left: 5%;
-//   margin-top: 30px;
-//   border-radius: 10px;
-// `;
+export const Background = styled.img`
+  display: flex;
+  width: 90vw;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #000000;
+  opacity: 0.45;
+  position: absolute;
+  margin: 0 auto;
+  left: 5%;
+  margin-top: 30px;
+  border-radius: 10px;
+`;

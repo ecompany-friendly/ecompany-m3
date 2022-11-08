@@ -24,6 +24,7 @@ const Dashboard = () => {
     <>
       <StyledDashboard>
         <Elipse src={elipse} alt="imagem da elipse verde do fundo" />
+        <Background />
         <nav className="dash-nav">
           <div className="logo">
             <img

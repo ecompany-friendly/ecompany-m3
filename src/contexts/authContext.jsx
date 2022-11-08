@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
   async function newProduct(data) {
     const userId = localStorage.getItem("@eCOMPANY:user_id");
     try {
-      const newData = { ...data, userId: userId, status: true };
+      const newData = { ...data, userId: Number(userId), status: true };
       await Api.post("/products", newData);
       setOpenModalProduct(false);
     } catch (error) {
