@@ -1,35 +1,53 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Api from "../../services/Api";
 
-import { StyledUl, StyledLi } from "./styles";
+import { StyledUl, StyledLi, StyledImageProduct, StyledImageUser, StyledContainerCard, StyledContainerUser, StyledNameUser, StyledBtn, StyledContainer } from "./styles";
 
 const ProductList = () => {
+  
   const [product, setProduct] = useState([]);
-  console.log(product)
-
+  const [users, setUsers]     = useState([]);
+  
+  
   useEffect(() => {
-    Api.get("products").then((response) => {
+
+    const id = localStorage.getItem("@eCOMPANY:user_id")
+
+    Api.get(`products`).then((response) => {
       console.log(response);
       setProduct(response.data);
     });
-  }, []);
 
+    Api.get(`users/?_embed=products`, id).then((response) => {
+      console.log(response)
+      setUsers(response.data)
+    })
+    .catch((err) => console.error(err))
+  }, []);
 
   return (
     <StyledUl>
+      <StyledContainer>
       {product.length > 0 ? (
-        product.map((el) => (
-          <StyledLi>
-            <img src={el.image} alt="" />
-            <h2>{el.name}</h2>
-            <h3>{el.type}</h3>
-          </StyledLi>
-        ))
+        users.map((user) => (
+          user.products.map((el) => 
+            <StyledLi key={el.id}>
+              <StyledImageProduct src={el.image} alt="" />
+              <StyledContainerCard>
+                <StyledContainerUser>
+                  <StyledImageUser src={user.image} alt="" />
+                  <StyledNameUser>{user.name}</StyledNameUser>
+                </StyledContainerUser>
+                <StyledBtn>coletar</StyledBtn>
+              </StyledContainerCard>
+            </StyledLi>
+        )))
       ) : (
         <div className="empty">
           <p>Materiais disponíveis em breve</p>
         </div>
       )}
+      </StyledContainer>
     </StyledUl>
   );
 };

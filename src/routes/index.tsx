@@ -11,9 +11,9 @@ const Rotas = () => {
       <Route path='*'element={<Navigate replace to="/"/>} />
       <Route path="/register" element={<Register />} />
 
-      <Route element={<ProtectedRoutes />} >
+      {/* <Route element={<ProtectedRoutes />} > */}
         <Route path="/dashboard" element={<Dashboard />} />
-      </Route>
+      {/* </Route> */}
     </Routes>
   );
 };
