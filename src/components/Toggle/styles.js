@@ -1,32 +1,46 @@
 import styled from "styled-components";
 
-export const ToggleContainer = styled.button`
-  background: ${({ theme }) => theme.gradient};
-  border: 2px solid ${({ theme }) => theme.toggleBorder};
-  border-radius: 30px;
-  cursor: pointer;
-  display: flex;
-  font-size: 0.5rem;
-  justify-content: space-between;
-  margin: 0 auto;
-  overflow: auto;
-  padding: 0.5rem;
-  width: 8rem;
-  height: 4rem;
-  z-index: 4;
-
-  img {
-    height: auto;
-    width: 20rem;
-    transition: all 0.3s linear;
-    // sun icon
-    &:first-child {
-      transform: ${({ darkTheme }) => darkTheme ? 'translateY(0)' : 'translateY(100px)'};
+export const ToggleContainer = styled.label`
+  
+    .toggle-switch {
+      position: absolute;
+      display: inline-block;
+      width: 50px;
+      height: 25px;
+      margin: 0 0.75rem;
+      z-index: 2;
     }
-    
-    // moon icon
-    &:nth-child(2) {
-      transform: ${({ darkTheme }) => darkTheme ? 'translateY(-100px)' : 'translateY(0)'};
+    .toggle-switch input[type="checkbox"] {
+      display: none;
     }
-  }
+    .toggle-switch .switch {
+      position: absolute;
+      cursor: pointer;
+      background-color: #b6b6b6;
+      border-radius: 25px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition: background-color 0.2s ease;
+    }
+    .toggle-switch .switch::before {
+      position: absolute;
+      content: "";
+      left: 2px;
+      top: 2px;
+      width: 21px;
+      height: 21px;
+      background-color: #333;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+    .toggle-switch input[type="checkbox"]:checked + .switch::before {
+      transform: translateX(25px);
+      background-color: #333;
+    }
+    .toggle-switch input[type="checkbox"]:checked + .switch {
+      background-color: #5EFFA8;
+    }
+  
 `;

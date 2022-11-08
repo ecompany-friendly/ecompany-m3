@@ -15,6 +15,9 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from './theme';
 import "./styles"
 import Toggle from "../../components/Toggle";
+import { ToggleContainer } from "../../components/Toggle/styles";
+import MoonIcon from "../../components/Toggle/icons/MoonIcon";
+import SunIcon from "../../components/Toggle/icons/SunIcon";
 
 const Login = () => {
 
@@ -44,16 +47,22 @@ const toggleTheme = () => {
 
       <>
         <ToastContainer />
-        <Toggle theme={theme} toggleTheme={toggleTheme} />
         <BackgroundForm>
-          <img className="elipse" src={elipse} alt="" />
-  
+
+          <div className="ellipse">
           <div className="logo">
-            <img className="logo-image" src={ecology} alt="" />
-            <Logo>eCOMPANY Friendly</Logo>
+            <div className="logo-container">
+              <img className="logo-image" src={ecology} alt="" />
+            </div>
+              <Logo>eCOMPANY Friendly</Logo>
+            <div className="toggle">
+              <Toggle theme={theme} toggleTheme={toggleTheme} />
+            </div>
           </div>
-          <Container>
+          </div>
+  
             <Company src={waste} alt="" />
+          <Container>
             <FormStyle>
               <form onSubmit={handleSubmit(loadUser)}>
                 <DivWelcome>
