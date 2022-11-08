@@ -8,11 +8,13 @@ import lupapesquisa from "../../assets/Group(1).svg";
 import elipse from "../../assets/Ellipse 1.svg";
 // import Background from "../../assets/Rectangle 39.svg";
 import { StyledUserDataModal } from "../../components/UserDataModal/style";
-import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
 
 import MaterialList from "../../components/ProductList";
 import ProductList from "../../components/ProductList";
 import { NewProduct } from "../../components/NewProduct";
+import { AuthContext } from "../../contexts/authContext";
+import { useContext } from "react";
+import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
 
 const Dashboard = () => {
   const { modalOpen } = useContext(AuthContext);
@@ -47,19 +49,24 @@ const Dashboard = () => {
                 src={lupapesquisa}
                 alt="imagem da lupa de pesquisa para filtrar material"
               />
-              <button type="button" className="newProduct" onClick={teste}>
+              <button type="button" className="newProduct" onClick={modalOpen}>
                 <img
                   src={addmaterial}
                   alt="imagem para publicar novo material"
                 />
-
-              </div>
               </button>
             </div>
           </div>
-          </nav>
+        </nav>
+
+        <div>
           <main>ul</main>
         </div>
+        {/* <div className="modals">
+            <UserDataModal />
+          </div> */}
+        <NewProduct />
+        <ProductList />
       </StyledDashboard>
     </>
   );
