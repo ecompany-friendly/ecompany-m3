@@ -23,6 +23,7 @@ export const UserDataModal = () => {
 
   return (
     <StyledUserDataModal
+      ariaHideApp={false}
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       overlayClassName="modal-overlay"
@@ -61,7 +62,7 @@ export const UserDataModal = () => {
           </div>
           <div className="dataContainer">
             <div className="userName">
-              <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" />
+              <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" alt=""/>
               <h2>Username</h2>
             </div>
             <div className="userData">

@@ -15,11 +15,12 @@ import MaterialList from "../../components/ProductList";
 import ProductList from "../../components/ProductList";
 import { NewProduct } from "../../components/NewProduct";
 import { useContext } from "react";
-import { AuthContext } from "../../contexts/authContext";
+import { AuthContext, useUserLoginContext } from "../../contexts/authContext";
 
 const Dashboard = () => {
-  const { modalOpen } = useContext(AuthContext);
-
+  const { modalOpen, user } = useUserLoginContext();
+  console.log(user)
+  
   return (
     <>
       <StyledDashboard>
@@ -61,7 +62,7 @@ const Dashboard = () => {
             </div>
           </nav>
           <div className="modals">
-            <UserDataModal />
+            {/* <UserDataModal /> */}
           </div>
         <NewProduct />
         <ProductList />

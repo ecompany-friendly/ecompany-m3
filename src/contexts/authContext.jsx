@@ -13,22 +13,23 @@ import Api from "../services/Api";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState();
-  const navigate = useNavigate();
-  const notify = (message) => toast(message);
-  const [openModal, setOpenModal] = useState(false);
+  const [user, setUser]                         = useState();
+  const [openModal, setOpenModal]               = useState(false);
   const [openModalProduct, setOpenModalProduct] = useState(false);
-
+  const navigate                                = useNavigate();
+  const notify = (message) => toast(message);
+  
   useEffect(() => {
     async function loadingUser() {
+
       const token = localStorage.getItem("@eCOMPANY:token");
 
       if (token) {
         try {
           Api.defaults.headers.authorization = `Bearer ${token}`;
 
-          const { data } = await Api.get("login");
-
+          const { data } = await Api.get(`login`);
+          
           setUser(data);
         } catch (error) {
           console.log(error);
@@ -39,6 +40,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   async function loadUser(data) {
+    
     try {
       const response = await Api.post("/login", data);
 
@@ -85,6 +87,7 @@ const AuthProvider = ({ children }) => {
         modalOpen,
         modalClose,
         newProduct,
+        user,
       }}
     >
       {children}

@@ -19,6 +19,7 @@ import Toggle from "../../components/Toggle";
 const Login = () => {
 
   const { loadUser } = useContext(AuthContext);
+  console.log()
   const {
     register,
     handleSubmit,
