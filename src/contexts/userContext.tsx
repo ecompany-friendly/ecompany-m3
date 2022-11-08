@@ -1,8 +1,8 @@
-import { createContext, ReactElement, ReactNode, useState } from "react";
+import { createContext, ReactElement, ReactNode } from "react";
 import Api from "../services/Api";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import { iEditMaterial } from "../modal/EditMaterial";
+
+export const UserContext = createContext({});
 
 interface iUserProvider {
   children: ReactNode;
@@ -13,22 +13,19 @@ interface iLogin {
   password: string;
 }
 
-interface iUserContext {
-  login: (data: iLogin) => void;
-  formSubmit(data: iEditMaterial): Promise<void>;
-  openModal(): void;
-  closeModal(): void;
-  modalIsOpen: boolean;
+interface iRegister {
+  name: string;
+  email: string;
+  image: string;
+  password: string;
+  tellphone: string;
 }
 
-export const UserContext = createContext<iUserContext>({} as iUserContext);
+interface iUserContext {
+  login: (data: iLogin) => void;
+}
 
 export const UserProvider = ({ children }: iUserProvider) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const token = localStorage.getItem("@eCOMPANY:token");
-  const id = localStorage.getItem("@eCOMPANY:user_id");
-  const navigate = useNavigate();
-
   const login = async (data: iLogin) => {
     try {
       const res = await Api.post("login", data);
@@ -38,36 +35,16 @@ export const UserProvider = ({ children }: iUserProvider) => {
     }
   };
 
-  async function formSubmit(data: iEditMaterial): Promise<void> {
-    console.log(data);
+  const register = async (data: iRegister) => {
     try {
-      Api.defaults.headers.authorization = `Bearer ${token}`;
-      await Api.patch(`/products/${id}`, data);
-
-      navigate("/dashboard");
+      const res = await Api.post("/register", data);
+      console.log(await res);
     } catch (error) {
-      console.log(error);
+      toast.error("Algo deu errado");
     }
-  }
-
-  function openModal(): void {
-    setModalIsOpen(true);
-  }
-  function closeModal(): void {
-    setModalIsOpen(false);
-  }
+  };
 
   return (
-    <UserContext.Provider
-      value={{
-        login,
-        openModal,
-        closeModal,
-        formSubmit,
-        modalIsOpen,
-      }}
-    >
-      {children}
-    </UserContext.Provider>
+    <UserContext.Provider value={{ login }}>{children}</UserContext.Provider>
   );
 };
