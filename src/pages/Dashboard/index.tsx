@@ -10,11 +10,11 @@ import background from "../../assets/Rectangle 39.svg";
 import MaterialList from "../../components/ProductList";
 import ProductList from "../../components/ProductList";
 import { NewProduct } from "../../components/NewProduct";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/authContext";
 
 const Dashboard = () => {
-  const teste = () => {
-    alert("sfjsdfb");
-  };
+  const { modalOpen } = useContext(AuthContext);
 
   return (
     <>
@@ -47,7 +47,7 @@ const Dashboard = () => {
                 src={lupapesquisa}
                 alt="imagem da lupa de pesquisa para filtrar material"
               />
-              <button type="button" className="newProduct" onClick={teste}>
+              <button type="button" className="newProduct" onClick={modalOpen}>
                 <img
                   src={addmaterial}
                   alt="imagem para publicar novo material"
