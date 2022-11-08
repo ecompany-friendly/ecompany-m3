@@ -10,13 +10,23 @@ const customStyles = {
   },
 };
 
-export const UserDataModal = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+interface iModalProps {
+  modalIsOpen: boolean;
+  setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  user: iUser;
+}
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
+interface iUser {
+  email: string;
+  name: string;
+  tellphone: string;
+}
 
+export const UserDataModal = ({
+  modalIsOpen,
+  setModalIsOpen,
+  user,
+}: iModalProps) => {
   const closeModal = () => {
     setModalIsOpen(false);
   };
@@ -62,11 +72,11 @@ export const UserDataModal = () => {
           <div className="dataContainer">
             <div className="userName">
               <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" />
-              <h2>Username</h2>
+              <h2>{user.name}</h2>
             </div>
             <div className="userData">
-              <span>E-mail: lorem.ipsum@lorem.com</span>
-              <span>Contatto: (99)99999-9999</span>
+              <span>`E-mail: ${user.email}`</span>
+              <span>`Contato: ${user.tellphone}`</span>
             </div>
           </div>
         </div>
