@@ -3,7 +3,7 @@ import Api from "../../services/Api";
 
 import { StyledUl, StyledLi, StyledImageProduct, StyledImageUser, StyledContainerCard, StyledContainerUser, StyledNameUser, StyledBtn, StyledContainer } from "./styles";
 
-const ProductList = () => {
+const ProductList = ({filtered}) => {
   
   const [product, setProduct] = useState([]);
   const [users, setUsers]     = useState([]);
@@ -28,6 +28,7 @@ const ProductList = () => {
   return (
     <StyledUl>
       <StyledContainer>
+      {filtered.length > 0 && console.log(filtered)}
       {product.length > 0 ? (
         users.map((user) => (
           user.products.map((el) => 

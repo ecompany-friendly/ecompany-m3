@@ -14,11 +14,14 @@ import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
 import MaterialList from "../../components/ProductList";
 import ProductList from "../../components/ProductList";
 import { NewProduct } from "../../components/NewProduct";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
+import SearchInput from "../../components/SearchInput";
 
 const Dashboard = () => {
   const { modalOpen } = useContext(AuthContext);
+  const [products, setProducts] = useState([]);
+  const [filtered, setFiltered] = useState([]);
 
   return (
     <>
@@ -45,26 +48,27 @@ const Dashboard = () => {
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>
             <div className="search">
-              <input type="text" />
+              <SearchInput products={products} setFiltered={setFiltered} />
+              {/* <input type="text" />
               <img
                 className="lupa"
                 src={lupapesquisa}
                 alt="imagem da lupa de pesquisa para filtrar material"
-              />
+              /> */}
               <button type="button" className="newProduct" onClick={modalOpen}>
                 <img
                   src={addmaterial}
                   alt="imagem para publicar novo material"
                 />
               </button>
-              </div>
             </div>
-          </nav>
-          <div className="modals">
-            <UserDataModal />
           </div>
+        </nav>
+        <div className="modals">
+          <UserDataModal />
+        </div>
         <NewProduct />
-        <ProductList />
+        <ProductList filtered={filtered}/>
       </StyledDashboard>
     </>
   );
