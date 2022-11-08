@@ -1,8 +1,6 @@
-import { createContext, ReactElement, ReactNode } from "react";
+import { createContext, ReactElement, ReactNode, useState } from "react";
 import Api from "../services/Api";
 import { toast } from "react-toastify";
-
-export const UserContext = createContext({});
 
 interface iUserProvider {
   children: ReactNode;
@@ -23,9 +21,16 @@ interface iRegister {
 
 interface iUserContext {
   login: (data: iLogin) => void;
+  openModal(): void;
+  closeModal(): void;
+  modalIsOpen: boolean;
 }
 
+export const UserContext = createContext<iUserContext>({} as iUserContext);
+
 export const UserProvider = ({ children }: iUserProvider) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const login = async (data: iLogin) => {
     try {
       const res = await Api.post("login", data);
@@ -44,7 +49,16 @@ export const UserProvider = ({ children }: iUserProvider) => {
     }
   };
 
+  function openModal(): void {
+    setModalIsOpen(true);
+  }
+  function closeModal(): void {
+    setModalIsOpen(false);
+  }
+
   return (
-    <UserContext.Provider value={{ login }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ login, openModal, closeModal, modalIsOpen }}>
+      {children}
+    </UserContext.Provider>
   );
 };

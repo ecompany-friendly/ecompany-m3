@@ -1,20 +1,14 @@
-import { useState } from "react";
+import { useContext } from "react";
 import Modal from "react-modal";
 import { IoMdCloseCircle } from "react-icons/io";
 
 import "./styles.css";
+import { UserContext } from "../../contexts/userContext";
 
 Modal.setAppElement("#root");
 
 const EditMaterial = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  function openModal() {
-    setModalIsOpen(true);
-  }
-  function closeModal() {
-    setModalIsOpen(false);
-  }
+  const { modalIsOpen, closeModal } = useContext(UserContext);
 
   return (
     <>
