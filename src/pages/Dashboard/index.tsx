@@ -1,4 +1,4 @@
-import { StyledDashboard, Profile, Elipse, Background } from "./styles";
+import { StyledDashboard, Profile, Elipse } from "./styles";
 import darkicon from "../../assets/Logo.svg";
 
 import profile from "../../assets/blank-profile-picture-973460.svg";
@@ -55,7 +55,6 @@ const Dashboard = () => {
                   src={addmaterial}
                   alt="imagem para publicar novo material"
                 />
-
               </button>
               </div>
             </div>
