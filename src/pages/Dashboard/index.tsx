@@ -16,7 +16,7 @@ import ProductList from "../../components/ProductList";
 import { NewProduct } from "../../components/NewProduct";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
-//import SearchInput from "../../components/SearchInput";
+import SearchInput from "../../components/SearchInput";
 
 const Dashboard = () => {
   const { modalOpen } = useContext(AuthContext);
@@ -48,7 +48,7 @@ const Dashboard = () => {
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>
             <div className="search">
-              {/*<SearchInput products={products} setFiltered={setFiltered} />*}
+              {<SearchInput products={products} setFiltered={setFiltered} />}
               {/* <input type="text" />
               <img
                 className="lupa"
@@ -68,7 +68,7 @@ const Dashboard = () => {
           <UserDataModal />
         </div>
         <NewProduct />
-        <ProductList filtered={filtered}/>
+        <ProductList filtered={filtered} setProducts={setProducts} />
       </StyledDashboard>
     </>
   );
