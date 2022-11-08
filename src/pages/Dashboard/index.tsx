@@ -56,8 +56,8 @@ const Dashboard = () => {
                   alt="imagem para publicar novo material"
                 />
 
-              </div>
               </button>
+              </div>
             </div>
           </nav>
           <div className="modals">
