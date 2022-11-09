@@ -38,6 +38,11 @@ export const BackgroundForm = styled.main`
       height: 550px;
       width: 100%;
     }
+
+    @media screen and (min-width: 960px) {
+      height: 650px;
+      width: 90%;
+    }
   }
 
   .logo {
@@ -66,6 +71,11 @@ export const BackgroundForm = styled.main`
     @media screen and (min-width: 900px) {
       width: 100%;
       top: -80px;
+    }
+
+    @media screen and (min-width: 960px) {
+      width: 100%;
+      top: -120px;
     }
   }
 
@@ -115,12 +125,13 @@ export const Company = styled.img`
   }
 
   @media screen and (min-width: 900px) {
-    width: 100vw;
-    height: 70vh;
+    height: 400px;
   }
 
   @media screen and (min-width: 960px) {
-    height: 75vh;
+    top: 320px;
+    height: 450px;
+    width: 100%;
     left: 20px;
   }
 `;
@@ -134,6 +145,9 @@ export const FormStyle = styled.div`
   display: flex;
   margin-top: 170px;
   max-width: 990px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 
   @media screen and (min-width: 375px) {
     margin-top: 170px;
@@ -166,9 +180,10 @@ export const FormStyle = styled.div`
   }
 
   @media screen and (min-width: 960px) {
-    left: 65%;
-    top: -270px;
+    left: 100%;
+    top: -230px;
     height: 400px;
+    width: 300px;
   }
   
   button {
@@ -201,6 +216,7 @@ export const FormStyle = styled.div`
     margin-top: 25px;
     max-width: 900px;
     
+    
     @media (min-width: 750px) {
       margin-top: 5px;
     }
@@ -208,7 +224,9 @@ export const FormStyle = styled.div`
     @media screen and (min-width: 900px) {
     h2 {
       font-size: 16px;
+      margin-top: 10px;
     }
+  }
 
     input {
       display: flex;
@@ -218,6 +236,7 @@ export const FormStyle = styled.div`
       height: 45px;
       
       padding-left: 10px;
+      margin-top: 8px;
       
       border: none;
       background-color: #d9d9d9;
@@ -274,6 +293,12 @@ export const FormStyle = styled.div`
       font-size: 16px;
       }
 
+      @media screen and (min-width: 960px) {
+      font-size: 16px;
+      min-width: 29%;
+      }
+
+    }
     .account {
       color: #5effa8;
       font-weight: 400;
@@ -290,7 +315,6 @@ export const FormStyle = styled.div`
       }
       
     }
-  }
   
   .link {
     display: flex;
@@ -304,6 +328,7 @@ export const FormStyle = styled.div`
     
     margin-top: 5px;
     
+    
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
@@ -315,12 +340,14 @@ export const FormStyle = styled.div`
     
     @media screen and (min-width: 750px) {
       min-width: 26%;
-      margin-bottom: 10px;
     }
 
-
+    @media screen and (min-width: 960px) {
+      font-size: 16px;
+      min-width: 29%;
+      }
   }
-}}
+}
 `;
 
 export const DivWelcome = styled.div`
@@ -341,7 +368,7 @@ export const DivWelcome = styled.div`
     color: #FFF;
     display: flex;
     font-weight: 300;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-size: 14px;
   }
   }
@@ -362,4 +389,8 @@ export const Logo = styled.h1`
   font-weight: 700;
   font-size: 20px;
   width: 100vw;
+
+  @media screen and (min-width: 900px) {
+    font-size: 30px;
+  }
 `
