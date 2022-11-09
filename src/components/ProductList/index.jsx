@@ -1,7 +1,17 @@
 import { useEffect, useState } from "react";
 import Api from "../../services/Api";
 
-import { StyledUl, StyledLi, StyledImageProduct, StyledImageUser, StyledContainerCard, StyledContainerUser, StyledNameUser, StyledBtn, StyledContainer } from "./styles";
+import {
+  StyledUl,
+  StyledLi,
+  StyledImageProduct,
+  StyledImageUser,
+  StyledContainerCard,
+  StyledContainerUser,
+  StyledNameUser,
+  StyledBtn,
+  StyledContainer,
+} from "./styles";
 
 const ProductList = () => {
   
