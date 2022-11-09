@@ -14,17 +14,17 @@ import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
 import MaterialList from "../../components/ProductList";
 import ProductList from "../../components/ProductList";
 import { NewProduct } from "../../components/NewProduct";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 //import SearchInput from "../../components/SearchInput";
 
 const Dashboard = () => {
-  const { modalOpen } = useContext(AuthContext);
+  const { modalOpen, lista } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
   return (
     <>
       <StyledDashboard>
@@ -45,9 +45,7 @@ const Dashboard = () => {
                   src={profile}
                   alt="imagem do perfil do usuário logado"
                 ></Profile>
-                <Link to={"/profile"} >
-                  Nicolly Alves
-                </Link>
+                <Link to={"/profile"}>Nicolly Alves</Link>
               </div>
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>
@@ -72,7 +70,7 @@ const Dashboard = () => {
           <UserDataModal />
         </div>
         <NewProduct />
-        <ProductList/>
+        <ProductList />
       </StyledDashboard>
     </>
   );

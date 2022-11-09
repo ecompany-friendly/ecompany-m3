@@ -15,9 +15,9 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const navigate = useNavigate();
-  const notify = (message) => toast(message);
   const [openModal, setOpenModal] = useState(false);
   const [openModalProduct, setOpenModalProduct] = useState(false);
+  const [lista, setLista] = useState();
 
   useEffect(() => {
     async function loadingUser() {
@@ -48,10 +48,30 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("@eCOMPANY:user_id", userResponse.id);
 
       setUser(userResponse);
-      notify("Acesso com sucesso");
-      navigate("/dashboard");
+      toast.success("Acesso com sucesso !", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 2000);
     } catch (error) {
-      notify(error);
+      toast.error("Acesso inválido", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   }
 
@@ -60,6 +80,7 @@ const AuthProvider = ({ children }) => {
     try {
       const newData = { ...data, userId: Number(userId), status: true };
       await Api.post("/products", newData);
+      setLista(newData);
       setOpenModalProduct(false);
     } catch (error) {
       console.log(error);
@@ -85,6 +106,8 @@ const AuthProvider = ({ children }) => {
         modalOpen,
         modalClose,
         newProduct,
+        lista,
+        setLista,
       }}
     >
       {children}

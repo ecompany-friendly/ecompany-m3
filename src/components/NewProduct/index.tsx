@@ -28,7 +28,7 @@ export const NewProduct = () => {
         </button>
       </div>
       <div className="containerForm">
-        <p>Publicar material</p>
+        <h2 className="public">Publicar material</h2>
         <form className="formStyle" onSubmit={handleSubmit(newProduct)}>
           <input
             type="text"
