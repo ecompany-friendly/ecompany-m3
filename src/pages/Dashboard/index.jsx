@@ -6,6 +6,9 @@ import logout from "../../assets/Exit_1_.svg";
 import addmaterial from "../../assets/Group.svg";
 import lupapesquisa from "../../assets/Group(1).svg";
 import elipse from "../../assets/Ellipse 1.svg";
+import { StyledUserDataModal } from "../../components/UserDataModal/style";
+
+import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
 import background from "../../assets/Rectangle 39.svg";
 
   
@@ -33,7 +36,6 @@ const Dashboard = () => {
     <>
       <StyledDashboard>
         <Elipse src={elipse} alt="imagem da elipse verde do fundo" />
-        <Background />
         <nav className="dash-nav">
           <div className="logo">
             <img
@@ -75,6 +77,7 @@ const Dashboard = () => {
             </div>
           </div>
         </nav>
+
         <div className="modals">
           <UserDataModal />
         </div>

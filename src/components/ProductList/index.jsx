@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Api from "../../services/Api";
+import { UserDataModal } from "../UserDataModal/UserDataModal";
 
 import {
   StyledUl,
@@ -13,9 +14,11 @@ import {
   StyledContainer,
 } from "./styles";
 
-
-const ProductList = ({filtered, setProducts}) => {
   
+  const ProductList = ({filtered, setProducts}) => {
+    
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [userCardModal, setUserCardModal] = useState({});
   const [product, setProduct] = useState([]);
   const [users, setUsers] = useState([]);
 
@@ -36,10 +39,20 @@ const ProductList = ({filtered, setProducts}) => {
       .catch((err) => console.error(err));
   }, []);
 
+  const openUserCardModal = (el, user) => {
+    el.preventDefault();
+    setUserCardModal(user);
+    setModalIsOpen(true);
+  };
+
   return (
     <StyledUl>
+      <UserDataModal
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
+        user={userCardModal}
+      />
       <StyledContainer>
-
 
       {/*{filtered.length > 0 && console.log(filtered)}*/}
       {/*{product.length > 0 ? (
@@ -65,10 +78,15 @@ const ProductList = ({filtered, setProducts}) => {
               <StyledLi key={el.id}>
                 <StyledImageProduct src={el.image} alt="" />
                 <StyledContainerCard>
-                  <StyledContainerUser>
-                    <StyledImageUser src={user.image} alt="" />
-                    <StyledNameUser>{user.name}</StyledNameUser>
-                  </StyledContainerUser>
+                  <button
+                    type="button"
+                    onClick={(el) => openUserCardModal(el, user)}
+                  >
+                    <StyledContainerUser>
+                      <StyledImageUser src={user.image} alt="" />
+                      <StyledNameUser>{user.name}</StyledNameUser>
+                    </StyledContainerUser>
+                  </button>
                   <StyledBtn>coletar</StyledBtn>
                 </StyledContainerCard>
               </StyledLi>
