@@ -1,6 +1,5 @@
 import {
   createContext,
-  ReactNode,
   useContext,
   useEffect,
   useState,
@@ -11,6 +10,10 @@ import "react-toastify/dist/ReactToastify.css";
 import Api from "../services/Api";
 
 export const AuthContext = createContext();
+
+// export interface iUser {
+
+// }
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
@@ -85,12 +88,14 @@ const AuthProvider = ({ children }) => {
         modalOpen,
         modalClose,
         newProduct,
+        user
       }}
     >
       {children}
     </AuthContext.Provider>
   );
 };
+
 
 export function useUserLoginContext() {
   const context = useContext(AuthContext);

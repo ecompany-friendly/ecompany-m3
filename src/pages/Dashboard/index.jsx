@@ -8,20 +8,26 @@ import lupapesquisa from "../../assets/Group(1).svg";
 import elipse from "../../assets/Ellipse 1.svg";
 import background from "../../assets/Rectangle 39.svg";
 
-import { StyledUserDataModal } from "../../components/UserDataModal/style";
-import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
-
-import MaterialList from "../../components/ProductList";
-import ProductList from "../../components/ProductList";
-import { NewProduct } from "../../components/NewProduct";
+  
+  import { StyledUserDataModal } from "../../components/UserDataModal/style";
+  import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
+  import { useUserLoginContext } from "../../contexts/authContext";
+  
+  import MaterialList from "../../components/ProductList";
+  import ProductList from "../../components/ProductList";
+  import { NewProduct } from "../../components/NewProduct";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import SearchInput from "../../components/SearchInput";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const { user } = useUserLoginContext();
   const { modalOpen } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -43,7 +49,12 @@ const Dashboard = () => {
                   src={profile}
                   alt="imagem do perfil do usuário logado"
                 ></Profile>
-                <h2>Nicolly Alves</h2>
+
+                <Link to={"/profile"} >
+                  <h2>
+                    {user?.name}
+                  </h2>
+                </Link>
               </div>
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>
@@ -69,6 +80,7 @@ const Dashboard = () => {
         </div>
         <NewProduct />
         <ProductList filtered={filtered} setProducts={setProducts} />
+
       </StyledDashboard>
     </>
   );

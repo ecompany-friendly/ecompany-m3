@@ -13,7 +13,9 @@ import {
   StyledContainer,
 } from "./styles";
 
-const ProductList = ({ filtered, setProducts }) => {
+
+const ProductList = ({filtered, setProducts}) => {
+  
   const [product, setProduct] = useState([]);
   const [users, setUsers] = useState([]);
 
@@ -37,6 +39,13 @@ const ProductList = ({ filtered, setProducts }) => {
   return (
     <StyledUl>
       <StyledContainer>
+
+
+      {/*{filtered.length > 0 && console.log(filtered)}*/}
+      {/*{product.length > 0 ? (
+        users.map((user) => (
+          user.products.map((el) => 
+        >>>>>>> develop*/}
         {filtered.length > 0 ? (
           filtered.map((el) => (
             <StyledLi key={el.id}>
