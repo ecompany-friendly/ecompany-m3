@@ -7,6 +7,7 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
 .Modal {
@@ -51,6 +52,8 @@
   background: transparent;
   border: none;
 
+  padding-right: 20px;
+
   font-size: 25px;
 }
 
@@ -68,7 +71,7 @@
   justify-content: space-evenly;
 
   min-width: 250px;
-  max-width: 393px;
+  max-width: 90%;
   width: 23.125vw;
   height: 465px;
 

@@ -7,53 +7,68 @@ const ProductList = () => {
   
   const [product, setProduct] = useState([]);
   const [users, setUsers]     = useState([]);
-  
+   
+  const id = localStorage.getItem("@eCOMPANY:user_id")
+
   useEffect(() => {
 
-    const id = localStorage.getItem("@eCOMPANY:user_id")
+    // Api.get(`products`).then((response) => {
+    //   setProduct(response.data);
+    // });
 
-    Api.get(`products`).then((response) => {
-      setProduct(response.data);
-    });
-
-    Api.get(`users/?_embed=products`, id).then((response) => {
-      setUsers(response.data)
+    Api.get(`products?status=true`).then((response) => {
+     
+      setProduct(response.data)
     })
     .catch((err) => console.error(err))
-  }, []);
+  }, [id]);
 
-  const handleClick = (el) => {
-    console.log(el)
-    
+  const handleClick = async (pr) => {
+ 
+    // const { id } = el
+
+    // Api.delete(`products/${id}`)
+
+    // delete pr.id
+   
+    const newObj = {
+
+      ...pr, userId: Number(id), status: false
+      
+    }
+ 
+    await Api.patch(`products/${pr.id}`, newObj)
+    setProduct(product.filter((element) => element.id !== pr.id))
   }
-
+  
   return (
     <StyledUl>
       <StyledContainer>
+      {/*{filtered.length > 0 && console.log(filtered)}*/}
       {product.length > 0 ? (
-        users.map((user) => (
-          user.products.map((el) => 
-            <StyledLi key={el.id}>
+        product.map((pr) => (
+         
+            <StyledLi key={pr.id}>
               <StyledImageProduct 
-                src={el.image} 
+                src={pr.image} 
                 alt="" />
               <StyledContainerCard>
                 <StyledContainerUser>
                   <StyledImageUser 
-                    src={user.image} 
+                    src={pr.image} 
                     alt="" 
                   />
-                  <StyledNameUser>{user.name}</StyledNameUser>
+                  <StyledNameUser>{pr.name}</StyledNameUser>
                 </StyledContainerUser>
                 <StyledBtn
-                onClick={() => handleClick(el)}
+                onClick={() => handleClick(pr)}
                   
                 >
                   coletar
                 </StyledBtn>
               </StyledContainerCard>
             </StyledLi>
-        )))
+        ))
       ) : (
         <div className="empty">
           <p>Materiais disponíveis em breve</p>
