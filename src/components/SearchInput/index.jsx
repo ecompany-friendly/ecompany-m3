@@ -26,7 +26,7 @@ const SearchInput = ({ setFiltered, products }) => {
           });
 
     console.log(filtered);
-    setFiltered();
+    setFiltered("");
     setFiltered(filtered);
   }
 

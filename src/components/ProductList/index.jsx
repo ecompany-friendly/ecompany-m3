@@ -43,8 +43,8 @@ const ProductList = ({ filtered, setProducts }) => {
               <StyledImageProduct src={el.image} alt="" />
               <StyledContainerCard>
                 <StyledContainerUser>
-                  <StyledImageUser src={filtered.image} alt="" />
-                  <StyledNameUser>{filtered.name}</StyledNameUser>
+                  <StyledImageUser src={el.image} alt="" />
+                  <StyledNameUser>{el.name}</StyledNameUser>
                 </StyledContainerUser>
                 <StyledBtn>coletar</StyledBtn>
               </StyledContainerCard>
