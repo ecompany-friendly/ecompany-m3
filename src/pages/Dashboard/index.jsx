@@ -18,8 +18,8 @@ import background from "../../assets/Rectangle 39.svg";
   import { NewProduct } from "../../components/NewProduct";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
+import SearchInput from "../../components/SearchInput";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-//import SearchInput from "../../components/SearchInput";
 
 const Dashboard = () => {
   const { user } = useUserLoginContext();
@@ -59,7 +59,7 @@ const Dashboard = () => {
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>
             <div className="search">
-              {/*<SearchInput products={products} setFiltered={setFiltered} />*}
+              {<SearchInput products={products} setFiltered={setFiltered} />}
               {/* <input type="text" />
               <img
                 className="lupa"
@@ -79,7 +79,8 @@ const Dashboard = () => {
           <UserDataModal />
         </div>
         <NewProduct />
-        <ProductList/>
+        <ProductList filtered={filtered} setProducts={setProducts} />
+
       </StyledDashboard>
     </>
   );
