@@ -12,6 +12,7 @@ import ProductList from "../../components/ProductList";
 import { NewProduct } from "../../components/NewProduct";
 
 const Dashboard = () => {
+  
   const teste = () => {
     alert("sfjsdfb");
   };

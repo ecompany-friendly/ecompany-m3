@@ -8,22 +8,24 @@ const ProductList = () => {
   const [product, setProduct] = useState([]);
   const [users, setUsers]     = useState([]);
   
-  
   useEffect(() => {
 
     const id = localStorage.getItem("@eCOMPANY:user_id")
 
     Api.get(`products`).then((response) => {
-      console.log(response);
       setProduct(response.data);
     });
 
     Api.get(`users/?_embed=products`, id).then((response) => {
-      console.log(response)
       setUsers(response.data)
     })
     .catch((err) => console.error(err))
   }, []);
+
+  const handleClick = (el) => {
+    console.log(el)
+    
+  }
 
   return (
     <StyledUl>
@@ -32,13 +34,23 @@ const ProductList = () => {
         users.map((user) => (
           user.products.map((el) => 
             <StyledLi key={el.id}>
-              <StyledImageProduct src={el.image} alt="" />
+              <StyledImageProduct 
+                src={el.image} 
+                alt="" />
               <StyledContainerCard>
                 <StyledContainerUser>
-                  <StyledImageUser src={user.image} alt="" />
+                  <StyledImageUser 
+                    src={user.image} 
+                    alt="" 
+                  />
                   <StyledNameUser>{user.name}</StyledNameUser>
                 </StyledContainerUser>
-                <StyledBtn>coletar</StyledBtn>
+                <StyledBtn
+                onClick={() => handleClick(el)}
+                  
+                >
+                  coletar
+                </StyledBtn>
               </StyledContainerCard>
             </StyledLi>
         )))
