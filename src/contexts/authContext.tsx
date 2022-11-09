@@ -10,14 +10,56 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Api from "../services/Api";
 
-export const AuthContext = createContext();
+interface IUserContext {
+  loadUser(data: IUserLogin): void;
+  user: IUser;
+  openModal: boolean;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  openModalProduct: boolean;
+  setOpenModalProduct: React.Dispatch<React.SetStateAction<boolean>>;
+  modalOpen: () => void;
+  modalClose: () => void;
+  newProduct: (data: IProduct) => void;
+  lista: IProduct;
+  setLista: (value: React.SetStateAction<IProduct>) => void;
+}
 
-const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState();
+export interface IUserLogin {
+  email: string;
+  password: string;
+}
+
+export interface IUser {
+  email: string;
+  password: string;
+  name: string;
+  tellphone: number;
+  id: number;
+  products: IProduct[];
+}
+
+export interface IProduct {
+  name: string;
+  type: string;
+  weight: null;
+  city: string;
+  country: string;
+  image: string;
+  description: string;
+}
+
+interface IUserProviderProps {
+  children: ReactNode;
+}
+
+export const AuthContext = createContext<IUserContext>({} as IUserContext);
+
+const AuthProvider = ({ children }: IUserProviderProps) => {
   const navigate = useNavigate();
-  const [openModal, setOpenModal] = useState(false);
-  const [openModalProduct, setOpenModalProduct] = useState(false);
-  const [lista, setLista] = useState();
+  const [user, setUser] = useState<IUser>({} as IUser);
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [openModalProduct, setOpenModalProduct] = useState<boolean>(false);
+  const [lista, setLista] = useState<IProduct>({} as IProduct);
 
   useEffect(() => {
     async function loadingUser() {
@@ -38,7 +80,7 @@ const AuthProvider = ({ children }) => {
     loadingUser();
   }, []);
 
-  async function loadUser(data) {
+  async function loadUser(data: IUser) {
     try {
       const response = await Api.post("/login", data);
 
@@ -46,6 +88,7 @@ const AuthProvider = ({ children }) => {
 
       localStorage.setItem("@eCOMPANY:token", accessToken);
       localStorage.setItem("@eCOMPANY:user_id", userResponse.id);
+      console.log(userResponse);
 
       setUser(userResponse);
       toast.success("Acesso com sucesso !", {
@@ -75,7 +118,7 @@ const AuthProvider = ({ children }) => {
     }
   }
 
-  async function newProduct(data) {
+  async function newProduct(data: IProduct) {
     const userId = localStorage.getItem("@eCOMPANY:user_id");
     try {
       const newData = { ...data, userId: Number(userId), status: true };
@@ -108,6 +151,7 @@ const AuthProvider = ({ children }) => {
         newProduct,
         lista,
         setLista,
+        user,
       }}
     >
       {children}
