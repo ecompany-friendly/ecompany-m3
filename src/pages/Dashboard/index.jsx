@@ -12,8 +12,6 @@ import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
 import background from "../../assets/Rectangle 39.svg";
 
   
-  import { StyledUserDataModal } from "../../components/UserDataModal/style";
-  import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
   import { useUserLoginContext } from "../../contexts/authContext";
   
   import MaterialList from "../../components/ProductList";

@@ -76,7 +76,7 @@ export const UserDataModal = ({
           </div>
           <div className="dataContainer">
             <div className="userName">
-              {user.image ? (
+              {user?.image ? (
                 <img src={user.image} alt={`foto de ${user.name}`} />
               ) : (
                 <img
@@ -84,11 +84,11 @@ export const UserDataModal = ({
                   alt="avatar usuário"
                 />
               )}
-              <h2>{user.name}</h2>
+              <h2>{user?.name}</h2>
             </div>
             <div className="userData">
-              <span>E-mail: {user.email}</span>
-              <span>Contato: {user.tellphone}</span>
+              <span>E-mail: {user?.email}</span>
+              <span>Contato: {user?.tellphone}</span>
             </div>
           </div>
         </div>
