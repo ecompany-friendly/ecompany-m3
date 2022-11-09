@@ -1,10 +1,19 @@
-import styled, {createGlobalStyle, DefaultTheme} from "styled-components"
+import styled, {createGlobalStyle, DefaultTheme, StyledComponent} from "styled-components"
+
+interface ITheme {
+  mainn?: string;
+  ellipse?: string;
+  logo?: string;
+  buttongreen?: string;
+  btnRegister?: string;
+  question?: string;
+}
 
 
-export const BackgroundForm = styled.main`
+export const BackgroundForm = styled.main<ITheme>`
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.main};
+  background-color: ${({ theme }) => theme.mainn};
   
   align-items: center;
   justify-content: center;
@@ -141,7 +150,7 @@ export const Container = styled.section`
   padding-top: 10px;
   `
 
-export const FormStyle = styled.div`
+export const FormStyle = styled.div<ITheme>`
   display: flex;
   margin-top: 170px;
   max-width: 990px;
@@ -277,7 +286,6 @@ export const FormStyle = styled.div`
       border-top-right-radius: 8px;
       border-bottom-left-radius: 8px;
       
-      background-color: #1a2e1f;
       background-color: ${({theme}) => theme.buttongreen};
       color: white;
       
@@ -381,7 +389,7 @@ export const DivWelcome = styled.div`
 
 `
 
-export const Logo = styled.h1`
+export const Logo = styled.h1<ITheme>`
   display: flex;
   flex-direction: row;
   color: #5EFFA8;

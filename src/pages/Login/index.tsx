@@ -7,17 +7,13 @@ import { Container, Company, FormStyle, BackgroundForm, DivWelcome, Logo } from 
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import elipse from "../../assets/Ellipse 1.svg";
 import ecology from "../../assets/Logo.svg";
 import waste from "../../assets/Waste management-pana 2.svg";
 import { ThemeProvider } from "styled-components";
 
-import { lightTheme, darkTheme } from './theme';
+import { lightTheme, darkTheme, themes } from '../../styles/theme';
 import "./styles"
 import Toggle from "../../components/Toggle";
-import { ToggleContainer } from "../../components/Toggle/styles";
-import MoonIcon from "../../components/Toggle/icons/MoonIcon";
-import SunIcon from "../../components/Toggle/icons/SunIcon";
 
 const Login = () => {
 
@@ -32,9 +28,11 @@ const Login = () => {
   //<span>{errors.password?.message}</span>
     
   //<LoginStyle toggleThemeLogin={toggleThemeLogin}/>
-const [theme, setTheme] = useState('dark');
+const [theme, setTheme] = useState<"dark" | "light">('dark');
 
 const toggleTheme = () => {
+  console.log("oi");
+  
   if (theme === 'dark') {
     setTheme('light');
   } else {
@@ -43,11 +41,11 @@ const toggleTheme = () => {
 }
   
   return (
-    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+    <ThemeProvider theme={themes[theme]}>
 
       <>
         <ToastContainer />
-        <BackgroundForm>
+        <BackgroundForm >
 
           <div className="ellipse">
           <div className="logo">

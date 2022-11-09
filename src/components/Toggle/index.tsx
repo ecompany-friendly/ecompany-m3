@@ -1,5 +1,3 @@
-import moonIcon from '../../assets/moon.png';
-import sunIcon from '../../assets/sun.png';
 import React, { useState } from 'react'
 import { func, string } from 'prop-types';
 import styled from 'styled-components';
@@ -8,8 +6,13 @@ import "./styles"
 import MoonIcon from './icons/MoonIcon';
 import SunIcon from './icons/SunIcon';
 
-const Toggle = ({ theme, toggleTheme }) => {
-  const isLight = theme === 'dark';
+interface IToggleProps{
+  theme: "dark" | "light",
+  toggleTheme(): void
+}
+
+const Toggle = ({ theme, toggleTheme }: IToggleProps) => {
+  //const isLight = theme === 'dark';
   const [ isToggled, setIsToggled ] = useState(false)
 
   const onToggle = () => {

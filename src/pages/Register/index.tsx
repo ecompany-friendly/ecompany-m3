@@ -2,21 +2,23 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import {
-  BackgroundForm as Main,
+  BackgroundForm,
   Company,
   Container,
-  FormStyle as Div,
+  FormStyle,
+  Logo,
 } from "./styles";
-import elipse from "../../assets/Ellipse 1.svg";
 import ecology from "../../assets/Logo.svg";
-import ecompany from "../../assets/eCOMPANY Friendly.svg";
 import waste from "../../assets/Waste management-pana 2.svg";
 import { schema } from "../../validations/registerUser";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { RegisterContext } from "../../contexts/registerContext";
+import { themes } from "../../styles/theme";
+import { ThemeProvider } from "styled-components";
+import Toggle from "../../components/Toggle";
 
 export interface iUserRegister {
   name: string;
@@ -24,6 +26,7 @@ export interface iUserRegister {
   password: string;
   checkPassword?: string;
   tellphone: string;
+  image?: string;
 }
 
 const Register = () => {
@@ -37,66 +40,86 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
+  const [theme, setTheme] = useState<"dark" | "light">('dark');
+
+  const toggleTheme = () => {
+    if (theme === 'dark') {
+      setTheme('light');
+    } else {
+      setTheme('dark');
+    }
+  }
+
   return (
-    <Main>
-      <ToastContainer />
-      <img
-        className="elipse"
-        src={elipse}
-        alt="Imagem de fundo meia lua verde"
-      />
+    <ThemeProvider theme={themes[theme]} >
+    <>
+    <ToastContainer />
+        <BackgroundForm >
 
-      <div className="logo">
-        <img
-          className="logo-image"
-          src={ecology}
-          alt="Logotipo da eCOMPANY friendly"
-        />
-        <img className="logo-text" src={ecompany} alt="eCOMPANY friendly" />
-      </div>
-      <Container>
-        <Company src={waste} alt="Personagens fazendo a reciclagem" />
-        <Div>
-          <div>
-            <Link to={"/"}>Voltar</Link>
+          <div className="ellipse">
+          <div className="logo">
+            <div className="logo-container">
+              <img className="logo-image" src={ecology} alt="" />
+            </div>
+              <Logo>eCOMPANY Friendly</Logo>
+            <div className="toggle">
+              <Toggle theme={theme} toggleTheme={toggleTheme} />
+            </div>
           </div>
-          <form onSubmit={handleSubmit(registerUser)}>
-            <input
-              type="text"
-              placeholder="Digite seu nome"
-              {...register("name")}
-            />
-            <span>{errors.name?.message}</span>
-            <input
-              type="text"
-              placeholder="Digite seu email"
-              {...register("email")}
-            />
-            <span>{errors.email?.message}</span>
-            <input
-              type="password"
-              placeholder="Digite sua senha"
-              {...register("password")}
-            />
-            <span>{errors.password?.message}</span>
-            <input
-              type="password"
-              placeholder="Confirme sua senha"
-              {...register("checkPassword")}
-            />
-            <span>{errors.checkPassword?.message}</span>
-            <input
-              type="text"
-              placeholder="Digite seu contato"
-              {...register("tellphone")}
-            />
-            <span>{errors.tellphone?.message}</span>
+          </div>
+  
+            <Company src={waste} alt="" />
+            
+          <Container>
+            <FormStyle>
 
-            <button type="submit">Cadastre-se</button>
-          </form>
-        </Div>
+            <form onSubmit={handleSubmit(registerUser)}>
+      
+              <Link to={"/"}>Voltar</Link>
+              <input
+                type="text"
+                placeholder="Digite seu nome"
+                {...register("name")}
+              />
+              <span>{errors.name?.message}</span>
+              <input
+                type="text"
+                placeholder="Digite seu email"
+                {...register("email")}
+              />
+              <span>{errors.email?.message}</span>
+              <input
+                type="password"
+                placeholder="Digite sua senha"
+                {...register("password")}
+              />
+              <span>{errors.password?.message}</span>
+              <input
+                type="password"
+                placeholder="Confirme sua senha"
+                {...register("checkPassword")}
+              />
+              <span>{errors.checkPassword?.message}</span>
+              <input
+                type="text"
+                placeholder="Digite seu contato"
+                {...register("tellphone")}
+              />
+              <span>{errors.tellphone?.message}</span>
+  
+              <input
+                type="text"
+                placeholder="Digite sua url para foto de perfil"
+                {...register("image")}
+              />
+  
+              <button type="submit">Cadastre-se</button>
+            </form>
+          </FormStyle>
       </Container>
-    </Main>
+        </BackgroundForm>
+    </>
+    </ThemeProvider>
   );
 };
 
