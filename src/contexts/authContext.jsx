@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
   const notify = (message) => toast(message);
   const [openModal, setOpenModal] = useState(false);
   const [openModalProduct, setOpenModalProduct] = useState(false);
-
+  
   useEffect(() => {
     async function loadingUser() {
       const token = localStorage.getItem("@eCOMPANY:token");
@@ -28,10 +28,12 @@ const AuthProvider = ({ children }) => {
           Api.defaults.headers.authorization = `Bearer ${token}`;
 
           const { data } = await Api.get("login");
-
+          
           setUser(data);
+
         } catch (error) {
-          console.log(error);
+
+          console.error(error);
         }
       }
     }
@@ -85,6 +87,7 @@ const AuthProvider = ({ children }) => {
         modalOpen,
         modalClose,
         newProduct,
+        user,
       }}
     >
       {children}

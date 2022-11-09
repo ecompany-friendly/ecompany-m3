@@ -14,12 +14,10 @@ const ProductList = () => {
     const id = localStorage.getItem("@eCOMPANY:user_id")
 
     Api.get(`products`).then((response) => {
-      console.log(response);
       setProduct(response.data);
     });
 
     Api.get(`users/?_embed=products`, id).then((response) => {
-      console.log(response)
       setUsers(response.data)
     })
     .catch((err) => console.error(err))

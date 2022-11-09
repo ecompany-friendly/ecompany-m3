@@ -14,16 +14,29 @@ import darkicon from "../../assets/Logo.svg"
 import mail from "../../assets/mail_FILL0_wght400_GRAD0_opsz48 1.svg"
 import logout from "../../assets/Exit_1_.svg"
 import phone from "../../assets/call_FILL0_wght400_GRAD0_opsz48(1) 1.svg"
-import profile from "../../assets/blank-profile-picture-973460.svg"
 import lupapesquisa from "../../assets/Group(1).svg"
 import addmaterial from "../../assets/Group.svg"
-import background from "../../assets/Rectangle 39.svg"
 import elipse from '../../assets/Ellipse 1.svg'
 import { Background, Elipse, Profile, StyledDashboard } from "../Dashboard/styles";
 import { StyledDashboardProfile } from "./styles";
 import ProfileCardMaterial from "../../components/ProfileCardMaterial"
+import { useEffect, useState } from "react"
+import Api from "../../services/Api"
 
 const DashboardProfile = () => {
+
+    const [user, setUser] = useState([])
+
+    useEffect(() => {
+
+        const id = localStorage.getItem("@eCOMPANY:user_id")
+
+             Api.get(`users/${id}?_embed=products`).then((response) => {
+      
+                setUser(response.data)
+            })  
+    }, [])
+  
 return (
     <>
     <StyledDashboard>
@@ -53,11 +66,11 @@ return (
             <aside>
                 <div className="asideInfoUser">
                     <Profile
-                    src={profile}
+                    src={user.image}
                     alt="imagem do perfil do usuário logado"
                     >
                     </Profile>
-                    <h2>Nicolly Alves</h2>
+                    <h2>{user.name}</h2>
                 </div>
                 <div className="asideInfoUser">
                     <Profile
@@ -65,7 +78,7 @@ return (
                     className="imgNoBorder"
                     alt="imagem do email do usuário logado"
                     ></Profile>
-                    <h2>nicole.alves@gmail.com</h2>
+                    <h2>{user.email}</h2>
                 </div>
                 <div className="asideInfoUser">
                     <Profile
@@ -73,16 +86,12 @@ return (
                     className="imgNoBorder"
                     alt="imagem do telefone do usuário logado"
                     ></Profile>
-                    <h2>(99)99999-9999</h2>
+                    <h2>{user.tellphone}</h2>
                 </div>
             </aside>
             <main className="Box-Materials">
                 <ul className="box-cards">
-                    <ProfileCardMaterial />
-                    <ProfileCardMaterial />
-                    <ProfileCardMaterial />
-                    <ProfileCardMaterial />
-                    <ProfileCardMaterial />
+                    <ProfileCardMaterial user={user}/>
                 </ul>
             </main>
         </StyledDashboardProfile>
