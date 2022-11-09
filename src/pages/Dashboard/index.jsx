@@ -6,18 +6,31 @@ import logout from "../../assets/Exit_1_.svg";
 import addmaterial from "../../assets/Group.svg";
 import lupapesquisa from "../../assets/Group(1).svg";
 import elipse from "../../assets/Ellipse 1.svg";
-// import Background from "../../assets/Rectangle 39.svg";
 import { StyledUserDataModal } from "../../components/UserDataModal/style";
 
-import MaterialList from "../../components/ProductList";
-import ProductList from "../../components/ProductList";
-import { NewProduct } from "../../components/NewProduct";
-import { AuthContext } from "../../contexts/authContext";
-import { useContext } from "react";
 import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
+import background from "../../assets/Rectangle 39.svg";
+
+  
+  import { StyledUserDataModal } from "../../components/UserDataModal/style";
+  import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
+  import { useUserLoginContext } from "../../contexts/authContext";
+  
+  import MaterialList from "../../components/ProductList";
+  import ProductList from "../../components/ProductList";
+  import { NewProduct } from "../../components/NewProduct";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/authContext";
+import SearchInput from "../../components/SearchInput";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const { user } = useUserLoginContext();
   const { modalOpen } = useContext(AuthContext);
+  const [products, setProducts] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -38,17 +51,23 @@ const Dashboard = () => {
                   src={profile}
                   alt="imagem do perfil do usuário logado"
                 ></Profile>
-                <h2>Nicolly Alves</h2>
+
+                <Link to={"/profile"} >
+                  <h2>
+                    {user?.name}
+                  </h2>
+                </Link>
               </div>
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>
             <div className="search">
-              <input type="text" />
+              {<SearchInput products={products} setFiltered={setFiltered} />}
+              {/* <input type="text" />
               <img
                 className="lupa"
                 src={lupapesquisa}
                 alt="imagem da lupa de pesquisa para filtrar material"
-              />
+              /> */}
               <button type="button" className="newProduct" onClick={modalOpen}>
                 <img
                   src={addmaterial}
@@ -59,14 +78,12 @@ const Dashboard = () => {
           </div>
         </nav>
 
-        <div>
-          <main>ul</main>
+        <div className="modals">
+          <UserDataModal />
         </div>
-        {/* <div className="modals">
-            <UserDataModal />
-          </div> */}
         <NewProduct />
-        <ProductList />
+        <ProductList filtered={filtered} setProducts={setProducts} />
+
       </StyledDashboard>
     </>
   );

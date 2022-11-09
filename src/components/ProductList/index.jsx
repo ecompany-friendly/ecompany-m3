@@ -14,11 +14,13 @@ import {
   StyledContainer,
 } from "./styles";
 
-const ProductList = () => {
+  
+  const ProductList = ({filtered, setProducts}) => {
+    
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [userCardModal, setUserCardModal] = useState({});
   const [product, setProduct] = useState([]);
   const [users, setUsers] = useState([]);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [userCardModal, setUserCardModal] = useState({});
 
   useEffect(() => {
     const id = localStorage.getItem("@eCOMPANY:user_id");
@@ -26,6 +28,7 @@ const ProductList = () => {
     Api.get(`products`).then((response) => {
       console.log(response);
       setProduct(response.data);
+      setProducts(response.data);
     });
 
     Api.get(`users/?_embed=products`, id)
@@ -50,7 +53,26 @@ const ProductList = () => {
         user={userCardModal}
       />
       <StyledContainer>
-        {product.length > 0 ? (
+
+      {/*{filtered.length > 0 && console.log(filtered)}*/}
+      {/*{product.length > 0 ? (
+        users.map((user) => (
+          user.products.map((el) => 
+        >>>>>>> develop*/}
+        {filtered.length > 0 ? (
+          filtered.map((el) => (
+            <StyledLi key={el.id}>
+              <StyledImageProduct src={el.image} alt="" />
+              <StyledContainerCard>
+                <StyledContainerUser>
+                  <StyledImageUser src={el.image} alt="" />
+                  <StyledNameUser>{el.name}</StyledNameUser>
+                </StyledContainerUser>
+                <StyledBtn>coletar</StyledBtn>
+              </StyledContainerCard>
+            </StyledLi>
+          ))
+        ) : product.length > 0 ? (
           users.map((user) =>
             user.products.map((el) => (
               <StyledLi key={el.id}>
@@ -65,7 +87,6 @@ const ProductList = () => {
                       <StyledNameUser>{user.name}</StyledNameUser>
                     </StyledContainerUser>
                   </button>
-
                   <StyledBtn>coletar</StyledBtn>
                 </StyledContainerCard>
               </StyledLi>
