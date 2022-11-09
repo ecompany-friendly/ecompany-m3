@@ -28,6 +28,7 @@ const ProductList = () => {
   return (
     <StyledUl>
       <StyledContainer>
+      {/*{filtered.length > 0 && console.log(filtered)}*/}
       {product.length > 0 ? (
         users.map((user) => (
           user.products.map((el) => 

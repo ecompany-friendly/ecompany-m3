@@ -14,12 +14,17 @@ import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
 import MaterialList from "../../components/ProductList";
 import ProductList from "../../components/ProductList";
 import { NewProduct } from "../../components/NewProduct";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+//import SearchInput from "../../components/SearchInput";
 
 const Dashboard = () => {
   const { modalOpen } = useContext(AuthContext);
+  const [products, setProducts] = useState([]);
+  const [filtered, setFiltered] = useState([]);
 
+  const navigate = useNavigate()
   return (
     <>
       <StyledDashboard>
@@ -40,31 +45,34 @@ const Dashboard = () => {
                   src={profile}
                   alt="imagem do perfil do usuário logado"
                 ></Profile>
-                <h2>Nicolly Alves</h2>
+                <Link to={"/profile"} >
+                  Nicolly Alves
+                </Link>
               </div>
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>
             <div className="search">
-              <input type="text" />
+              {/*<SearchInput products={products} setFiltered={setFiltered} />*}
+              {/* <input type="text" />
               <img
                 className="lupa"
                 src={lupapesquisa}
                 alt="imagem da lupa de pesquisa para filtrar material"
-              />
+              /> */}
               <button type="button" className="newProduct" onClick={modalOpen}>
                 <img
                   src={addmaterial}
                   alt="imagem para publicar novo material"
                 />
               </button>
-              </div>
             </div>
-          </nav>
-          <div className="modals">
-            <UserDataModal />
           </div>
+        </nav>
+        <div className="modals">
+          <UserDataModal />
+        </div>
         <NewProduct />
-        <ProductList />
+        <ProductList/>
       </StyledDashboard>
     </>
   );
