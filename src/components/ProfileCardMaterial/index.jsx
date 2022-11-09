@@ -10,7 +10,11 @@ const ProfileCardMaterial = ({ user }) => {
             <>
             {products?.map((product) => (  
                 <li className="card">
-                    <img src={product.image} alt="Imagem do produto" />
+                    <img 
+                        className="image-card"
+                        src={product.image} 
+                        alt="Imagem do produto" 
+                    />
                     <div className="card-options">
                         <img src={pencil} alt="Botão editar anuncio" />
                         <img src={trash} alt="Botão deletar anuncio" />
