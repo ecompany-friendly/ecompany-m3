@@ -44,7 +44,7 @@ return (
     <>
     <StyledDashboard>
         <StyledDashboardProfile>
-            <Background src={Background} alt="fundo preto" />
+            <Background src={Background} />
             <Elipse src={elipse} alt="imagem da elipse verde do fundo" />
             <nav className="dash-nav">
             <div className="logo">

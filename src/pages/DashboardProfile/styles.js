@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const StyledDashboardProfile = styled.section`
 
   .dash-nav {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 30px;
   }
 
   .search {
@@ -23,6 +23,11 @@ export const StyledDashboardProfile = styled.section`
     flex-direction: column;
     align-items: center;
     border-bottom: 1px solid white;
+    z-index: 4;
+
+    @media screen and (max-width: 600px) {
+      top: 200px;
+    }
   }
   .asideInfoUser {
     width: 180px;
@@ -51,6 +56,14 @@ export const StyledDashboardProfile = styled.section`
     display: flex;
     flex-direction: column;
     gap: 15px;
+    z-index: 4;
+    height: 60vh;
+
+    @media screen and (max-width: 600px) {
+      top: 250px;
+      position: absolute;
+      overflow: scroll;
+    }
   }
   .card{
     min-width: 190px;
@@ -134,7 +147,6 @@ export const StyledDashboardProfile = styled.section`
       left: 35%;
       flex-direction: row;
       flex-wrap: wrap;
-      height: 45vh;
       overflow-y: auto;
     }
     .card{

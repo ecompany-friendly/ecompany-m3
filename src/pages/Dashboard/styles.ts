@@ -9,7 +9,40 @@ export const StyledDashboard = styled.section`
   justify-content: flex-start;
   text-align: center;
   z-index: 1;
+  
+  .dash-nav {
+    height: 25vh;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 5px;
+    align-items: center;
+    box-shadow: 0px 1px 0px 0px var(--white);
+    position: absolute;
+    z-index: 5;
+    left: 10%;
+    top: 40px;
+  }
 
+  .search {
+    width: 60%
+  }
+  .search input{
+    width: 70%;
+    margin: 0 5px 0 5px
+  }
+
+  .box-cards{
+    width: 100%;
+    position: absolute;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 4;
+  }
   .container {
     display: flex;
     width: 90vw;
@@ -25,6 +58,10 @@ export const StyledDashboard = styled.section`
     border-radius: 10px;
   }
 
+  .newProduct {
+    display: flex;
+  }
+
   .modals {
     position: relative;
   }
@@ -38,24 +75,9 @@ export const StyledDashboard = styled.section`
     display: flex;
   }
 
-  .dash-nav {
-    height: 25vh;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    gap: 5px;
-    align-items: center;
-    box-shadow: 0px 1px 0px 0px var(--white);
-    position: absolute;
-    z-index: 2;
-    margin-top: 30px;
-    left: 10%;
-    margin-top: 35px;
-  }
-
+  
   .logo {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -63,13 +85,13 @@ export const StyledDashboard = styled.section`
     gap: 20px;
     color: var(--secondary);
   }
-
+  
   .interative {
     width: 80%;
     display: flex;
     flex-direction: column;
   }
-
+  
   .user-info {
     width: 100%;
     display: flex;
@@ -86,11 +108,13 @@ export const StyledDashboard = styled.section`
     align-items: center;
     gap: 15px;
   }
-
-  .user > h2 {
+  
+  .user > a {
     color: var(--white);
+    font-weight: 800;
+    text-decoration: none;
   }
-
+  
   .search {
     width: 100%;
     display: flex;
@@ -99,6 +123,13 @@ export const StyledDashboard = styled.section`
     justify-content: space-between;
   }
 
+  .lupa{
+      position: relative;
+      margin-left: -22%;
+      border-left: 1px solid #000000;
+      padding-left: 10px;
+    }
+  
   @media (min-width: 600px) {
     .dash-nav {
       flex-direction: row;
@@ -106,9 +137,9 @@ export const StyledDashboard = styled.section`
       width: 85%;
       left: 7.5%;
     }
-
+    
     .logo {
-      width: 30%;
+      width: 40%;
       justify-content: flex-start;
       margin-left: 20px;
     }
@@ -116,28 +147,28 @@ export const StyledDashboard = styled.section`
     .interative {
       flex-direction: row-reverse;
     }
-
+    
     .user {
       flex-direction: row-reverse;
       justify-content: center;
     }
-
+    
     .search > input {
-      width: 100%;
+      margin-right: 10px;
     }
   }
-`;
+  `;
 
 export const Profile = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 15px;
-`;
+  `;
 export const Elipse = styled.img`
   width: 100%;
   height: 70%;
 `;
-export const Background = styled.img`
+export const Background = styled.div`
   display: flex;
   width: 90vw;
   justify-content: center;
@@ -147,7 +178,9 @@ export const Background = styled.img`
   opacity: 0.45;
   position: absolute;
   margin: 0 auto;
+  z-index: 1;
   left: 5%;
   margin-top: 30px;
   border-radius: 10px;
-`;
+  overflow: hidden;
+  `;

@@ -34,8 +34,6 @@ export const UserDataModal = ({
     setModalIsOpen(false);
   };
 
-  console.log(user);
-
   return (
     <StyledUserDataModal
       isOpen={modalIsOpen}

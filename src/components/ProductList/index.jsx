@@ -3,7 +3,6 @@ import Api from "../../services/Api";
 import { AuthContext } from "../../contexts/authContext";
 import { UserDataModal } from "../UserDataModal/UserDataModal";
 
-
 import {
   StyledUl,
   StyledLi,
@@ -15,56 +14,48 @@ import {
   StyledBtn,
   StyledContainer,
 } from "./styles";
-import ModalMaterial from "../ModalMaterial";
+import { toast } from "react-toastify";
 
-
-  
-  const ProductList = ({filtered, setProducts}) => {
-    
+const ProductList = ({ filtered, setProducts }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalMaterialIsOpen, setModalMaterialIsOpen] = useState(false)
   const [userCardModal, setUserCardModal] = useState({});
   const [product, setProduct] = useState([]);
-  const [users, setUsers] = useState();
-  const [productClick, setProductClick] = useState()
+  const [users, setUsers] = useState([]);
 
-
-  const id = localStorage.getItem("@eCOMPANY:user_id")
+  const id = localStorage.getItem("@eCOMPANY:user_id");
 
   useEffect(() => {
-
-    Api.get(`products?status=true`).then((response) => {
-     
-      setProduct(response.data)
-      //setProducts(response.data);
-
-    })
-    .catch((err) => console.error(err))
+    Api.get(`products?status=true`)
+      .then((response) => {
+        setProduct(response.data);
+        // setProducts(response.data);
+      })
+      .catch((err) => console.error(err));
   }, [id]);
 
   const handleClick = async (pr) => {
-   
     const newObj = {
+      ...pr,
+      userId: Number(id),
+      status: false,
+    };
 
-      ...pr, userId: Number(id), status: false
-      
-    }
-
-    await Api.patch(`products/${pr.id}`, newObj)
-    setProduct(product.filter((element) => element.id !== pr.id))
-  }
-
-
-  const openUserCardModal = (el, user) => {
-    el.preventDefault();
-    setUserCardModal(user);
-    setModalIsOpen(true);
+    await Api.patch(`products/${pr.id}`, newObj);
+    setProduct(product.filter((element) => element.id !== pr.id));
   };
 
-  const openModalMaterial = (el) => {
-    setProductClick(el)
-    setModalMaterialIsOpen(true)
-  }
+  const openUserCardModal = async (el, product) => {
+    console.log(product.userId);
+    el.preventDefault();
+
+    const user = await Api.get(`/users/${product.userId}`)
+      .then((res) => res.data)
+      .catch((err) => toast.error("Algo deu errado"));
+    console.log(user);
+
+    setModalIsOpen(true);
+    setUserCardModal(user);
+  };
 
   useEffect(() => {
     const id = localStorage.getItem("@eCOMPANY:user_id");
@@ -77,6 +68,8 @@ import ModalMaterial from "../ModalMaterial";
       .catch((err) => console.error(err));
   }, []);
 
+  console.log(product);
+
   return (
     <StyledUl>
       <UserDataModal
@@ -84,65 +77,45 @@ import ModalMaterial from "../ModalMaterial";
         setModalIsOpen={setModalIsOpen}
         user={userCardModal}
       />
-      <ModalMaterial 
-        modalMaterialIsOpen={modalMaterialIsOpen}
-        setModalMaterialIsOpen={setModalMaterialIsOpen}
-        productClick={productClick}
-      />
-      <StyledContainer>
         {filtered.length > 0 ? (
-          filtered.map((el) => (
-            <StyledLi key={el.id}>
-              <StyledImageProduct 
-                src={el.image} 
-                alt="" 
-              />
+          filtered.map((product) => (
+            <StyledLi key={product.id}>
+              <StyledImageProduct src={product.image} alt="" />
               <StyledContainerCard>
                 <StyledContainerUser>
-                  <StyledImageUser 
-                    src={el.image} 
-                    alt="" 
-                  />
-                  <StyledNameUser>{el.name}</StyledNameUser>
+                  <button onClick={(el) => openUserCardModal(el, product)}>
+                    <StyledImageUser src={product.image} alt="" />
+                    <StyledNameUser>{product.name}</StyledNameUser>
+                  </button>
                 </StyledContainerUser>
-                <StyledBtn 
-                  onClick={() => handleClick(el)}>
-                    coletar
+                <StyledBtn onClick={() => handleClick(product)}>
+                  coletar
                 </StyledBtn>
               </StyledContainerCard>
             </StyledLi>
           ))
         ) : product.length > 0 ? (
           users.map((user) =>
-            user.products.map((el) => (
-              <StyledLi key={el.id}>
-                <StyledImageProduct 
-                  onClick={() => openModalMaterial(el)}
-                  src={el.image} 
-                  alt="" 
-                />
+            user.products.map((product) => (
+              <StyledLi key={product.id}>
+                <StyledImageProduct src={product.image} alt="" />
                 <StyledContainerCard>
-                  <button
-                    type="button"
-                    onClick={(el) => openUserCardModal(el, product)}
-                  >
-                    <StyledContainerUser>
-                      <StyledImageUser 
-                        src={product.image} 
-                        alt="" />
+                  <StyledContainerUser>
+                    <button onClick={(el) => openUserCardModal(el, product)}>
+                      <StyledImageUser src={product.image} alt="" />
                       <StyledNameUser>{product.name}</StyledNameUser>
-                    </StyledContainerUser>
-                  </button>
-                  <StyledBtn onClick={() => handleClick(el)} >coletar</StyledBtn>
+                    </button>
+                  </StyledContainerUser>
+                  <StyledBtn>coletar</StyledBtn>
                 </StyledContainerCard>
               </StyledLi>
             ))
-          )) : (
+          )
+        ) : (
           <div className="empty">
             <p>Materiais disponíveis em breve</p>
           </div>
         )}
-      </StyledContainer>
     </StyledUl>
   );
 };
