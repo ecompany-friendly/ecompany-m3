@@ -20,10 +20,11 @@ import {
   
   const ProductList = ({filtered, setProducts}) => {
     
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [userCardModal, setUserCardModal] = useState({});
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [userCardModal, setUserCardModal] = useState({});
   const [product, setProduct] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState();
+
 
   const id = localStorage.getItem("@eCOMPANY:user_id")
 
@@ -45,11 +46,15 @@ import {
       ...pr, userId: Number(id), status: false
       
     }
- 
+
     await Api.patch(`products/${pr.id}`, newObj)
     setProduct(product.filter((element) => element.id !== pr.id))
   }
-  
+
+  const handleModal = (el) => {
+    setUser(el)
+  }
+  console.log(user)
   const openUserCardModal = (el, user) => {
     el.preventDefault();
     setUserCardModal(user);
@@ -63,31 +68,48 @@ import {
         setModalIsOpen={setModalIsOpen}
         user={userCardModal}
       />
+      
       <StyledContainer>
         {filtered.length > 0 ? (
           filtered.map((el) => (
             <StyledLi key={el.id}>
-              <StyledImageProduct src={el.image} alt="" />
+              <StyledImageProduct 
+                onClick={() => handleModal()}
+                src={el.image} 
+                alt="" 
+              />
               <StyledContainerCard>
                 <StyledContainerUser>
-                  <StyledImageUser src={el.image} alt="" />
+                  <StyledImageUser 
+                    src={el.image} 
+                    alt="" 
+                  />
                   <StyledNameUser>{el.name}</StyledNameUser>
                 </StyledContainerUser>
-                <StyledBtn onClick={() => handleClick(el)} >coletar</StyledBtn>
+                <StyledBtn 
+                  onClick={() => handleClick(el)}>
+                    coletar
+                </StyledBtn>
               </StyledContainerCard>
             </StyledLi>
           ))
         ) : product.length > 0 ? (
           product.map((el) =>
               <StyledLi key={el.id}>
-                <StyledImageProduct src={el.image} alt="" />
+                <StyledImageProduct 
+                  onClick={() => handleModal(el)}
+                  src={el.image} 
+                  alt="" 
+                />
                 <StyledContainerCard>
                   <button
                     type="button"
                     onClick={(el) => openUserCardModal(el, product)}
                   >
                     <StyledContainerUser>
-                      <StyledImageUser src={product.image} alt="" />
+                      <StyledImageUser 
+                        src={product.image} 
+                        alt="" />
                       <StyledNameUser>{product.name}</StyledNameUser>
                     </StyledContainerUser>
                   </button>
