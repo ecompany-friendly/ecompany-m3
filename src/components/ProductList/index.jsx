@@ -117,8 +117,8 @@ const ProductList = ({ filtered, setProducts }) => {
                 <StyledContainerCard>
                   <StyledContainerUser>
                     <button onClick={(el) => openUserCardModal(el, product)}>
-                      <StyledImageUser src={product.image} alt="" />
-                      <StyledNameUser>{product.name}</StyledNameUser>
+                      <StyledImageUser src={user.image} alt="" />
+                      <StyledNameUser>{user.name}</StyledNameUser>
                     </button>
                   </StyledContainerUser>
                   <StyledBtn onClick={() => handleClick(product)} >coletar</StyledBtn>
