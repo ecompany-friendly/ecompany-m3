@@ -4,11 +4,13 @@ import trash from "../../assets/delete_FILL0_wght400_GRAD0_opsz48 6.svg";
 import pencil from "../../assets/edit_FILL0_wght400_GRAD0_opsz48 2.svg";
 import { AuthContext } from "../../contexts/authContext";
 import Api from "../../services/Api";
+import ModalMaterial from "../ModalMaterial";
 
 
 const ProfileCardMaterial = ({ user }) => {
 
     const { setRemove, remove } = useContext(AuthContext)
+    //const { modalMaterialIsOpen, setModalMaterialIsOpen, productClick } = useContext(m)
 
     useEffect(() => {
         console.log("montou")
