@@ -17,20 +17,21 @@ import { useUserLoginContext } from "../../contexts/authContext";
 import MaterialList from "../../components/ProductList";
 import ProductList from "../../components/ProductList";
 import { NewProduct } from "../../components/NewProduct";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import SearchInput from "../../components/SearchInput";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Toggle from "../../components/Toggle";
 import { ThemeProvider } from "styled-components";
 import { themes } from "../../styles/theme";
+import Api from "../../services/Api";
 
 const Dashboard = () => {
-  const { user } = useUserLoginContext();
+  //const { user } = useUserLoginContext();
   const { modalOpen, lista } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
-  //const [user, setUser] = useState()
+  const [user, setUser] = useState()
 
   const [theme, setTheme] = useState('dark');
   
@@ -41,6 +42,16 @@ const Dashboard = () => {
       setTheme("dark");
     }
   };
+
+  useEffect(() => {
+        
+    const id = localStorage.getItem("@eCOMPANY:user_id")
+
+         Api.get(`users/${id}`).then((response) => {
+  
+            setUser(response.data)
+        })  
+}, [])
 
   return (
     <ThemeProvider theme={themes[theme]}>
@@ -71,29 +82,17 @@ const Dashboard = () => {
               <div className="user">
                 <Link to={"/profile"}>
                   <Profile
-                    src={user.image}
+                    src={user?.image}
                     alt="imagem do perfil do usuário logado"
                   ></Profile>
                 </Link>
-                <Link to={"/profile"}>{user.name}</Link>
+                <Link to={"/profile"}>{user?.name}</Link>
               </div>
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>
             <div className="search">
               <SearchInput setFiltered={setFiltered} />
 
-              {/* <input type="text" />
-              <img
-                className="lupa"
-                src={lupapesquisa}
-                alt="imagem da lupa de pesquisa para filtrar material"
-              /> */}
-              {/* <input type="text" />
-              <img
-                className="lupa"
-                src={lupapesquisa}
-                alt="imagem da lupa de pesquisa para filtrar material"
-              /> */}
               <button type="button" className="newProduct" onClick={modalOpen}>
                 <img
                   src={addmaterial}

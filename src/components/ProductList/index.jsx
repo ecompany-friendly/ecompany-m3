@@ -65,15 +65,10 @@ const ProductList = ({ filtered, setProducts }) => {
   };
 
   useEffect(() => {
-    const id = localStorage.getItem("@eCOMPANY:user_id");
-
-    Api.get(`users/?_embed=products`, id)
-      .then((response) => {
-        setUsers(response.data);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
+        Api.get(`users/?_embed=products`).then((response) => {
+            setUsers(response.data)
+        })  
+}, [])
   return (
     
     <StyledUl>
@@ -90,23 +85,26 @@ const ProductList = ({ filtered, setProducts }) => {
       />
 
       {filtered.length > 0 ? (
-        filtered.map((product) => (
-          <StyledLi key={product.id}>
-            <StyledImageProduct src={product.image} alt="" />
-            <StyledContainerCard>
-              <StyledContainerUser>
-                <button onClick={(el) => openUserCardModal(el, product)}>
-                  <StyledImageUser src={product.image} alt="" />
-                  <StyledNameUser>{product.name}</StyledNameUser>
-                </button>
-              </StyledContainerUser>
-              <StyledBtn onClick={() => handleClick(product)}>
-                coletar
-              </StyledBtn>
-            </StyledContainerCard>
-          </StyledLi>
+        users.map((user) =>
+          filtered.map((product) => (
+            <StyledLi key={product.id}>
+              <StyledImageProduct
+               onClick={() => openModalMaterial(product)}
+               src={product.image} alt="" />
+              <StyledContainerCard>
+                <StyledContainerUser>
+                  <button onClick={(el) => openUserCardModal(el, product)}>
+                    <StyledImageUser src={user.image} alt="" />
+                    <StyledNameUser>{user.name}</StyledNameUser>
+                  </button>
+                </StyledContainerUser>
+                <StyledBtn onClick={() => handleClick(product)}>
+                  coletar
+                </StyledBtn>
+              </StyledContainerCard>
+            </StyledLi>
         ))
-      ) : product.length > 0 ? (
+      ) ): product.length > 0 ? (
         users.map((user) =>
           user.products.map((product) => (
             <StyledLi key={product.id}>
