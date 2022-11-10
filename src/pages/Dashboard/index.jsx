@@ -6,10 +6,13 @@ import logout from "../../assets/Exit_1_.svg";
 import addmaterial from "../../assets/Group.svg";
 import lupapesquisa from "../../assets/Group(1).svg";
 import elipse from "../../assets/Ellipse 1.svg";
+import { StyledUserDataModal } from "../../components/UserDataModal/style";
+
+import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
 import background from "../../assets/Rectangle 39.svg";
 
-import { StyledUserDataModal } from "../../components/UserDataModal/style";
-import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
+import ModalMaterial from "../../components/ModalMaterial";
+import { useUserLoginContext } from "../../contexts/authContext";
 
 import MaterialList from "../../components/ProductList";
 import ProductList from "../../components/ProductList";
@@ -18,19 +21,24 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import SearchInput from "../../components/SearchInput";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-//import SearchInput from "../../components/SearchInput";
 
 const Dashboard = () => {
-  const { modalOpen } = useContext(AuthContext);
+  const { user } = useUserLoginContext();
+  const { modalOpen, lista } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
-
+  //const [user, setUser] = useState()
   const navigate = useNavigate();
+
+  console.log(products);
+
   return (
     <>
-      <StyledDashboard>
+      <StyledDashboard className="container">
+        <ModalMaterial />
         <Elipse src={elipse} alt="imagem da elipse verde do fundo" />
         <Background />
+
         <nav className="dash-nav">
           <div className="logo">
             <img
@@ -42,16 +50,25 @@ const Dashboard = () => {
           <div className="interative">
             <div className="user-info">
               <div className="user">
-                <Profile
-                  src={profile}
-                  alt="imagem do perfil do usuário logado"
-                ></Profile>
-                <Link to={"/profile"}>Nicolly Alves</Link>
+                <Link to={"/profile"}>
+                  <Profile
+                    src={user.image}
+                    alt="imagem do perfil do usuário logado"
+                  ></Profile>
+                </Link>
+                <Link to={"/profile"}>{user.name}</Link>
               </div>
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>
             <div className="search">
-              {<SearchInput products={products} setFiltered={setFiltered} />}
+              <SearchInput products={products} setFiltered={setFiltered} />
+
+              {/* <input type="text" />
+              <img
+                className="lupa"
+                src={lupapesquisa}
+                alt="imagem da lupa de pesquisa para filtrar material"
+              /> */}
               {/* <input type="text" />
               <img
                 className="lupa"
@@ -67,11 +84,16 @@ const Dashboard = () => {
             </div>
           </div>
         </nav>
+
         <div className="modals">
           <UserDataModal />
         </div>
+
         <NewProduct />
-        <ProductList filtered={filtered} setProducts={setProducts} />
+
+        <main className="box-cards">
+          <ProductList filtered={filtered} setProducts={setProducts} />
+        </main>
       </StyledDashboard>
     </>
   );

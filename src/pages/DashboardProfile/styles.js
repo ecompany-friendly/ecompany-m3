@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
 export const StyledDashboardProfile = styled.section`
+
+  .dash-nav {
+    position: fixed;
+    top: 30px;
+  }
+
   .search {
     width: 70%
   }
@@ -11,12 +17,17 @@ export const StyledDashboardProfile = styled.section`
   aside{
     width: 80%;
     position: absolute;
-    top: 190px;
+    top: 275px;
     left: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-bottom: 1px solid white;
+    z-index: 4;
+
+    @media screen and (max-width: 600px) {
+      top: 200px;
+    }
   }
   .asideInfoUser {
     width: 180px;
@@ -45,6 +56,14 @@ export const StyledDashboardProfile = styled.section`
     display: flex;
     flex-direction: column;
     gap: 15px;
+    z-index: 4;
+    height: 60vh;
+
+    @media screen and (max-width: 600px) {
+      top: 250px;
+      position: absolute;
+      overflow: scroll;
+    }
   }
   .card{
     min-width: 190px;
@@ -55,12 +74,17 @@ export const StyledDashboardProfile = styled.section`
     justify-content: space-between;
   }
   .card > img{
-    width:100%;
-    height: 140px;
+    width:185px;
+    max-width: 100%;
+    min-height: 141px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0px 4px 20px 10px rgba(0, 0, 0, 0.6);
   }
   .card-options{
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
+   
   }
   .card-options > img{
     background-color: var(--primary);
@@ -73,14 +97,15 @@ export const StyledDashboardProfile = styled.section`
       width: 100%;
     }
     .box-cards{
-      flex-direction: row;
+      flex-direction: column;
       max-width: 80%;
       left: 10%;
-      height: 190px;
-      overflow-y: scroll;
+      height: 299px;
+      overflow-x: scroll;
+      margin-top: 120px;
     }
     .search input{
-      max-width: 60%;
+      width: 40px;
       margin-left: -5px;
     }
     .lupa{
@@ -107,21 +132,21 @@ export const StyledDashboardProfile = styled.section`
     aside{
       max-width: 25%;
       height: 70vh;
-      top: 100px;
+      top: 127px;
       left: 8%;
       border: none;
       border-right: 1px solid white;
     }
     .asideInfoUser {
       width: 90%;
+      margin-top: 20px;
     }
     .box-cards{
       max-width: 58%;
-      top: 100px;
+      top: 157px;
       left: 35%;
       flex-direction: row;
       flex-wrap: wrap;
-      height: 70vh;
       overflow-y: auto;
     }
     .card{

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { StyledUserDataModal } from "./style";
 import { IoIosCloseCircle } from "react-icons/io";
+import { transform } from "typescript";
+import { before } from "node:test";
 
 const customStyles = {
   content: {},
@@ -10,13 +12,24 @@ const customStyles = {
   },
 };
 
-export const UserDataModal = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+interface iModalProps {
+  modalIsOpen: boolean;
+  setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  user: iUser;
+}
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
+interface iUser {
+  email: string;
+  name: string;
+  tellphone: string;
+  image?: string;
+}
 
+export const UserDataModal = ({
+  modalIsOpen,
+  setModalIsOpen,
+  user,
+}: iModalProps) => {
   const closeModal = () => {
     setModalIsOpen(false);
   };
@@ -30,8 +43,8 @@ export const UserDataModal = () => {
       style={{
         content: {
           backgroundColor: "var(--primary)",
-          width: "287px",
-          maxWidth: "393px",
+          minWidth: "287px",
+          width: "393px",
           height: "355px",
           display: "flex",
           alignItems: "center",
@@ -61,12 +74,19 @@ export const UserDataModal = () => {
           </div>
           <div className="dataContainer">
             <div className="userName">
-              <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png" />
-              <h2>Username</h2>
+              {user?.image ? (
+                <img src={user.image} alt={`foto de ${user.name}`} />
+              ) : (
+                <img
+                  src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png"
+                  alt="avatar usuário"
+                />
+              )}
+              <h2>{user?.name}</h2>
             </div>
             <div className="userData">
-              <span>E-mail: lorem.ipsum@lorem.com</span>
-              <span>Contatto: (99)99999-9999</span>
+              <span>E-mail: {user?.email}</span>
+              <span>Contato: {user?.tellphone}</span>
             </div>
           </div>
         </div>

@@ -3,6 +3,8 @@ import { useState } from "react";
 const SearchInput = ({ setFiltered, products }) => {
   const [currentProduct, setCurrentProduct] = useState("");
 
+  console.log(products);
+
   function getFilteredProducts(value) {
     setCurrentProduct(value);
     const filtered =
@@ -37,7 +39,7 @@ const SearchInput = ({ setFiltered, products }) => {
         value={currentProduct}
         onChange={(event) => getFilteredProducts(event.target.value)}
       />
-      <button onClick={getFilteredProducts}>Pesquisar</button>
+      {/* <button onClick={getFilteredProducts}>Pesquisar</button> */}
     </div>
   );
 };

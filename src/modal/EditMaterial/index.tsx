@@ -19,7 +19,7 @@ const EditMaterial = () => {
   return (
     <>
       {/* <button onClick={openModal}>abrir</button> */}
-      <Modal isOpen={modalIsOpen} className="Modal" overlayClassName="Overlay">
+      <Modal ariaHideApp={false} isOpen={modalIsOpen} className="Modal" overlayClassName="Overlay">
         <div className="containerButtonClose">
           <button className="buttonClose" onClick={closeModal}>
             <IoMdCloseCircle />
