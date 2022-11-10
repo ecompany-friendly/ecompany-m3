@@ -1,28 +1,18 @@
-import { useState } from "react"
 import { BtnClose, ContainerContent, ContainerModal, ContentDescriptionModal,  ContentModal, DescriptionModal, StyledModal as Modal, TitleModal } from "./styles"
 
-const ModalMaterial = () => {
+const ModalMaterial = ({ modalMaterialIsOpen, setModalMaterialIsOpen, productClick }) => {
 
-    const [modalIsOpen, setIsOpen] = useState(false)
-
-    const openModal = () => {
-        setIsOpen(true)
+    const closeModal = () => {
+        setModalMaterialIsOpen(false)
     }
 
-    const modalClose = () => {
-        setIsOpen(false)
-    }
-
+    console.log(productClick)
     return (
         <>
-            <button
-                onClick={openModal}
-            >
-                abrir modal descrição material
-            </button>
             <Modal
+                isOpen={modalMaterialIsOpen}
+                onRequestClose={closeModal}
                 ariaHideApp={false}
-                isOpen={modalIsOpen}
                 style={{
                     overlay: {
                         zIndex: "420",
@@ -46,29 +36,29 @@ const ModalMaterial = () => {
             >
                 <ContainerModal>
                     <BtnClose
-                        onClick={modalClose}>
+                        onClick={closeModal}>
                         <span>X</span>
                     </BtnClose>
 
                     <TitleModal>
-                        Tábua de Peroba Rosa
-                        {/* {product.name} */}
+                        Descrição do material
                     </TitleModal>
 
                     <ContainerContent>
                         <ContentModal>
-                            Tipo: Madeira
-                            {/* {product.type} */}
+                            {productClick?.name}
                         </ContentModal>
                         <ContentModal>
-                            Peso: 80kg
-                            {/* {product.weight} */}
+                           Tipo: {productClick?.type}
+                        </ContentModal>
+                        <ContentModal>
+                           Peso: {productClick?.weight} 
                         </ContentModal>
                         
                         <ContentDescriptionModal>
                         <DescriptionModal>Description</DescriptionModal>
                         <DescriptionModal>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                          {productClick?.description}
                         </DescriptionModal>
                         </ContentDescriptionModal>
                     </ContainerContent>

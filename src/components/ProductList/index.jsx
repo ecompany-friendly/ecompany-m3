@@ -15,12 +15,15 @@ import {
   StyledContainer,
 } from "./styles";
 import { toast } from "react-toastify";
+import ModalMaterial from "../ModalMaterial";
 
 const ProductList = ({ filtered, setProducts }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [userCardModal, setUserCardModal] = useState({});
   const [product, setProduct] = useState([]);
   const [users, setUsers] = useState([]);
+  const [modalMaterialIsOpen, setModalMaterialIsOpen] = useState(false)
+  const [productClick, setProductClick] = useState()
 
   const id = localStorage.getItem("@eCOMPANY:user_id");
 
@@ -57,6 +60,11 @@ const ProductList = ({ filtered, setProducts }) => {
     setUserCardModal(user);
   };
 
+  const openModalMaterial = (el) => {
+    setProductClick(el)
+    setModalMaterialIsOpen(true)
+  }
+
   useEffect(() => {
     const id = localStorage.getItem("@eCOMPANY:user_id");
 
@@ -77,6 +85,13 @@ const ProductList = ({ filtered, setProducts }) => {
         setModalIsOpen={setModalIsOpen}
         user={userCardModal}
       />
+
+      <ModalMaterial
+        modalMaterialIsOpen={modalMaterialIsOpen}
+        setModalMaterialIsOpen={setModalMaterialIsOpen}
+        productClick={productClick}
+      />
+
         {filtered.length > 0 ? (
           filtered.map((product) => (
             <StyledLi key={product.id}>
@@ -98,7 +113,7 @@ const ProductList = ({ filtered, setProducts }) => {
           users.map((user) =>
             user.products.map((product) => (
               <StyledLi key={product.id}>
-                <StyledImageProduct src={product.image} alt="" />
+                <StyledImageProduct  onClick={() => openModalMaterial(product)} src={product.image} alt="" />
                 <StyledContainerCard>
                   <StyledContainerUser>
                     <button onClick={(el) => openUserCardModal(el, product)}>
@@ -106,7 +121,7 @@ const ProductList = ({ filtered, setProducts }) => {
                       <StyledNameUser>{product.name}</StyledNameUser>
                     </button>
                   </StyledContainerUser>
-                  <StyledBtn>coletar</StyledBtn>
+                  <StyledBtn onClick={() => handleClick(product)} >coletar</StyledBtn>
                 </StyledContainerCard>
               </StyledLi>
             ))
