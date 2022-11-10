@@ -1,4 +1,4 @@
-/*import { useState } from "react";
+import { useState } from "react";
 
 const SearchInput = ({ setFiltered, products }) => {
   const [currentProduct, setCurrentProduct] = useState("");
@@ -8,10 +8,12 @@ const SearchInput = ({ setFiltered, products }) => {
   function getFilteredProducts() {
     return setFiltered(
       products?.filter((el) => {
+        return (
           el.name.toLowerCase().includes(currentProduct.trim().toLowerCase()) ||
           el.type.toLowerCase().includes(currentProduct.trim().toLowerCase()) ||
           el.city.toLowerCase().includes(currentProduct.trim().toLowerCase()) ||
           el.country.toLowerCase().includes(currentProduct.trim().toLowerCase())
+        );
       })
     );
   }
@@ -26,6 +28,6 @@ const SearchInput = ({ setFiltered, products }) => {
       <button onClick={getFilteredProducts}>Pesquisar</button>
     </div>
   );
-};*/
+};
 
 export default SearchInput;
