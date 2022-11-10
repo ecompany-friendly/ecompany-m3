@@ -4,7 +4,7 @@ import styled, {createGlobalStyle, DefaultTheme} from "styled-components"
 export const BackgroundForm = styled.main`
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.main};
+  background-color: ${({ theme }) => theme.mainn};
   
   align-items: center;
   justify-content: center;

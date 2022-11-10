@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Modal from "react-modal";
-import { AuthContext } from "../../contexts/authContext";
+import { AuthContext, IProduct } from "../../contexts/authContext";
 import { IoMdCloseCircle } from "react-icons/io";
 import "./styles.css";
 
@@ -9,7 +9,7 @@ export const NewProduct = () => {
   const { openModalProduct, setOpenModalProduct, modalClose, newProduct } =
     useContext(AuthContext);
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm<IProduct>();
 
   return (
     <Modal
@@ -28,8 +28,11 @@ export const NewProduct = () => {
         </button>
       </div>
       <div className="containerForm">
-        <p>Publicar material</p>
-        <form className="formStyle" onSubmit={handleSubmit(newProduct)}>
+        <h2 className="public">Publicar material</h2>
+        <form
+          className="formStyle"
+          onSubmit={handleSubmit((data) => newProduct(data))}
+        >
           <input
             type="text"
             placeholder="Insira a url da imagem"
