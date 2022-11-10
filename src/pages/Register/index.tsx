@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import {
   BackgroundForm,
+  BtnComeBack,
   Company,
   Container,
   FormStyle,
@@ -75,7 +75,7 @@ const Register = () => {
 
             <form onSubmit={handleSubmit(registerUser)}>
       
-              <Link to={"/"}>Voltar</Link>
+              <BtnComeBack to={"/"}>Voltar</BtnComeBack>
               <input
                 type="text"
                 placeholder="Digite seu nome"
@@ -113,7 +113,8 @@ const Register = () => {
                 {...register("image")}
               />
   
-              <button type="submit">Cadastre-se</button>
+              <button 
+              type="submit">Cadastre-se</button>
             </form>
           </FormStyle>
       </Container>
