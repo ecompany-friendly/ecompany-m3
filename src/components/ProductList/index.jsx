@@ -32,7 +32,7 @@ import {
     Api.get(`products?status=true`).then((response) => {
      
       setProduct(response.data)
-      setProducts(response.data);
+      //setProducts(response.data);
 
     })
     .catch((err) => console.error(err))
@@ -87,8 +87,8 @@ import {
                     onClick={(el) => openUserCardModal(el, product)}
                   >
                     <StyledContainerUser>
-                      <StyledImageUser src={product.image} alt="" />
-                      <StyledNameUser>{product.name}</StyledNameUser>
+                      <StyledImageUser src={el.image} alt="" />
+                      <StyledNameUser>{el.name}</StyledNameUser>
                     </StyledContainerUser>
                   </button>
                   <StyledBtn onClick={() => handleClick(el)} >coletar</StyledBtn>
