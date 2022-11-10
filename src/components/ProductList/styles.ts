@@ -18,7 +18,7 @@ export const StyledUl = styled.ul`
   overflow: scroll;
   
   @media (min-width: 600px) {
-    height: 50vh;
+    height: 70vh;
     width: 79%;
     top: 17%;
     left: 10%;
