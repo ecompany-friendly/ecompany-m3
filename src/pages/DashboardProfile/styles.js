@@ -14,6 +14,53 @@ export const StyledDashboardProfile = styled.section`
     width: 90%;
     margin: 0 5px 0 5px
   }
+
+  .containerDash {
+    display: flex;
+  width: 90vw;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: rgba(0, 0, 0, 0.45);
+  opacity: 0.45;
+  position: absolute;
+  margin: 0 auto;
+  z-index: 1;
+  left: 5%;
+  margin-top: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  }
+
+  .ellipse {
+    display: flex;
+    height: 300px;
+    width: 100%;
+    background-color: #1A2E1F;
+    background-color: ${({ theme }) => theme.ellipse};
+    border-radius: 45%;
+    position: absolute;
+    z-index: 0;
+    top: -120px;
+    @media screen and (min-width: 750px) {
+      height: 500px;
+      width: 100%;
+      border-radius: 50%;
+      margin-top: -20px;
+      top: -100px;
+      left: -200px;
+    }
+
+    @media screen and (min-width: 900px) {
+      height: 550px;
+      width: 100%;
+    }
+
+    @media screen and (min-width: 960px) {
+      height: 650px;
+      width: 90%;
+    }
+  }
   aside{
     width: 80%;
     position: absolute;

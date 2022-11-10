@@ -9,5 +9,8 @@ declare module 'styled-components' {
         buttongreen: string;
         btnRegister: string;
         question: string;
+        containerdash: string;
+        maindash: string;
+        btncollect: string;
     }
 }

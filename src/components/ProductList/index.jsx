@@ -16,6 +16,7 @@ import {
 } from "./styles";
 import { toast } from "react-toastify";
 import ModalMaterial from "../ModalMaterial";
+import { ThemeProvider } from "styled-components";
 
 const ProductList = ({ filtered, setProducts }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -74,6 +75,7 @@ const ProductList = ({ filtered, setProducts }) => {
   }, []);
 
   return (
+    
     <StyledUl>
       <UserDataModal
         modalIsOpen={modalIsOpen}

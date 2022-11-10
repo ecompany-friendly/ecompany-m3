@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled, { DefaultTheme } from "styled-components";
+import { ITheme } from "../Login/styles";
 
 export const StyledDashboard = styled.section`
-  background-color: var(--primary);
+  background-color: ${({ theme }) => theme.maindash};
   height: 100%;
   width: 100%;
   display: flex;
@@ -24,6 +25,36 @@ export const StyledDashboard = styled.section`
     left: 10%;
     top: 40px;
   }
+  .ellipse {
+    display: flex;
+    height: 300px;
+    width: 100%;
+    background-color: #1A2E1F;
+    background-color: ${({ theme }) => theme.ellipse};
+    border-radius: 45%;
+    position: absolute;
+    z-index: 0;
+    top: -120px;
+    @media screen and (min-width: 750px) {
+      height: 500px;
+      width: 100%;
+      border-radius: 50%;
+      margin-top: -20px;
+      top: -100px;
+      left: -200px;
+    }
+
+    @media screen and (min-width: 900px) {
+      height: 550px;
+      width: 100%;
+    }
+
+    @media screen and (min-width: 960px) {
+      height: 650px;
+      width: 90%;
+    }
+  }
+
 
   .search {
     width: 60%
@@ -83,7 +114,7 @@ export const StyledDashboard = styled.section`
     align-items: center;
     justify-content: center;
     gap: 20px;
-    color: var(--secondary);
+    color: ${({ theme }) => theme.logo};
   }
   
   .interative {
@@ -174,7 +205,7 @@ export const Background = styled.div`
   justify-content: center;
   align-items: center;
   height: 90vh;
-  background-color: #000000;
+  background-color: ${({ theme }) => theme.containerdash};
   opacity: 0.45;
   position: absolute;
   margin: 0 auto;

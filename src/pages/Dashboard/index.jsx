@@ -21,6 +21,9 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import SearchInput from "../../components/SearchInput";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import Toggle from "../../components/Toggle";
+import { ThemeProvider } from "styled-components";
+import { themes } from "../../styles/theme";
 
 const Dashboard = () => {
   const { user } = useUserLoginContext();
@@ -28,13 +31,26 @@ const Dashboard = () => {
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
   //const [user, setUser] = useState()
-  const navigate = useNavigate();
+
+  const [theme, setTheme] = useState('dark');
+  
+  const toggleTheme = () => {
+    if (theme === "dark") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+    }
+  };
 
   return (
+    <ThemeProvider theme={themes[theme]}>
+
     <>
       <StyledDashboard className="container">
         <ModalMaterial />
-        <Elipse src={elipse} alt="imagem da elipse verde do fundo" />
+        <div className="ellipse">
+
+        </div>
         <Background />
 
         <nav className="dash-nav">
@@ -44,7 +60,12 @@ const Dashboard = () => {
               alt="imagem da logo em modo escuro da ecompany friendly"
             />
             <h1>eCOMPANY friendly</h1>
+          <div className="toggle">
+              <Toggle theme={theme} toggleTheme={toggleTheme} />
           </div>
+          </div>
+
+
           <div className="interative">
             <div className="user-info">
               <div className="user">
@@ -94,6 +115,7 @@ const Dashboard = () => {
         </main>
       </StyledDashboard>
     </>
+    </ThemeProvider>
   );
 };
 
