@@ -11,7 +11,7 @@ import { StyledUserDataModal } from "../../components/UserDataModal/style";
 import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
 import background from "../../assets/Rectangle 39.svg";
 
-
+import ModalMaterial from "../../components/ModalMaterial";
 import { useUserLoginContext } from "../../contexts/authContext";
   
 import MaterialList from "../../components/ProductList";
@@ -33,6 +33,7 @@ const Dashboard = () => {
   return (
     <>
       <StyledDashboard>
+        <ModalMaterial />
       <Background />
         <Elipse src={elipse} alt="imagem da elipse verde do fundo" />
         <nav className="dash-nav">
