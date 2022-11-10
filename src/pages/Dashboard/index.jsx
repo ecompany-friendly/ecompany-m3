@@ -12,11 +12,11 @@ import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
 import background from "../../assets/Rectangle 39.svg";
 
 
-  import { useUserLoginContext } from "../../contexts/authContext";
+import { useUserLoginContext } from "../../contexts/authContext";
   
-  import MaterialList from "../../components/ProductList";
-  import ProductList from "../../components/ProductList";
-  import { NewProduct } from "../../components/NewProduct";
+import MaterialList from "../../components/ProductList";
+import ProductList from "../../components/ProductList";
+import { NewProduct } from "../../components/NewProduct";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import SearchInput from "../../components/SearchInput";
@@ -33,6 +33,7 @@ const Dashboard = () => {
   return (
     <>
       <StyledDashboard>
+      <Background />
         <Elipse src={elipse} alt="imagem da elipse verde do fundo" />
         <nav className="dash-nav">
           <div className="logo">
