@@ -29,14 +29,13 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IUserLogin>({ resolver: yupResolver(schemaLogin) });
-  //<span>{errors.email?.message}</span>
-
+  
   //<span>{errors.password?.message}</span>
-
+  
   //<LoginStyle toggleThemeLogin={toggleThemeLogin}/>
-
+  
   const [theme, setTheme] = useState<"dark" | "light">('dark');
-
+  
   const toggleTheme = () => {
     if (theme === "dark") {
       setTheme("light");
@@ -44,9 +43,9 @@ const Login = () => {
       setTheme("dark");
     }
   };
-
+  
   return (
-
+    
     <ThemeProvider theme={themes[theme]}>
       <>
         <ToastContainer />

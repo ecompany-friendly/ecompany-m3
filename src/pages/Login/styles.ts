@@ -1,6 +1,6 @@
 import styled, {createGlobalStyle, DefaultTheme, StyledComponent} from "styled-components"
 
-interface ITheme {
+export interface ITheme {
   mainn?: string;
   ellipse?: string;
   logo?: string;
