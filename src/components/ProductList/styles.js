@@ -97,7 +97,7 @@ export const StyledBtn = styled.button`
   height: 19px;
   font-size: 12px;
   color: var(--white);
-  background-color: #152913;
+  background-color: #428653;
   border-radius: 10px 10px 0 10px;
   cursor: pointer;
 
