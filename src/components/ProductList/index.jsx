@@ -14,6 +14,7 @@ import {
   StyledBtn,
   StyledContainer,
 } from "./styles";
+import { toast } from "react-toastify";
 
 const ProductList = ({ filtered, setProducts }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -27,7 +28,7 @@ const ProductList = ({ filtered, setProducts }) => {
     Api.get(`products?status=true`)
       .then((response) => {
         setProduct(response.data);
-        //setProducts(response.data);
+        // setProducts(response.data);
       })
       .catch((err) => console.error(err));
   }, [id]);
@@ -43,13 +44,18 @@ const ProductList = ({ filtered, setProducts }) => {
     setProduct(product.filter((element) => element.id !== pr.id));
   };
 
-  const openUserCardModal = (el, user) => {
+  const openUserCardModal = async (el, product) => {
+    console.log(product.userId);
     el.preventDefault();
-    setUserCardModal(user);
-    setModalIsOpen(true);
-  };
 
-  console.log(filtered);
+    const user = await Api.get(`/users/${product.userId}`)
+      .then((res) => res.data)
+      .catch((err) => toast.error("Algo deu errado"));
+    console.log(user);
+
+    setModalIsOpen(true);
+    setUserCardModal(user);
+  };
 
   useEffect(() => {
     const id = localStorage.getItem("@eCOMPANY:user_id");
@@ -62,6 +68,8 @@ const ProductList = ({ filtered, setProducts }) => {
       .catch((err) => console.error(err));
   }, []);
 
+  console.log(product);
+
   return (
     <StyledUl>
       <UserDataModal
@@ -71,27 +79,33 @@ const ProductList = ({ filtered, setProducts }) => {
       />
       <StyledContainer>
         {filtered.length > 0 ? (
-          filtered.map((el) => (
-            <StyledLi key={el.id}>
-              <StyledImageProduct src={el.image} alt="" />
+          filtered.map((product) => (
+            <StyledLi key={product.id}>
+              <StyledImageProduct src={product.image} alt="" />
               <StyledContainerCard>
                 <StyledContainerUser>
-                  <StyledImageUser src={el.image} alt="" />
-                  <StyledNameUser>{el.name}</StyledNameUser>
+                  <button onClick={(el) => openUserCardModal(el, product)}>
+                    <StyledImageUser src={product.image} alt="" />
+                    <StyledNameUser>{product.name}</StyledNameUser>
+                  </button>
                 </StyledContainerUser>
-                <StyledBtn onClick={() => handleClick(el)}>coletar</StyledBtn>
+                <StyledBtn onClick={() => handleClick(product)}>
+                  coletar
+                </StyledBtn>
               </StyledContainerCard>
             </StyledLi>
           ))
         ) : product.length > 0 ? (
           users.map((user) =>
-            user.products.map((el) => (
-              <StyledLi key={el.id}>
-                <StyledImageProduct src={el.image} alt="" />
+            user.products.map((product) => (
+              <StyledLi key={product.id}>
+                <StyledImageProduct src={product.image} alt="" />
                 <StyledContainerCard>
                   <StyledContainerUser>
-                    <StyledImageUser src={user.image} alt="" />
-                    <StyledNameUser>{user.name}</StyledNameUser>
+                    <button onClick={(el) => openUserCardModal(el, product)}>
+                      <StyledImageUser src={product.image} alt="" />
+                      <StyledNameUser>{product.name}</StyledNameUser>
+                    </button>
                   </StyledContainerUser>
                   <StyledBtn>coletar</StyledBtn>
                 </StyledContainerCard>
