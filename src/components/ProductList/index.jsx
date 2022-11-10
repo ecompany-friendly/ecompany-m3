@@ -3,7 +3,6 @@ import Api from "../../services/Api";
 import { AuthContext } from "../../contexts/authContext";
 import { UserDataModal } from "../UserDataModal/UserDataModal";
 
-
 import {
   StyledUl,
   StyledLi,
@@ -16,45 +15,41 @@ import {
   StyledContainer,
 } from "./styles";
 
-
-  
-  const ProductList = ({filtered, setProducts}) => {
-    
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [userCardModal, setUserCardModal] = useState({});
+const ProductList = ({ filtered, setProducts }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [userCardModal, setUserCardModal] = useState({});
   const [product, setProduct] = useState([]);
   const [users, setUsers] = useState([]);
 
-  const id = localStorage.getItem("@eCOMPANY:user_id")
+  const id = localStorage.getItem("@eCOMPANY:user_id");
 
   useEffect(() => {
-
-    Api.get(`products?status=true`).then((response) => {
-     
-      setProduct(response.data)
-      //setProducts(response.data);
-
-    })
-    .catch((err) => console.error(err))
+    Api.get(`products?status=true`)
+      .then((response) => {
+        setProduct(response.data);
+        //setProducts(response.data);
+      })
+      .catch((err) => console.error(err));
   }, [id]);
 
   const handleClick = async (pr) => {
-   
     const newObj = {
+      ...pr,
+      userId: Number(id),
+      status: false,
+    };
 
-      ...pr, userId: Number(id), status: false
-      
-    }
- 
-    await Api.patch(`products/${pr.id}`, newObj)
-    setProduct(product.filter((element) => element.id !== pr.id))
-  }
-  
+    await Api.patch(`products/${pr.id}`, newObj);
+    setProduct(product.filter((element) => element.id !== pr.id));
+  };
+
   const openUserCardModal = (el, user) => {
     el.preventDefault();
     setUserCardModal(user);
     setModalIsOpen(true);
   };
+
+  console.log(filtered);
 
   useEffect(() => {
     const id = localStorage.getItem("@eCOMPANY:user_id");
@@ -84,7 +79,7 @@ import {
                   <StyledImageUser src={el.image} alt="" />
                   <StyledNameUser>{el.name}</StyledNameUser>
                 </StyledContainerUser>
-                <StyledBtn onClick={() => handleClick(el)} >coletar</StyledBtn>
+                <StyledBtn onClick={() => handleClick(el)}>coletar</StyledBtn>
               </StyledContainerCard>
             </StyledLi>
           ))
@@ -102,7 +97,8 @@ import {
                 </StyledContainerCard>
               </StyledLi>
             ))
-          )) : (
+          )
+        ) : (
           <div className="empty">
             <p>Materiais disponíveis em breve</p>
           </div>
