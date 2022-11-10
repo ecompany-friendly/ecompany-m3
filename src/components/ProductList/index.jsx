@@ -77,7 +77,6 @@ const ProductList = ({ filtered, setProducts }) => {
         setModalIsOpen={setModalIsOpen}
         user={userCardModal}
       />
-      <StyledContainer>
         {filtered.length > 0 ? (
           filtered.map((product) => (
             <StyledLi key={product.id}>
@@ -117,7 +116,6 @@ const ProductList = ({ filtered, setProducts }) => {
             <p>Materiais disponíveis em breve</p>
           </div>
         )}
-      </StyledContainer>
     </StyledUl>
   );
 };

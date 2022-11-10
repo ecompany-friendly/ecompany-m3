@@ -10,6 +10,13 @@ export const StyledUl = styled.ul`
   top: 31%;
   left: 20%;
 
+  margin-top: 40px;
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  overflow: scroll;
+  
   @media (min-width: 600px) {
     height: 74vh;
     width: 79%;
@@ -37,19 +44,12 @@ export const StyledUl = styled.ul`
 `;
 
 export const StyledContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
+
+  
+`
 
 export const StyledLi = styled.li`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 10px;
-  margin-left: 5px;
-  gap: 10px;
+  margin-bottom: 20px;
   cursor: pointer;
 
   @media (min-width: 600px) {
@@ -88,7 +88,9 @@ export const StyledImageUser = styled.img`
 export const StyledNameUser = styled.p`
   font-size: 12px;
   color: var(--white);
-`;
+  flex-wrap: wrap;
+  width: 20px;
+`
 
 export const StyledBtn = styled.button`
   width: 66px;
