@@ -74,7 +74,7 @@ h1, h2, h3, h4, h5, h6, p, li, a, button, label {
     --secondary: #5EFFA8;
     --secondary-dash: #225F3E;
 
-    --green1: #142518
+    --green1: #142518;
 
     --grey-1: #1F211F;
     --grey-2: #D9D9D9;

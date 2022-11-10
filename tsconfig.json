@@ -23,5 +23,6 @@
     },
     "include": [
         "src"
-, "src/pages/Login/styled.d.ts"    ]
+, "src/pages/Login/styled.d.ts" ,
+  "src/styles/theme.ts"   ]
 }

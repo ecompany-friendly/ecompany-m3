@@ -22,4 +22,3 @@ export const themes = {
     dark: darkTheme,
     light: lightTheme
 }
-

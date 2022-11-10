@@ -72,7 +72,7 @@
 
   min-width: 250px;
   max-width: 90%;
-  width: 23.125vw;
+  width: 23vw;
   height: 465px;
 
   background: #141414;
@@ -80,7 +80,7 @@
   border-radius: 10px;
 }
 
-p {
+.public {
   color: white;
   font-size: 20px;
 }
