@@ -1,4 +1,4 @@
-.Overlay {
+/* .Overlay {
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -95,7 +95,7 @@ input {
   display: flex;
   padding-left: 5px;
 
-  min-width: 203px;
+  min-width: 146px;
   max-width: 280px;
   width: 19.444vw;
   height: 40px;
@@ -130,4 +130,4 @@ input {
   filter: brightness(1.2);
 
   cursor: pointer;
-}
+} */
