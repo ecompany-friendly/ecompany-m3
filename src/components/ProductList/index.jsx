@@ -74,7 +74,6 @@ import {
         setModalIsOpen={setModalIsOpen}
         user={userCardModal}
       />
-      <StyledContainer>
         {filtered.length > 0 ? (
           filtered.map((el) => (
             <StyledLi key={el.id}>
@@ -107,7 +106,6 @@ import {
             <p>Materiais disponíveis em breve</p>
           </div>
         )}
-      </StyledContainer>
     </StyledUl>
   );
 };

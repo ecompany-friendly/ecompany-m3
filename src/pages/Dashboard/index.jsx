@@ -24,19 +24,20 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
 
-  //const { user } = useUserLoginContext();
+  const { user } = useUserLoginContext();
   const { modalOpen, lista } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
-  const [user, setUser] = useState([])
+  //const [user, setUser] = useState()
   const navigate = useNavigate();
 
   return (
     <>
-      <StyledDashboard>
+      <StyledDashboard className="container">
         <ModalMaterial />
-      <Background />
         <Elipse src={elipse} alt="imagem da elipse verde do fundo" />
+        <Background />
+
         <nav className="dash-nav">
           <div className="logo">
             <img
@@ -50,21 +51,24 @@ const Dashboard = () => {
               <div className="user">
                 <Link to={"/profile"} >
                 <Profile
-                  src={profile}
+                  src={user.image}
                   alt="imagem do perfil do usuário logado"
                 ></Profile>
                 </Link>
                 <Link to={"/profile"} >
-                  <h2>
                     {user.name}
-                  </h2>
                 </Link>
               </div>
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>
             <div className="search">
-              {<SearchInput products={products} setFiltered={setFiltered} />}
-              {/* <input type="text" />
+              {/*<SearchInput products={products} setFiltered={setFiltered} />*/}
+              
+              <input type="text" />
+                <img className="lupa"
+                    src={lupapesquisa}
+                    alt="imagem da lupa de pesquisa para filtrar material"
+                />{/* <input type="text" />
               <img
                 className="lupa"
                 src={lupapesquisa}
@@ -80,12 +84,18 @@ const Dashboard = () => {
           </div>
         </nav>
 
+
         <div className="modals">
           <UserDataModal />
         </div>
+
+
         <NewProduct />
 
-        <ProductList filtered={filtered} setProducts={setProducts} />
+
+        <main className="box-cards" >
+            <ProductList filtered={filtered} setProducts={setProducts} />
+        </main>
       </StyledDashboard>
     </>
   );
