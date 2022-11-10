@@ -33,7 +33,7 @@ import {
     Api.get(`products?status=true`).then((response) => {
      
       setProduct(response.data)
-      setProducts(response.data);
+      //setProducts(response.data);
 
     })
     .catch((err) => console.error(err))
@@ -60,6 +60,17 @@ import {
     setUserCardModal(user);
     setModalIsOpen(true);
   };
+
+  useEffect(() => {
+    const id = localStorage.getItem("@eCOMPANY:user_id");
+
+    Api.get(`users/?_embed=products`, id)
+      .then((response) => {
+        console.log(response);
+        setUsers(response.data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <StyledUl>
@@ -94,7 +105,8 @@ import {
             </StyledLi>
           ))
         ) : product.length > 0 ? (
-          product.map((el) =>
+          users.map((user) =>
+            user.products.map((el) => (
               <StyledLi key={el.id}>
                 <StyledImageProduct 
                   onClick={() => handleModal(el)}
@@ -102,6 +114,7 @@ import {
                   alt="" 
                 />
                 <StyledContainerCard>
+<<<<<<< HEAD
                   <button
                     type="button"
                     onClick={(el) => openUserCardModal(el, product)}
@@ -114,9 +127,17 @@ import {
                     </StyledContainerUser>
                   </button>
                   <StyledBtn onClick={() => handleClick(el)} >coletar</StyledBtn>
+=======
+                  <StyledContainerUser>
+                    <StyledImageUser src={user.image} alt="" />
+                    <StyledNameUser>{user.name}</StyledNameUser>
+                  </StyledContainerUser>
+                  <StyledBtn>coletar</StyledBtn>
+>>>>>>> 7a7d74b2c1374ee844247aa3093ea8bbae6d7006
                 </StyledContainerCard>
               </StyledLi>
-            )) : (
+            ))
+          )) : (
           <div className="empty">
             <p>Materiais disponíveis em breve</p>
           </div>

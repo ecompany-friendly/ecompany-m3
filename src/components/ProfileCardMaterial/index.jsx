@@ -8,7 +8,7 @@ import Api from "../../services/Api";
 
 const ProfileCardMaterial = ({ user }) => {
 
-    const { setRemove } = useContext(AuthContext)
+    const { setRemove, remove } = useContext(AuthContext)
 
     useEffect(() => {
         console.log("montou")
@@ -18,7 +18,7 @@ const ProfileCardMaterial = ({ user }) => {
           
         
         })  
-    },[])
+    },[remove])
 
     console.log(user)
     const handleDelete = async (product) => {

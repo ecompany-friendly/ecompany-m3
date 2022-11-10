@@ -11,7 +11,7 @@ import { StyledUserDataModal } from "../../components/UserDataModal/style";
 import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
 import background from "../../assets/Rectangle 39.svg";
 
-
+import ModalMaterial from "../../components/ModalMaterial";
 import { useUserLoginContext } from "../../contexts/authContext";
   
 import MaterialList from "../../components/ProductList";
@@ -24,15 +24,17 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
 
-  const { user } = useUserLoginContext();
+  //const { user } = useUserLoginContext();
   const { modalOpen, lista } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
+  const [user, setUser] = useState([])
   const navigate = useNavigate();
 
   return (
     <>
       <StyledDashboard>
+        <ModalMaterial />
       <Background />
         <Elipse src={elipse} alt="imagem da elipse verde do fundo" />
         <nav className="dash-nav">
@@ -46,13 +48,15 @@ const Dashboard = () => {
           <div className="interative">
             <div className="user-info">
               <div className="user">
+                <Link to={"/profile"} >
                 <Profile
                   src={profile}
                   alt="imagem do perfil do usuário logado"
                 ></Profile>
+                </Link>
                 <Link to={"/profile"} >
                   <h2>
-                    {user?.name}
+                    {user.name}
                   </h2>
                 </Link>
               </div>
