@@ -14,4 +14,5 @@ export const schema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password")], "Senhas diferentes, por favor confirmar"),
   tellphone: yup.string().required("Contato obrigatório"),
+  image: yup.string(),
 });

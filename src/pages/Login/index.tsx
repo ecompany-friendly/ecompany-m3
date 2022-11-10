@@ -14,17 +14,12 @@ import {
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import elipse from "../../assets/Ellipse 1.svg";
 import ecology from "../../assets/Logo.svg";
 import waste from "../../assets/Waste management-pana 2.svg";
 import { ThemeProvider } from "styled-components";
-
-import { lightTheme, darkTheme } from "./theme";
-import "./styles";
+import "./styles"
 import Toggle from "../../components/Toggle";
 import { ToggleContainer } from "../../components/Toggle/styles";
-import MoonIcon from "../../components/Toggle/icons/MoonIcon";
-import SunIcon from "../../components/Toggle/icons/SunIcon";
 import { themes } from "../../styles/theme";
 
 const Login = () => {
@@ -39,6 +34,7 @@ const Login = () => {
   //<span>{errors.password?.message}</span>
 
   //<LoginStyle toggleThemeLogin={toggleThemeLogin}/>
+
   const [theme, setTheme] = useState<"dark" | "light">('dark');
 
   const toggleTheme = () => {

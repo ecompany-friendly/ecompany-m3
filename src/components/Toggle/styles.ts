@@ -16,7 +16,7 @@ export const ToggleContainer = styled.label`
     .toggle-switch .switch {
       position: absolute;
       cursor: pointer;
-      background-color: #b6b6b6;
+      background-color: rgba(34, 95, 62, 1);
       border-radius: 25px;
       top: 0;
       right: 0;
@@ -31,13 +31,13 @@ export const ToggleContainer = styled.label`
       top: 2px;
       width: 21px;
       height: 21px;
-      background-color: #333;
+      background-color: #1A2E1F;
       border-radius: 50%;
       transition: transform 0.3s ease;
     }
     .toggle-switch input[type="checkbox"]:checked + .switch::before {
       transform: translateX(25px);
-      background-color: #333;
+      background-color: #1A2E1F;
     }
     .toggle-switch input[type="checkbox"]:checked + .switch {
       background-color: #5EFFA8;
