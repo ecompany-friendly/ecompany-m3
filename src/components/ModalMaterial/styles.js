@@ -2,19 +2,15 @@ import styled from "styled-components"
 import Modal from "react-modal"
 
 export const StyledModal = styled(Modal)`
-
     animation: appearFromTopLeft 1s;
-
     @keyframes appearFromTopLeft {
         0% {
             opacity: 0;
             transform: translate(-30%, -30%);
         }
-
         100% {
             opacity: 1;
             transform: translate(10, 10);
-
         }
     }
 `
@@ -41,7 +37,6 @@ export const BtnClose = styled.button`
         height: 35px;
         border-radius: 50%;
         background-color: #141414;;
-
         :hover {
                 background-color: #181818;
         } 
@@ -51,18 +46,18 @@ export const TitleModal = styled.h2`
         font-size: 22px;
         color: #FFFFFF;
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
 `
 
 export const ContainerContent = styled.div`
-        padding-left: 20px;
+        padding-left: 30px;
 `
 
 export const ContentModal = styled.p`
         width: max-content;
         font-size: 22px;
         color: #FFFFFF;   
-        margin-bottom: 30px;
+        margin-bottom: 20px;
 `
 
 export const DescriptionModal = styled.p`
