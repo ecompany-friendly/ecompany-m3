@@ -18,7 +18,7 @@ export const StyledUl = styled.ul`
   overflow: scroll;
   
   @media (min-width: 600px) {
-    height: 74vh;
+    height: 50vh;
     width: 79%;
     top: 17%;
     left: 10%;
@@ -50,6 +50,7 @@ export const StyledContainer = styled.div`
 
 export const StyledLi = styled.li`
   margin-bottom: 20px;
+  margin-right: 35px;
   cursor: pointer;
 
   @media (min-width: 600px) {
