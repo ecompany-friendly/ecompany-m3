@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
+import DashboardProfile from "../pages/DashboardProfile";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ProtectedRoutes from "../ProtectedRoutes";
@@ -11,9 +12,10 @@ const Rotas = () => {
       <Route path='*'element={<Navigate replace to="/"/>} />
       <Route path="/register" element={<Register />} />
 
-      <Route element={<ProtectedRoutes />} >
+      {/* <Route element={<ProtectedRoutes />} > */}
         <Route path="/dashboard" element={<Dashboard />} />
-      </Route>
+        <Route path="/profile" element={<DashboardProfile />} />
+      {/* </Route> */}
     </Routes>
   );
 };

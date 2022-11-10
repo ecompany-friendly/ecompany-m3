@@ -51,6 +51,10 @@ q:before, q:after {
 	content: "";
 	content: none;
 }
+
+button {
+    cursor: pointer;
+}
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -69,6 +73,8 @@ h1, h2, h3, h4, h5, h6, p, li, a, button, label {
     --primary: #1A2E1F;
     --secondary: #5EFFA8;
     --secondary-dash: #225F3E;
+
+    --green1: #142518;
 
     --grey-1: #1F211F;
     --grey-2: #D9D9D9;

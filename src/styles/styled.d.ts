@@ -1,15 +1,13 @@
+
 import 'styled-components';
 
 declare module 'styled-components' {
     export interface DefaultTheme {
-        title: string;
-    
-        colors: {
-            primary: string;
-            secundary: string;
-    
-            background: string;
-            text: string;
-        }
+        mainn: string;
+        ellipse: string;
+        logo: string;
+        buttongreen: string;
+        btnRegister: string;
+        question: string;
     }
 }

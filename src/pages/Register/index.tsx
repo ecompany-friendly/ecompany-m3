@@ -1,31 +1,37 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import {
-  BackgroundForm as Main,
+  BackgroundForm,
   Company,
   Container,
-  FormStyle as Div,
+  FormStyle,
+  Logo,
 } from "./styles";
-import elipse from "../../assets/Ellipse 1.svg";
 import ecology from "../../assets/Logo.svg";
-import ecompany from "../../assets/eCOMPANY Friendly.svg";
 import waste from "../../assets/Waste management-pana 2.svg";
 import { schema } from "../../validations/registerUser";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Api from "../../services/Api";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useContext, useState } from "react";
+import { RegisterContext } from "../../contexts/registerContext";
+import { themes } from "../../styles/theme";
+import { ThemeProvider } from "styled-components";
+import Toggle from "../../components/Toggle";
 
-interface iUserRegister {
+export interface iUserRegister {
   name: string;
   email: string;
   password: string;
   checkPassword?: string;
   tellphone: string;
+  image?: string;
 }
 
 const Register = () => {
+  const { registerUser } = useContext(RegisterContext);
+
   const {
     register,
     handleSubmit,
@@ -34,91 +40,86 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
-  function registerUser(data: iUserRegister): void {
-    console.log(data);
-    delete data.checkPassword;
+  const [theme, setTheme] = useState<"dark" | "light">('dark');
 
-    Api.post("register", data)
-      .then(() => {
-        return toast.success("Cadastrado com sucesso !", {
-          position: "top-right",
-          autoClose: 1500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      })
-      .catch(() => {
-        return toast.error("Cadastro inválido", {
-          position: "top-right",
-          autoClose: 1500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      });
+  const toggleTheme = () => {
+    if (theme === 'dark') {
+      setTheme('light');
+    } else {
+      setTheme('dark');
+    }
   }
 
   return (
-    <Main>
-      <ToastContainer />
-      <img className="elipse" src={elipse} alt="" />
+    <ThemeProvider theme={themes[theme]} >
+    <>
+    <ToastContainer />
+        <BackgroundForm >
 
-      <div className="logo">
-        <img className="logo-image" src={ecology} alt="" />
-        <img className="logo-text" src={ecompany} alt="" />
-      </div>
-      <Container>
-        <Company src={waste} alt="" />
-        <Div>
-          <div>
-          <Link to={"/"}>
-                    Voltar    
-                </Link>
+          <div className="ellipse">
+          <div className="logo">
+            <div className="logo-container">
+              <img className="logo-image" src={ecology} alt="" />
+            </div>
+              <Logo>eCOMPANY Friendly</Logo>
+            <div className="toggle">
+              <Toggle theme={theme} toggleTheme={toggleTheme} />
+            </div>
           </div>
-          <form onSubmit={handleSubmit(registerUser)}>
-            <input
-              type="text"
-              placeholder="Digite seu nome"
-              {...register("name")}
-            />
-            <span>{errors.name?.message}</span>
-            <input
-              type="text"
-              placeholder="Digite seu email"
-              {...register("email")}
-            />
-            <span>{errors.email?.message}</span>
-            <input
-              type="password"
-              placeholder="Digite sua senha"
-              {...register("password")}
-            />
-            <span>{errors.password?.message}</span>
-            <input
-              type="password"
-              placeholder="Confirme sua senha"
-              {...register("checkPassword")}
-            />
-            <span>{errors.checkPassword?.message}</span>
-            <input
-              type="text"
-              placeholder="Digite seu contato"
-              {...register("tellphone")}
-            />
-            <span>{errors.tellphone?.message}</span>
+          </div>
+  
+            <Company src={waste} alt="" />
+            
+          <Container>
+            <FormStyle>
 
-            <button type="submit">Cadastre-se</button>
-          </form>
-        </Div>
+            <form onSubmit={handleSubmit(registerUser)}>
+      
+              <Link to={"/"}>Voltar</Link>
+              <input
+                type="text"
+                placeholder="Digite seu nome"
+                {...register("name")}
+              />
+              <span>{errors.name?.message}</span>
+              <input
+                type="text"
+                placeholder="Digite seu email"
+                {...register("email")}
+              />
+              <span>{errors.email?.message}</span>
+              <input
+                type="password"
+                placeholder="Digite sua senha"
+                {...register("password")}
+              />
+              <span>{errors.password?.message}</span>
+              <input
+                type="password"
+                placeholder="Confirme sua senha"
+                {...register("checkPassword")}
+              />
+              <span>{errors.checkPassword?.message}</span>
+              <input
+                type="text"
+                placeholder="Digite seu contato"
+                {...register("tellphone")}
+              />
+              <span>{errors.tellphone?.message}</span>
+  
+              <input
+                type="text"
+                placeholder="Digite sua url para foto de perfil"
+                {...register("image")}
+              />
+  
+              <button type="submit">Cadastre-se</button>
+            </form>
+          </FormStyle>
       </Container>
-    </Main>
+        </BackgroundForm>
+    </>
+    </ThemeProvider>
   );
 };
 
