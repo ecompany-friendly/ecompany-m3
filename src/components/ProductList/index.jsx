@@ -22,23 +22,31 @@ import {
   const [product, setProduct] = useState([]);
   const [users, setUsers] = useState([]);
 
+  const id = localStorage.getItem("@eCOMPANY:user_id")
+
   useEffect(() => {
-    const id = localStorage.getItem("@eCOMPANY:user_id");
 
-    Api.get(`products`).then((response) => {
-      console.log(response);
-      setProduct(response.data);
+    Api.get(`products?status=true`).then((response) => {
+     
+      setProduct(response.data)
       setProducts(response.data);
-    });
 
-    Api.get(`users/?_embed=products`, id)
-      .then((response) => {
-        console.log(response);
-        setUsers(response.data);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+    })
+    .catch((err) => console.error(err))
+  }, [id]);
 
+  const handleClick = async (pr) => {
+   
+    const newObj = {
+
+      ...pr, userId: Number(id), status: false
+      
+    }
+ 
+    await Api.patch(`products/${pr.id}`, newObj)
+    setProduct(product.filter((element) => element.id !== pr.id))
+  }
+  
   const openUserCardModal = (el, user) => {
     el.preventDefault();
     setUserCardModal(user);
@@ -53,12 +61,6 @@ import {
         user={userCardModal}
       />
       <StyledContainer>
-
-      {/*{filtered.length > 0 && console.log(filtered)}*/}
-      {/*{product.length > 0 ? (
-        users.map((user) => (
-          user.products.map((el) => 
-        >>>>>>> develop*/}
         {filtered.length > 0 ? (
           filtered.map((el) => (
             <StyledLi key={el.id}>
@@ -68,29 +70,28 @@ import {
                   <StyledImageUser src={el.image} alt="" />
                   <StyledNameUser>{el.name}</StyledNameUser>
                 </StyledContainerUser>
-                <StyledBtn>coletar</StyledBtn>
+                <StyledBtn onClick={() => handleClick(el)} >coletar</StyledBtn>
               </StyledContainerCard>
             </StyledLi>
           ))
         ) : product.length > 0 ? (
-          users.map((user) =>
-            user?.products.map((el) => (
+          product.map((el) =>
               <StyledLi key={el.id}>
                 <StyledImageProduct src={el.image} alt="" />
                 <StyledContainerCard>
                   <button
                     type="button"
-                    onClick={(el) => openUserCardModal(el, user)}
+                    onClick={(el) => openUserCardModal(el, product)}
                   >
                     <StyledContainerUser>
-                      <StyledImageUser src={user.image} alt="" />
-                      <StyledNameUser>{user.name}</StyledNameUser>
+                      <StyledImageUser src={product.image} alt="" />
+                      <StyledNameUser>{product.name}</StyledNameUser>
                     </StyledContainerUser>
                   </button>
-                  <StyledBtn>coletar</StyledBtn>
+                  <StyledBtn onClick={() => handleClick(el)} >coletar</StyledBtn>
                 </StyledContainerCard>
               </StyledLi>
-            ))
+            //))
           )
         ) : (
           <div className="empty">
