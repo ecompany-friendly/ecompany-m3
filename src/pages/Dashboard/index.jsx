@@ -11,7 +11,7 @@ import { StyledUserDataModal } from "../../components/UserDataModal/style";
 import { UserDataModal } from "../../components/UserDataModal/UserDataModal";
 import background from "../../assets/Rectangle 39.svg";
 
-  
+
   import { useUserLoginContext } from "../../contexts/authContext";
   
   import MaterialList from "../../components/ProductList";
@@ -25,11 +25,10 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 const Dashboard = () => {
 
   const { user } = useUserLoginContext();
-  const { modalOpen } = useContext(AuthContext);
+  const { modalOpen, lista } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <>
@@ -50,7 +49,6 @@ const Dashboard = () => {
                   src={profile}
                   alt="imagem do perfil do usuário logado"
                 ></Profile>
-
                 <Link to={"/profile"} >
                   <h2>
                     {user?.name}
@@ -81,8 +79,8 @@ const Dashboard = () => {
           <UserDataModal />
         </div>
         <NewProduct />
-        <ProductList filtered={filtered} setProducts={setProducts} />
 
+        <ProductList filtered={filtered} setProducts={setProducts} />
       </StyledDashboard>
     </>
   );

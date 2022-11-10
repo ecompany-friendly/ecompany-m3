@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Api from "../../services/Api";
+import { AuthContext } from "../../contexts/authContext";
 import { UserDataModal } from "../UserDataModal/UserDataModal";
+
 
 import {
   StyledUl,
@@ -13,6 +15,7 @@ import {
   StyledBtn,
   StyledContainer,
 } from "./styles";
+
 
   
   const ProductList = ({filtered, setProducts}) => {
@@ -91,9 +94,7 @@ import {
                   <StyledBtn onClick={() => handleClick(el)} >coletar</StyledBtn>
                 </StyledContainerCard>
               </StyledLi>
-            //))
-          )
-        ) : (
+            )) : (
           <div className="empty">
             <p>Materiais disponíveis em breve</p>
           </div>
