@@ -40,6 +40,7 @@ export const UserDataModal = ({
     <StyledUserDataModal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
+      ariaHideApp={false}
       overlayClassName="modal-overlay"
       className="modal-content"
       style={{

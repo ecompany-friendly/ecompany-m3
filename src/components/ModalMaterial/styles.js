@@ -51,18 +51,18 @@ export const TitleModal = styled.h2`
         font-size: 22px;
         color: #FFFFFF;
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
 `
 
 export const ContainerContent = styled.div`
-        padding-left: 20px;
+        padding-left: 30px;
 `
 
 export const ContentModal = styled.p`
         width: max-content;
         font-size: 22px;
         color: #FFFFFF;   
-        margin-bottom: 30px;
+        margin-bottom: 20px;
 `
 
 export const DescriptionModal = styled.p`

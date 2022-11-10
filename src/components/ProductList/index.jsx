@@ -15,15 +15,18 @@ import {
   StyledBtn,
   StyledContainer,
 } from "./styles";
+import ModalMaterial from "../ModalMaterial";
 
 
   
   const ProductList = ({filtered, setProducts}) => {
     
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalMaterialIsOpen, setModalMaterialIsOpen] = useState(false)
   const [userCardModal, setUserCardModal] = useState({});
   const [product, setProduct] = useState([]);
-  const [user, setUser] = useState();
+  const [users, setUsers] = useState();
+  const [productClick, setProductClick] = useState()
 
 
   const id = localStorage.getItem("@eCOMPANY:user_id")
@@ -51,15 +54,17 @@ import {
     setProduct(product.filter((element) => element.id !== pr.id))
   }
 
-  const handleModal = (el) => {
-    setUser(el)
-  }
-  console.log(user)
+
   const openUserCardModal = (el, user) => {
     el.preventDefault();
     setUserCardModal(user);
     setModalIsOpen(true);
   };
+
+  const openModalMaterial = (el) => {
+    setProductClick(el)
+    setModalMaterialIsOpen(true)
+  }
 
   useEffect(() => {
     const id = localStorage.getItem("@eCOMPANY:user_id");
@@ -79,13 +84,16 @@ import {
         setModalIsOpen={setModalIsOpen}
         user={userCardModal}
       />
-      
+      <ModalMaterial 
+        modalMaterialIsOpen={modalMaterialIsOpen}
+        setModalMaterialIsOpen={setModalMaterialIsOpen}
+        productClick={productClick}
+      />
       <StyledContainer>
         {filtered.length > 0 ? (
           filtered.map((el) => (
             <StyledLi key={el.id}>
               <StyledImageProduct 
-                onClick={() => handleModal()}
                 src={el.image} 
                 alt="" 
               />
@@ -109,12 +117,11 @@ import {
             user.products.map((el) => (
               <StyledLi key={el.id}>
                 <StyledImageProduct 
-                  onClick={() => handleModal(el)}
+                  onClick={() => openModalMaterial(el)}
                   src={el.image} 
                   alt="" 
                 />
                 <StyledContainerCard>
-<<<<<<< HEAD
                   <button
                     type="button"
                     onClick={(el) => openUserCardModal(el, product)}
@@ -127,13 +134,6 @@ import {
                     </StyledContainerUser>
                   </button>
                   <StyledBtn onClick={() => handleClick(el)} >coletar</StyledBtn>
-=======
-                  <StyledContainerUser>
-                    <StyledImageUser src={user.image} alt="" />
-                    <StyledNameUser>{user.name}</StyledNameUser>
-                  </StyledContainerUser>
-                  <StyledBtn>coletar</StyledBtn>
->>>>>>> 7a7d74b2c1374ee844247aa3093ea8bbae6d7006
                 </StyledContainerCard>
               </StyledLi>
             ))
