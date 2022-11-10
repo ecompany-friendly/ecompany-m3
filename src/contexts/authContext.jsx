@@ -17,26 +17,32 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [remove, setRemove] = useState()
   const navigate = useNavigate();
   const notify = (message) => toast(message);
   const [openModal, setOpenModal] = useState(false);
   const [openModalProduct, setOpenModalProduct] = useState(false);
-
+  
   useEffect(() => {
     async function loadingUser() {
+
       const token = localStorage.getItem("@eCOMPANY:token");
 
       if (token) {
+
         try {
           Api.defaults.headers.authorization = `Bearer ${token}`;
 
           const { data } = await Api.get("login");
-
+          
           setUser(data);
+
         } catch (error) {
-          console.log(error);
+
+          console.error(error);
         }
       }
+
     }
     loadingUser();
   }, []);
@@ -59,6 +65,8 @@ const AuthProvider = ({ children }) => {
   }
 
   async function newProduct(data) {
+
+
     const userId = localStorage.getItem("@eCOMPANY:user_id");
     try {
       const newData = { ...data, userId: Number(userId), status: true };
@@ -88,7 +96,9 @@ const AuthProvider = ({ children }) => {
         modalOpen,
         modalClose,
         newProduct,
-        user
+        user,
+        remove, 
+        setRemove
       }}
     >
       {children}

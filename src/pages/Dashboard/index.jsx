@@ -23,6 +23,7 @@ import SearchInput from "../../components/SearchInput";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+
   const { user } = useUserLoginContext();
   const { modalOpen } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
