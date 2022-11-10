@@ -1,9 +1,18 @@
 import { useState } from "react";
+import Api from "../../services/Api";
 
-const SearchInput = ({ setFiltered, products }) => {
+const SearchInput = ({ setFiltered }) => {
   const [currentProduct, setCurrentProduct] = useState("");
+  const userId = window.localStorage.getItem("@eCOMPANY:user_id");
+  const [products, setProducts] = useState();
 
-  console.log(products);
+  const getProducts = async () => {
+    const newProducts = await Api.get(`/users/${userId}/products`)
+      .then((res) => setProducts(res.data))
+      .catch((err) => console.log(err));
+  };
+
+  getProducts();
 
   function getFilteredProducts(value) {
     setCurrentProduct(value);

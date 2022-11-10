@@ -36,7 +36,6 @@ const ProductList = ({ filtered, setProducts }) => {
       .catch((err) => console.error(err));
   }, [id]);
 
-  setProducts(product);
   const handleClick = async (pr) => {
     const newObj = {
       ...pr,
@@ -49,13 +48,11 @@ const ProductList = ({ filtered, setProducts }) => {
   };
 
   const openUserCardModal = async (el, product) => {
-    console.log(product.userId);
     el.preventDefault();
 
     const user = await Api.get(`/users/${product.userId}`)
       .then((res) => res.data)
       .catch((err) => toast.error("Algo deu errado"));
-    console.log(user);
 
     setModalIsOpen(true);
     setUserCardModal(user);
@@ -71,7 +68,6 @@ const ProductList = ({ filtered, setProducts }) => {
 
     Api.get(`users/?_embed=products`, id)
       .then((response) => {
-        console.log(response);
         setUsers(response.data);
       })
       .catch((err) => console.error(err));

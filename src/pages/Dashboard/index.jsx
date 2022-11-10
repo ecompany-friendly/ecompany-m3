@@ -30,8 +30,6 @@ const Dashboard = () => {
   //const [user, setUser] = useState()
   const navigate = useNavigate();
 
-  console.log(products);
-
   return (
     <>
       <StyledDashboard className="container">
@@ -61,7 +59,7 @@ const Dashboard = () => {
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>
             <div className="search">
-              <SearchInput products={products} setFiltered={setFiltered} />
+              <SearchInput setFiltered={setFiltered} />
 
               {/* <input type="text" />
               <img
