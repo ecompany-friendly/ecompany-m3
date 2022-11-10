@@ -78,7 +78,6 @@ export const Container = styled.div`
 `;
 
 export const Company = styled.img`
-<<<<<<< Updated upstream
 
   min-height: 150px;
 
