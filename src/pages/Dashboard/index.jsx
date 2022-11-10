@@ -24,10 +24,11 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
 
-  const { user } = useUserLoginContext();
+  //const { user } = useUserLoginContext();
   const { modalOpen, lista } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
+  const [user, setUser] = useState([])
   const navigate = useNavigate();
 
   return (
@@ -47,13 +48,15 @@ const Dashboard = () => {
           <div className="interative">
             <div className="user-info">
               <div className="user">
+                <Link to={"/profile"} >
                 <Profile
                   src={profile}
                   alt="imagem do perfil do usuário logado"
                 ></Profile>
+                </Link>
                 <Link to={"/profile"} >
                   <h2>
-                    {user?.name}
+                    {user.name}
                   </h2>
                 </Link>
               </div>

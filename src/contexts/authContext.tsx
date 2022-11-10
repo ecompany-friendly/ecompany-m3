@@ -22,6 +22,8 @@ interface IUserContext {
   newProduct: (data: IProduct) => void;
   lista: IProduct;
   setLista: (value: React.SetStateAction<IProduct>) => void;
+  setRemove: React.Dispatch<React.SetStateAction<IProduct>>;
+  remove: IProduct
 }
 
 export interface IUserLogin {
@@ -60,6 +62,7 @@ const AuthProvider = ({ children }: IUserProviderProps) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [openModalProduct, setOpenModalProduct] = useState<boolean>(false);
   const [lista, setLista] = useState<IProduct>({} as IProduct);
+  const [remove, setRemove] = useState<IProduct>({} as IProduct)
 
   useEffect(() => {
     async function loadingUser() {
@@ -149,6 +152,8 @@ const AuthProvider = ({ children }: IUserProviderProps) => {
         modalOpen,
         modalClose,
         newProduct,
+        setRemove,
+        remove,
         lista,
         setLista,
         user,
