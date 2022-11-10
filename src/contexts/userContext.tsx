@@ -29,8 +29,7 @@ export const UserProvider = ({ children }: iUserProvider) => {
   const login = async (data: iLogin) => {
     try {
       const res = await Api.post("login", data);
-      return res
-
+      return res;
     } catch (error) {
       toast.error("Algo deu errado!");
     }

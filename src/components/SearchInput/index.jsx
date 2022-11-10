@@ -3,6 +3,8 @@ import { useState } from "react";
 const SearchInput = ({ setFiltered, products }) => {
   const [currentProduct, setCurrentProduct] = useState("");
 
+  console.log(products);
+
   function getFilteredProducts(value) {
     setCurrentProduct(value);
     const filtered =

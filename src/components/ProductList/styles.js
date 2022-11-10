@@ -9,6 +9,7 @@ export const StyledUl = styled.ul`
   position: absolute;
   top: 31%;
   left: 20%;
+
   margin-top: 40px;
 
   display: flex;
@@ -28,11 +29,13 @@ export const StyledUl = styled.ul`
     overflow-y: scroll;
   }
 
-  ${'' /* > div {
+  ${
+    "" /* > div {
     width: 100%;
     display: flex;
     justify-content: space-between;
-  } */}
+  } */
+  }
 
   > div > p {
     font-size: 16px;
@@ -41,6 +44,7 @@ export const StyledUl = styled.ul`
 `;
 
 export const StyledContainer = styled.div`
+
   
 `
 
@@ -60,17 +64,17 @@ export const StyledImageProduct = styled.img`
   height: 141px;
   border-radius: 8px 8px 0 0;
   box-shadow: 0px 4px 20px 10px rgba(0, 0, 0, 0.6);
-`
+`;
 
 export const StyledContainerCard = styled.span`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 export const StyledContainerUser = styled.span`
   display: flex;
   align-items: center;
-`
+`;
 
 export const StyledImageUser = styled.img`
   width: 27px;
@@ -79,7 +83,7 @@ export const StyledImageUser = styled.img`
   border-radius: 10px;
   overflow: hidden;
   margin-right: 10px;
-`
+`;
 
 export const StyledNameUser = styled.p`
   font-size: 12px;
@@ -95,10 +99,10 @@ export const StyledBtn = styled.button`
   color: var(--white);
   background-color: #152913;
   border-radius: 10px 10px 0 10px;
-  cursor: pointer; 
+  cursor: pointer;
 
   :hover {
     background-color: #428653;
     transition: 1s ease;
   }
-`
+`;
