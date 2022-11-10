@@ -22,6 +22,10 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme";
 import "./styles";
 import Toggle from "../../components/Toggle";
+import { ToggleContainer } from "../../components/Toggle/styles";
+import MoonIcon from "../../components/Toggle/icons/MoonIcon";
+import SunIcon from "../../components/Toggle/icons/SunIcon";
+import { themes } from "../../styles/theme";
 
 const Login = () => {
   const { loadUser } = useContext(AuthContext);
@@ -35,7 +39,7 @@ const Login = () => {
   //<span>{errors.password?.message}</span>
 
   //<LoginStyle toggleThemeLogin={toggleThemeLogin}/>
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState<"dark" | "light">('dark');
 
   const toggleTheme = () => {
     if (theme === "dark") {
@@ -46,19 +50,25 @@ const Login = () => {
   };
 
   return (
-    <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
+    <ThemeProvider theme={themes[theme]}>
       <>
         <ToastContainer />
-        <Toggle theme={theme} toggleTheme={toggleTheme} />
         <BackgroundForm>
-          <img className="elipse" src={elipse} alt="" />
+          <div className="ellipse">
 
           <div className="logo">
-            <img className="logo-image" src={ecology} alt="" />
-            <Logo>eCOMPANY Friendly</Logo>
+            <div className="logo-container">
+              <img className="logo-image" src={ecology} alt="" />
+            </div>
+              <Logo>eCOMPANY Friendly</Logo>
+            <div className="toggle">
+              <Toggle theme={theme} toggleTheme={toggleTheme} />
+            </div>
           </div>
-          <Container>
+          </div>
+  
             <Company src={waste} alt="" />
+          <Container>
             <FormStyle>
               <form onSubmit={handleSubmit(loadUser)}>
                 <DivWelcome>
