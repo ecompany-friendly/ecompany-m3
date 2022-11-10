@@ -329,7 +329,8 @@ input {
  
  
  
- import styled, {createGlobalStyle, DefaultTheme, StyledComponent} from "styled-components"
+ import { Link } from "react-router-dom";
+import styled, {createGlobalStyle, DefaultTheme, StyledComponent} from "styled-components"
  interface ITheme {
    mainn?: string;
    ellipse?: string;
@@ -451,6 +452,26 @@ export const BackgroundForm = styled.main<ITheme>`
 
 `;
 
+export const BtnComeBack = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 78px;
+  min-height: 30px;
+  font-size: 18px;
+  color: #1A2E1F;
+  background-color: #5EFFA8;
+  border-radius: 8px;
+  text-decoration: none;
+  margin: 21px 0 0 193px;
+
+  :hover {
+    border: 1px solid #FFF;
+    border-radius: 8px;
+  }
+`
+
+
 export const Company = styled.img`
   position: relative;
   top: 180px;
@@ -491,6 +512,7 @@ export const Container = styled.section`
 
 export const FormStyle = styled.div<ITheme>`
   display: flex;
+  justify-content: flex-end;
   margin-top: 170px;
   max-width: 990px;
   padding-bottom: 20px;
@@ -530,7 +552,7 @@ export const FormStyle = styled.div<ITheme>`
   @media screen and (min-width: 960px) {
     left: 100%;
     top: -230px;
-    height: 400px;
+    height: 510px;
     width: 300px;
   }
   
@@ -604,7 +626,7 @@ export const FormStyle = styled.div<ITheme>`
       }
       
       @media screen and (min-width: 900px) {
-        margin-bottom: 5px;
+        
       }
     }
 
