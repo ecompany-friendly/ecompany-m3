@@ -51,6 +51,7 @@ export const StyledLi = styled.li`
   margin-left: 5px;
   gap: 10px;
   cursor: pointer;
+  width: 185px;
 
   @media (min-width: 600px) {
   }
@@ -60,7 +61,7 @@ export const StyledLi = styled.li`
 `;
 
 export const StyledImageProduct = styled.img`
-  width: 185px;
+  width: 100%;
   height: 141px;
   border-radius: 8px 8px 0 0;
   box-shadow: 0px 4px 20px 10px rgba(0, 0, 0, 0.6);
@@ -74,6 +75,24 @@ export const StyledContainerCard = styled.span`
 export const StyledContainerUser = styled.span`
   display: flex;
   align-items: center;
+  justify-content: center;
+  max-width: 130px;
+
+  button {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    overflow: hidden;
+    p {
+      word-break: keep-all;
+      word-wrap: normal;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      overflow: hidden;
+      max-width: 80px;
+    }
+  }
 `;
 
 export const StyledImageUser = styled.img`

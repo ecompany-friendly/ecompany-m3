@@ -45,13 +45,11 @@ const ProductList = ({ filtered, setProducts }) => {
   };
 
   const openUserCardModal = async (el, product) => {
-    console.log(product.userId);
     el.preventDefault();
 
     const user = await Api.get(`/users/${product.userId}`)
       .then((res) => res.data)
       .catch((err) => toast.error("Algo deu errado"));
-    console.log(user);
 
     setModalIsOpen(true);
     setUserCardModal(user);
@@ -62,14 +60,18 @@ const ProductList = ({ filtered, setProducts }) => {
 
     Api.get(`users/?_embed=products`, id)
       .then((response) => {
-        console.log(response);
         setUsers(response.data);
       })
       .catch((err) => console.error(err));
   }, []);
 
-  console.log(product);
+  const getUser = async (id) => {
+    return await Api.get(`/users/${product.userId}`)
+      .then((res) => res.data)
+      .catch((err) => toast.error("Algo deu errado"));
+  };
 
+  let user = {};
   return (
     <StyledUl>
       <UserDataModal
@@ -81,12 +83,13 @@ const ProductList = ({ filtered, setProducts }) => {
         {filtered.length > 0 ? (
           filtered.map((product) => (
             <StyledLi key={product.id}>
+              {(user = getUser(product.id))}
               <StyledImageProduct src={product.image} alt="" />
               <StyledContainerCard>
                 <StyledContainerUser>
                   <button onClick={(el) => openUserCardModal(el, product)}>
-                    <StyledImageUser src={product.image} alt="" />
-                    <StyledNameUser>{product.name}</StyledNameUser>
+                    <StyledImageUser src={user.image} alt="" />
+                    <StyledNameUser>{user.name}</StyledNameUser>
                   </button>
                 </StyledContainerUser>
                 <StyledBtn onClick={() => handleClick(product)}>
@@ -103,8 +106,8 @@ const ProductList = ({ filtered, setProducts }) => {
                 <StyledContainerCard>
                   <StyledContainerUser>
                     <button onClick={(el) => openUserCardModal(el, product)}>
-                      <StyledImageUser src={product.image} alt="" />
-                      <StyledNameUser>{product.name}</StyledNameUser>
+                      <StyledImageUser src={user.image} alt="" />
+                      <StyledNameUser>{user.name}</StyledNameUser>
                     </button>
                   </StyledContainerUser>
                   <StyledBtn>coletar</StyledBtn>
