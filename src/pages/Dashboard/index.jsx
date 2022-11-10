@@ -13,7 +13,7 @@ import background from "../../assets/Rectangle 39.svg";
 
 import ModalMaterial from "../../components/ModalMaterial";
 import { useUserLoginContext } from "../../contexts/authContext";
-  
+
 import MaterialList from "../../components/ProductList";
 import ProductList from "../../components/ProductList";
 import { NewProduct } from "../../components/NewProduct";
@@ -23,7 +23,6 @@ import SearchInput from "../../components/SearchInput";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-
   const { user } = useUserLoginContext();
   const { modalOpen, lista } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
@@ -49,26 +48,26 @@ const Dashboard = () => {
           <div className="interative">
             <div className="user-info">
               <div className="user">
-                <Link to={"/profile"} >
-                <Profile
-                  src={user.image}
-                  alt="imagem do perfil do usuário logado"
-                ></Profile>
+                <Link to={"/profile"}>
+                  <Profile
+                    src={user.image}
+                    alt="imagem do perfil do usuário logado"
+                  ></Profile>
                 </Link>
-                <Link to={"/profile"} >
-                    {user.name}
-                </Link>
+                <Link to={"/profile"}>{user.name}</Link>
               </div>
               <img src={logout} alt="imagem para fazer logout na conta" />
             </div>
             <div className="search">
-              {/*<SearchInput products={products} setFiltered={setFiltered} />*/}
-              
-              <input type="text" />
-                <img className="lupa"
-                    src={lupapesquisa}
-                    alt="imagem da lupa de pesquisa para filtrar material"
-                />{/* <input type="text" />
+              <SearchInput setFiltered={setFiltered} />
+
+              {/* <input type="text" />
+              <img
+                className="lupa"
+                src={lupapesquisa}
+                alt="imagem da lupa de pesquisa para filtrar material"
+              /> */}
+              {/* <input type="text" />
               <img
                 className="lupa"
                 src={lupapesquisa}
@@ -84,17 +83,14 @@ const Dashboard = () => {
           </div>
         </nav>
 
-
         <div className="modals">
           <UserDataModal />
         </div>
 
-
         <NewProduct />
 
-
-        <main className="box-cards" >
-            <ProductList filtered={filtered} setProducts={setProducts} />
+        <main className="box-cards">
+          <ProductList filtered={filtered} setProducts={setProducts} />
         </main>
       </StyledDashboard>
     </>
