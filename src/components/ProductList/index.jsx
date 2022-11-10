@@ -116,8 +116,8 @@ const ProductList = ({ filtered, setProducts }) => {
               <StyledContainerCard>
                 <StyledContainerUser>
                   <button onClick={(el) => openUserCardModal(el, product)}>
-                    <StyledImageUser src={product.image} alt="" />
-                    <StyledNameUser>{product.name}</StyledNameUser>
+                    <StyledImageUser src={user.image} alt="" />
+                    <StyledNameUser>{user.name}</StyledNameUser>
                   </button>
                 </StyledContainerUser>
                 <StyledBtn onClick={() => handleClick(product)}>
@@ -126,37 +126,13 @@ const ProductList = ({ filtered, setProducts }) => {
               </StyledContainerCard>
             </StyledLi>
           ))
-<<<<<<< HEAD
-        ) : product.length > 0 ? (
-          users.map((user) =>
-            user.products.map((product) => (
-              <StyledLi key={product.id}>
-                <StyledImageProduct  onClick={() => openModalMaterial(product)} src={product.image} alt="" />
-                <StyledContainerCard>
-                  <StyledContainerUser>
-                    <button onClick={(el) => openUserCardModal(el, product)}>
-                      <StyledImageUser src={user.image} alt="" />
-                      <StyledNameUser>{user.name}</StyledNameUser>
-                    </button>
-                  </StyledContainerUser>
-                  <StyledBtn onClick={() => handleClick(product)} >coletar</StyledBtn>
-                </StyledContainerCard>
-              </StyledLi>
-            ))
-          )
-        ) : (
-          <div className="empty">
-            <p>Materiais disponíveis em breve</p>
-          </div>
-        )}
-=======
+
         )
       ) : (
         <div className="empty">
           <p>Materiais disponíveis em breve</p>
         </div>
       )}
->>>>>>> 7e3ee3234c276784f9da1f00c52769466d381e7e
     </StyledUl>
   );
 };

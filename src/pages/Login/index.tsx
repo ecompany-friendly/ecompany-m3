@@ -79,14 +79,12 @@ const Login = () => {
                   placeholder="Digite seu email"
                   {...register("email")}
                 />
-                <span>{errors.email?.message}</span>
 
                 <input
                   type="password"
                   placeholder="Digite sua senha"
                   {...register("password")}
                 />
-                <span>{errors.password?.message}</span>
 
                 <button type="submit">Entrar</button>
                 <h2 className="account">Ainda não possui uma conta?</h2>
