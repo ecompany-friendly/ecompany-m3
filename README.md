@@ -7,7 +7,7 @@
 <p align="center">
   “Reduza, reuse e recicle.”</h4>
 </p>
-<h2 align="center"><a href="https://project-jamstack-blog.vercel.app/">Clique aqui para ver o projeto final!</a></h2>
+<h2 align="center"><a href="https://projeto-ecompany.vercel.app/">Clique aqui para ver o projeto final!</a></h2>
 
 
 ## 📺 Imagem
